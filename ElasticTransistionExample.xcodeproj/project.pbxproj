@@ -9,66 +9,51 @@
 /* Begin PBXBuildFile section */
 		BAC47DF81C6C09D200F8E005 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BAC47DF71C6C09D200F8E005 /* main.m */; };
 		BAC47DFB1C6C09D200F8E005 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BAC47DFA1C6C09D200F8E005 /* AppDelegate.m */; };
-		BAC47DFE1C6C09D200F8E005 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BAC47DFD1C6C09D200F8E005 /* ViewController.m */; };
 		BAC47E011C6C09D200F8E005 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BAC47DFF1C6C09D200F8E005 /* Main.storyboard */; };
 		BAC47E031C6C09D200F8E005 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BAC47E021C6C09D200F8E005 /* Assets.xcassets */; };
 		BAC47E061C6C09D200F8E005 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BAC47E041C6C09D200F8E005 /* LaunchScreen.storyboard */; };
-		BAC47E111C6C09D200F8E005 /* ElasticTransistionExampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BAC47E101C6C09D200F8E005 /* ElasticTransistionExampleTests.m */; };
-		BAC47E1C1C6C09D200F8E005 /* ElasticTransistionExampleUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = BAC47E1B1C6C09D200F8E005 /* ElasticTransistionExampleUITests.m */; };
+		BAC47E2C1C6C978700F8E005 /* InitialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BAC47E2B1C6C978700F8E005 /* InitialViewController.m */; };
+		BAC47E2F1C6C979600F8E005 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BAC47E2E1C6C979600F8E005 /* AboutViewController.m */; };
+		BAC47E321C6C97B600F8E005 /* OptionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BAC47E311C6C97B600F8E005 /* OptionsViewController.m */; };
+		BAC47E351C6C97CD00F8E005 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BAC47E341C6C97CD00F8E005 /* MenuViewController.m */; };
+		BAC47E381C6C97F900F8E005 /* NavigationExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BAC47E371C6C97F900F8E005 /* NavigationExampleViewController.m */; };
+		BAC47E3B1C6C98BD00F8E005 /* ElasticShapeLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = BAC47E3A1C6C98BD00F8E005 /* ElasticShapeLayer.m */; };
+		BAC47E3E1C6C98F000F8E005 /* EdgePanTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = BAC47E3D1C6C98F000F8E005 /* EdgePanTransition.m */; };
+		BAC47E411C6C996E00F8E005 /* Util.m in Sources */ = {isa = PBXBuildFile; fileRef = BAC47E401C6C996E00F8E005 /* Util.m */; };
+		BAC47E441C6C999900F8E005 /* ElasticTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = BAC47E431C6C999900F8E005 /* ElasticTransition.m */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		BAC47E0D1C6C09D200F8E005 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BAC47DEB1C6C09D200F8E005 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = BAC47DF21C6C09D200F8E005;
-			remoteInfo = ElasticTransistionExample;
-		};
-		BAC47E181C6C09D200F8E005 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BAC47DEB1C6C09D200F8E005 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = BAC47DF21C6C09D200F8E005;
-			remoteInfo = ElasticTransistionExample;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		BAC47DF31C6C09D200F8E005 /* ElasticTransistionExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ElasticTransistionExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BAC47DF71C6C09D200F8E005 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		BAC47DF91C6C09D200F8E005 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		BAC47DFA1C6C09D200F8E005 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		BAC47DFC1C6C09D200F8E005 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		BAC47DFD1C6C09D200F8E005 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		BAC47E001C6C09D200F8E005 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BAC47E021C6C09D200F8E005 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BAC47E051C6C09D200F8E005 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BAC47E071C6C09D200F8E005 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BAC47E0C1C6C09D200F8E005 /* ElasticTransistionExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ElasticTransistionExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		BAC47E101C6C09D200F8E005 /* ElasticTransistionExampleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ElasticTransistionExampleTests.m; sourceTree = "<group>"; };
-		BAC47E121C6C09D200F8E005 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BAC47E171C6C09D200F8E005 /* ElasticTransistionExampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ElasticTransistionExampleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		BAC47E1B1C6C09D200F8E005 /* ElasticTransistionExampleUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ElasticTransistionExampleUITests.m; sourceTree = "<group>"; };
-		BAC47E1D1C6C09D200F8E005 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BAC47E2A1C6C978700F8E005 /* InitialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InitialViewController.h; sourceTree = "<group>"; };
+		BAC47E2B1C6C978700F8E005 /* InitialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InitialViewController.m; sourceTree = "<group>"; };
+		BAC47E2D1C6C979600F8E005 /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
+		BAC47E2E1C6C979600F8E005 /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
+		BAC47E301C6C97B600F8E005 /* OptionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OptionsViewController.h; sourceTree = "<group>"; };
+		BAC47E311C6C97B600F8E005 /* OptionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OptionsViewController.m; sourceTree = "<group>"; };
+		BAC47E331C6C97CD00F8E005 /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
+		BAC47E341C6C97CD00F8E005 /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
+		BAC47E361C6C97F900F8E005 /* NavigationExampleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationExampleViewController.h; sourceTree = "<group>"; };
+		BAC47E371C6C97F900F8E005 /* NavigationExampleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationExampleViewController.m; sourceTree = "<group>"; };
+		BAC47E391C6C98BD00F8E005 /* ElasticShapeLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ElasticShapeLayer.h; path = ElasticTransition/ElasticShapeLayer.h; sourceTree = SOURCE_ROOT; };
+		BAC47E3A1C6C98BD00F8E005 /* ElasticShapeLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ElasticShapeLayer.m; path = ElasticTransition/ElasticShapeLayer.m; sourceTree = SOURCE_ROOT; };
+		BAC47E3C1C6C98F000F8E005 /* EdgePanTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EdgePanTransition.h; path = ElasticTransition/EdgePanTransition.h; sourceTree = SOURCE_ROOT; };
+		BAC47E3D1C6C98F000F8E005 /* EdgePanTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EdgePanTransition.m; path = ElasticTransition/EdgePanTransition.m; sourceTree = SOURCE_ROOT; };
+		BAC47E3F1C6C996E00F8E005 /* Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Util.h; path = ElasticTransition/Util.h; sourceTree = SOURCE_ROOT; };
+		BAC47E401C6C996E00F8E005 /* Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Util.m; path = ElasticTransition/Util.m; sourceTree = SOURCE_ROOT; };
+		BAC47E421C6C999900F8E005 /* ElasticTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ElasticTransition.h; path = ElasticTransition/ElasticTransition.h; sourceTree = SOURCE_ROOT; };
+		BAC47E431C6C999900F8E005 /* ElasticTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ElasticTransition.m; path = ElasticTransition/ElasticTransition.m; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		BAC47DF01C6C09D200F8E005 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		BAC47E091C6C09D200F8E005 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		BAC47E141C6C09D200F8E005 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -82,8 +67,6 @@
 			isa = PBXGroup;
 			children = (
 				BAC47DF51C6C09D200F8E005 /* ElasticTransistionExample */,
-				BAC47E0F1C6C09D200F8E005 /* ElasticTransistionExampleTests */,
-				BAC47E1A1C6C09D200F8E005 /* ElasticTransistionExampleUITests */,
 				BAC47DF41C6C09D200F8E005 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -92,8 +75,6 @@
 			isa = PBXGroup;
 			children = (
 				BAC47DF31C6C09D200F8E005 /* ElasticTransistionExample.app */,
-				BAC47E0C1C6C09D200F8E005 /* ElasticTransistionExampleTests.xctest */,
-				BAC47E171C6C09D200F8E005 /* ElasticTransistionExampleUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -104,8 +85,16 @@
 				BAC47E291C6C0D3400F8E005 /* ElasticTransition */,
 				BAC47DF91C6C09D200F8E005 /* AppDelegate.h */,
 				BAC47DFA1C6C09D200F8E005 /* AppDelegate.m */,
-				BAC47DFC1C6C09D200F8E005 /* ViewController.h */,
-				BAC47DFD1C6C09D200F8E005 /* ViewController.m */,
+				BAC47E2A1C6C978700F8E005 /* InitialViewController.h */,
+				BAC47E2B1C6C978700F8E005 /* InitialViewController.m */,
+				BAC47E2D1C6C979600F8E005 /* AboutViewController.h */,
+				BAC47E2E1C6C979600F8E005 /* AboutViewController.m */,
+				BAC47E301C6C97B600F8E005 /* OptionsViewController.h */,
+				BAC47E311C6C97B600F8E005 /* OptionsViewController.m */,
+				BAC47E331C6C97CD00F8E005 /* MenuViewController.h */,
+				BAC47E341C6C97CD00F8E005 /* MenuViewController.m */,
+				BAC47E361C6C97F900F8E005 /* NavigationExampleViewController.h */,
+				BAC47E371C6C97F900F8E005 /* NavigationExampleViewController.m */,
 				BAC47DFF1C6C09D200F8E005 /* Main.storyboard */,
 				BAC47E021C6C09D200F8E005 /* Assets.xcassets */,
 				BAC47E041C6C09D200F8E005 /* LaunchScreen.storyboard */,
@@ -123,27 +112,17 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		BAC47E0F1C6C09D200F8E005 /* ElasticTransistionExampleTests */ = {
-			isa = PBXGroup;
-			children = (
-				BAC47E101C6C09D200F8E005 /* ElasticTransistionExampleTests.m */,
-				BAC47E121C6C09D200F8E005 /* Info.plist */,
-			);
-			path = ElasticTransistionExampleTests;
-			sourceTree = "<group>";
-		};
-		BAC47E1A1C6C09D200F8E005 /* ElasticTransistionExampleUITests */ = {
-			isa = PBXGroup;
-			children = (
-				BAC47E1B1C6C09D200F8E005 /* ElasticTransistionExampleUITests.m */,
-				BAC47E1D1C6C09D200F8E005 /* Info.plist */,
-			);
-			path = ElasticTransistionExampleUITests;
-			sourceTree = "<group>";
-		};
 		BAC47E291C6C0D3400F8E005 /* ElasticTransition */ = {
 			isa = PBXGroup;
 			children = (
+				BAC47E391C6C98BD00F8E005 /* ElasticShapeLayer.h */,
+				BAC47E3A1C6C98BD00F8E005 /* ElasticShapeLayer.m */,
+				BAC47E421C6C999900F8E005 /* ElasticTransition.h */,
+				BAC47E431C6C999900F8E005 /* ElasticTransition.m */,
+				BAC47E3F1C6C996E00F8E005 /* Util.h */,
+				BAC47E401C6C996E00F8E005 /* Util.m */,
+				BAC47E3C1C6C98F000F8E005 /* EdgePanTransition.h */,
+				BAC47E3D1C6C98F000F8E005 /* EdgePanTransition.m */,
 			);
 			name = ElasticTransition;
 			sourceTree = "<group>";
@@ -168,42 +147,6 @@
 			productReference = BAC47DF31C6C09D200F8E005 /* ElasticTransistionExample.app */;
 			productType = "com.apple.product-type.application";
 		};
-		BAC47E0B1C6C09D200F8E005 /* ElasticTransistionExampleTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = BAC47E231C6C09D200F8E005 /* Build configuration list for PBXNativeTarget "ElasticTransistionExampleTests" */;
-			buildPhases = (
-				BAC47E081C6C09D200F8E005 /* Sources */,
-				BAC47E091C6C09D200F8E005 /* Frameworks */,
-				BAC47E0A1C6C09D200F8E005 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				BAC47E0E1C6C09D200F8E005 /* PBXTargetDependency */,
-			);
-			name = ElasticTransistionExampleTests;
-			productName = ElasticTransistionExampleTests;
-			productReference = BAC47E0C1C6C09D200F8E005 /* ElasticTransistionExampleTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		BAC47E161C6C09D200F8E005 /* ElasticTransistionExampleUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = BAC47E261C6C09D200F8E005 /* Build configuration list for PBXNativeTarget "ElasticTransistionExampleUITests" */;
-			buildPhases = (
-				BAC47E131C6C09D200F8E005 /* Sources */,
-				BAC47E141C6C09D200F8E005 /* Frameworks */,
-				BAC47E151C6C09D200F8E005 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				BAC47E191C6C09D200F8E005 /* PBXTargetDependency */,
-			);
-			name = ElasticTransistionExampleUITests;
-			productName = ElasticTransistionExampleUITests;
-			productReference = BAC47E171C6C09D200F8E005 /* ElasticTransistionExampleUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -215,14 +158,6 @@
 				TargetAttributes = {
 					BAC47DF21C6C09D200F8E005 = {
 						CreatedOnToolsVersion = 7.2.1;
-					};
-					BAC47E0B1C6C09D200F8E005 = {
-						CreatedOnToolsVersion = 7.2.1;
-						TestTargetID = BAC47DF21C6C09D200F8E005;
-					};
-					BAC47E161C6C09D200F8E005 = {
-						CreatedOnToolsVersion = 7.2.1;
-						TestTargetID = BAC47DF21C6C09D200F8E005;
 					};
 				};
 			};
@@ -240,8 +175,6 @@
 			projectRoot = "";
 			targets = (
 				BAC47DF21C6C09D200F8E005 /* ElasticTransistionExample */,
-				BAC47E0B1C6C09D200F8E005 /* ElasticTransistionExampleTests */,
-				BAC47E161C6C09D200F8E005 /* ElasticTransistionExampleUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -257,20 +190,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		BAC47E0A1C6C09D200F8E005 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		BAC47E151C6C09D200F8E005 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -278,42 +197,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BAC47DFE1C6C09D200F8E005 /* ViewController.m in Sources */,
+				BAC47E3E1C6C98F000F8E005 /* EdgePanTransition.m in Sources */,
+				BAC47E2C1C6C978700F8E005 /* InitialViewController.m in Sources */,
+				BAC47E3B1C6C98BD00F8E005 /* ElasticShapeLayer.m in Sources */,
+				BAC47E351C6C97CD00F8E005 /* MenuViewController.m in Sources */,
+				BAC47E381C6C97F900F8E005 /* NavigationExampleViewController.m in Sources */,
+				BAC47E441C6C999900F8E005 /* ElasticTransition.m in Sources */,
+				BAC47E411C6C996E00F8E005 /* Util.m in Sources */,
 				BAC47DFB1C6C09D200F8E005 /* AppDelegate.m in Sources */,
+				BAC47E321C6C97B600F8E005 /* OptionsViewController.m in Sources */,
+				BAC47E2F1C6C979600F8E005 /* AboutViewController.m in Sources */,
 				BAC47DF81C6C09D200F8E005 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		BAC47E081C6C09D200F8E005 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				BAC47E111C6C09D200F8E005 /* ElasticTransistionExampleTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		BAC47E131C6C09D200F8E005 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				BAC47E1C1C6C09D200F8E005 /* ElasticTransistionExampleUITests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		BAC47E0E1C6C09D200F8E005 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = BAC47DF21C6C09D200F8E005 /* ElasticTransistionExample */;
-			targetProxy = BAC47E0D1C6C09D200F8E005 /* PBXContainerItemProxy */;
-		};
-		BAC47E191C6C09D200F8E005 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = BAC47DF21C6C09D200F8E005 /* ElasticTransistionExample */;
-			targetProxy = BAC47E181C6C09D200F8E005 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		BAC47DFF1C6C09D200F8E005 /* Main.storyboard */ = {
@@ -439,54 +337,6 @@
 			};
 			name = Release;
 		};
-		BAC47E241C6C09D200F8E005 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = ElasticTransistionExampleTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = tigielle.ElasticTransistionExampleTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ElasticTransistionExample.app/ElasticTransistionExample";
-			};
-			name = Debug;
-		};
-		BAC47E251C6C09D200F8E005 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = ElasticTransistionExampleTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = tigielle.ElasticTransistionExampleTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ElasticTransistionExample.app/ElasticTransistionExample";
-			};
-			name = Release;
-		};
-		BAC47E271C6C09D200F8E005 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				INFOPLIST_FILE = ElasticTransistionExampleUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = tigielle.ElasticTransistionExampleUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_TARGET_NAME = ElasticTransistionExample;
-				USES_XCTRUNNER = YES;
-			};
-			name = Debug;
-		};
-		BAC47E281C6C09D200F8E005 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				INFOPLIST_FILE = ElasticTransistionExampleUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = tigielle.ElasticTransistionExampleUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_TARGET_NAME = ElasticTransistionExample;
-				USES_XCTRUNNER = YES;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -504,22 +354,6 @@
 			buildConfigurations = (
 				BAC47E211C6C09D200F8E005 /* Debug */,
 				BAC47E221C6C09D200F8E005 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-		};
-		BAC47E231C6C09D200F8E005 /* Build configuration list for PBXNativeTarget "ElasticTransistionExampleTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				BAC47E241C6C09D200F8E005 /* Debug */,
-				BAC47E251C6C09D200F8E005 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-		};
-		BAC47E261C6C09D200F8E005 /* Build configuration list for PBXNativeTarget "ElasticTransistionExampleUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				BAC47E271C6C09D200F8E005 /* Debug */,
-				BAC47E281C6C09D200F8E005 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};

@@ -1,15 +1,13 @@
 //
-//  ViewController.h
+//  EdgePanTransition.h
 //  ElasticTransistionExample
 //
 //  Created by Tigielle on 11/02/16.
 //  Copyright © 2016 Matteo Tagliafico. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
 
-@interface ViewController : UIViewController
-
+@interface EdgePanTransition : NSObject
 
 @end
-
