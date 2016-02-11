@@ -3,4 +3,5 @@ This is the Objective-C Version of Elastic Transition written in Swift by lkzhao
 
 A UIKit custom modal transition that simulates an elastic drag. Written in Objective-C.
 
-![demo](https://github.com/taglia3/ElasticTransition/blob/master/imgs/demo.gif?raw=true)
+![demo](https://github.com/taglia3/ElasticTransition-ObjC/blob/master/imgs/demo.gif?raw=true)
+
