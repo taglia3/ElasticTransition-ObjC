@@ -6,7 +6,7 @@
 //  Copyright © 2016 Matteo Tagliafico. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+
 #import <UIKit/UIKit.h>
 
 typedef enum{
@@ -20,7 +20,7 @@ typedef enum{
 
 @property EdgeType type;
 
--(id)initWithEdgeType:(EdgeType)theType;
+- (id)initWithEdgeType:(EdgeType)theType;
 
 - (EdgeType)opposite;
 - (UIRectEdge)toUIRectEdge;

@@ -50,6 +50,8 @@
 		BAC47E431C6C999900F8E005 /* ElasticTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ElasticTransition.m; path = ElasticTransition/ElasticTransition.m; sourceTree = SOURCE_ROOT; };
 		BAC47E461C6CA24E00F8E005 /* Edge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Edge.h; path = ElasticTransition/Utils/Edge.h; sourceTree = SOURCE_ROOT; };
 		BAC47E471C6CA24E00F8E005 /* Edge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Edge.m; path = ElasticTransition/Utils/Edge.m; sourceTree = SOURCE_ROOT; };
+		BAC47E491C6CA63E00F8E005 /* Utils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Utils.h; path = ElasticTransition/Utils/Utils.h; sourceTree = SOURCE_ROOT; };
+		BAC47E4A1C6CA88600F8E005 /* PointExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PointExtension.h; path = ElasticTransition/Utils/PointExtension.h; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,8 +131,10 @@
 		BAC47E451C6CA22500F8E005 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				BAC47E491C6CA63E00F8E005 /* Utils.h */,
 				BAC47E461C6CA24E00F8E005 /* Edge.h */,
 				BAC47E471C6CA24E00F8E005 /* Edge.m */,
+				BAC47E4A1C6CA88600F8E005 /* PointExtension.h */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
