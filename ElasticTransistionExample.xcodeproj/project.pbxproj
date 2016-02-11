@@ -21,6 +21,8 @@
 		BAC47E3E1C6C98F000F8E005 /* EdgePanTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = BAC47E3D1C6C98F000F8E005 /* EdgePanTransition.m */; };
 		BAC47E441C6C999900F8E005 /* ElasticTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = BAC47E431C6C999900F8E005 /* ElasticTransition.m */; };
 		BAC47E481C6CA24E00F8E005 /* Edge.m in Sources */ = {isa = PBXBuildFile; fileRef = BAC47E471C6CA24E00F8E005 /* Edge.m */; };
+		BAC47E4D1C6CB11600F8E005 /* DynamicItem.m in Sources */ = {isa = PBXBuildFile; fileRef = BAC47E4C1C6CB11600F8E005 /* DynamicItem.m */; };
+		BAC47E501C6CB3DE00F8E005 /* CustomSnapBehavior.m in Sources */ = {isa = PBXBuildFile; fileRef = BAC47E4F1C6CB3DE00F8E005 /* CustomSnapBehavior.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +54,10 @@
 		BAC47E471C6CA24E00F8E005 /* Edge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Edge.m; path = ElasticTransition/Utils/Edge.m; sourceTree = SOURCE_ROOT; };
 		BAC47E491C6CA63E00F8E005 /* Utils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Utils.h; path = ElasticTransition/Utils/Utils.h; sourceTree = SOURCE_ROOT; };
 		BAC47E4A1C6CA88600F8E005 /* PointExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PointExtension.h; path = ElasticTransition/Utils/PointExtension.h; sourceTree = SOURCE_ROOT; };
+		BAC47E4B1C6CB11600F8E005 /* DynamicItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DynamicItem.h; path = ElasticTransition/Utils/DynamicItem.h; sourceTree = SOURCE_ROOT; };
+		BAC47E4C1C6CB11600F8E005 /* DynamicItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DynamicItem.m; path = ElasticTransition/Utils/DynamicItem.m; sourceTree = SOURCE_ROOT; };
+		BAC47E4E1C6CB3DE00F8E005 /* CustomSnapBehavior.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomSnapBehavior.h; path = ElasticTransition/Utils/CustomSnapBehavior.h; sourceTree = SOURCE_ROOT; };
+		BAC47E4F1C6CB3DE00F8E005 /* CustomSnapBehavior.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomSnapBehavior.m; path = ElasticTransition/Utils/CustomSnapBehavior.m; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +141,10 @@
 				BAC47E461C6CA24E00F8E005 /* Edge.h */,
 				BAC47E471C6CA24E00F8E005 /* Edge.m */,
 				BAC47E4A1C6CA88600F8E005 /* PointExtension.h */,
+				BAC47E4B1C6CB11600F8E005 /* DynamicItem.h */,
+				BAC47E4C1C6CB11600F8E005 /* DynamicItem.m */,
+				BAC47E4E1C6CB3DE00F8E005 /* CustomSnapBehavior.h */,
+				BAC47E4F1C6CB3DE00F8E005 /* CustomSnapBehavior.m */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -217,6 +227,8 @@
 				BAC47E381C6C97F900F8E005 /* NavigationExampleViewController.m in Sources */,
 				BAC47E441C6C999900F8E005 /* ElasticTransition.m in Sources */,
 				BAC47DFB1C6C09D200F8E005 /* AppDelegate.m in Sources */,
+				BAC47E4D1C6CB11600F8E005 /* DynamicItem.m in Sources */,
+				BAC47E501C6CB3DE00F8E005 /* CustomSnapBehavior.m in Sources */,
 				BAC47E321C6C97B600F8E005 /* OptionsViewController.m in Sources */,
 				BAC47E2F1C6C979600F8E005 /* AboutViewController.m in Sources */,
 				BAC47DF81C6C09D200F8E005 /* main.m in Sources */,

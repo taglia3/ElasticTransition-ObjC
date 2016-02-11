@@ -11,17 +11,17 @@
 
 
 CG_INLINE CGPoint
-CGPointTranslate(CGpoint p, CGFloat dx, CGFloat dy) {
+CGPointTranslate(CGPoint p, CGFloat dx, CGFloat dy) {
     return CGPointMake(p.x+dx, p.y+dy);
 }
 
 CG_INLINE CGPoint
-CGPointTransform(CGpoint p, CGAffineTransform t) {
+CGPointTransform(CGPoint p, CGAffineTransform t) {
     return CGPointApplyAffineTransform(p, t);
 }
 
-CG_INLINE CGPoint
-CGPointDistance(CGpoint p, CGpoint b) {
+CG_INLINE float
+CGPointDistance(CGPoint p, CGPoint b) {
     return sqrt(pow(p.x-b.x,2)+pow(p.y-b.y,2));
 }
 
