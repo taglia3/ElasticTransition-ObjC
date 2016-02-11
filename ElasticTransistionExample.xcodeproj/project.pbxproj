@@ -101,6 +101,7 @@
 		BAC47DF51C6C09D200F8E005 /* ElasticTransistionExample */ = {
 			isa = PBXGroup;
 			children = (
+				BAC47E291C6C0D3400F8E005 /* ElasticTransition */,
 				BAC47DF91C6C09D200F8E005 /* AppDelegate.h */,
 				BAC47DFA1C6C09D200F8E005 /* AppDelegate.m */,
 				BAC47DFC1C6C09D200F8E005 /* ViewController.h */,
@@ -138,6 +139,13 @@
 				BAC47E1D1C6C09D200F8E005 /* Info.plist */,
 			);
 			path = ElasticTransistionExampleUITests;
+			sourceTree = "<group>";
+		};
+		BAC47E291C6C0D3400F8E005 /* ElasticTransition */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = ElasticTransition;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -412,6 +420,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = ElasticTransistionExample/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = tigielle.ElasticTransistionExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -423,6 +432,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = ElasticTransistionExample/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = tigielle.ElasticTransistionExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
