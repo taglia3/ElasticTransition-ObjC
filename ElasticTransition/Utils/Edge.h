@@ -9,12 +9,21 @@
 
 #import <UIKit/UIKit.h>
 
+/*
 typedef enum{
     TOP = 0,
     BOTTOM,
     LEFT,
     RIGHT
 }EdgeType;
+*/
+
+typedef NS_ENUM(int,EdgeType){
+    TOP = 0,
+    BOTTOM,
+    LEFT,
+    RIGHT
+};
 
 @interface Edge : NSObject
 

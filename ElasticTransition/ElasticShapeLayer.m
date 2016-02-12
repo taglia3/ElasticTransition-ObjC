@@ -51,7 +51,7 @@
     
     if(self){
         
-        self.edge.type      = BOTTOM;
+        self.edge           = [[Edge alloc] initWithEdgeType:BOTTOM];
         self.dragPoint      = CGPointZero;
         self.radiusFactor   = 0.25;
     }

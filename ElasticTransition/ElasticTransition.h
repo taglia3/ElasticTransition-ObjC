@@ -8,6 +8,24 @@
 
 #import "EdgePanTransition.h"
 
+/*
+typedef enum{
+    NONE,
+    ROTATE,
+    TRANSLATEMID,
+    TRANSLATEPULL,
+    TRANSLATEPUSH
+}ElasticTransitionBackgroundTransform;
+ */
+
+typedef NS_ENUM(int,ElasticTransitionBackgroundTransform){
+    NONE,
+    ROTATE,
+    TRANSLATEMID,
+    TRANSLATEPULL,
+    TRANSLATEPUSH
+};
+
 @interface ElasticTransition : EdgePanTransition
 
 @end
