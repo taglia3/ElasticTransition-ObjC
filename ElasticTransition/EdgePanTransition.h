@@ -6,8 +6,12 @@
 //  Copyright © 2016 Matteo Tagliafico. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+#import "Edge.h"
 
 @interface EdgePanTransition : NSObject
+
+@property (nonatomic) CGFloat panThreshold;
+@property (nonatomic) Edge *edge;
 
 @end

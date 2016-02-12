@@ -8,6 +8,8 @@
 
 #import "InitialViewController.h"
 
+#import "ElasticTransition.h"
+
 @interface InitialViewController ()
 
 @end
