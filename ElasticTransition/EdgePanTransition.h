@@ -25,7 +25,14 @@
 @property (nonatomic) CGPoint translation;
 @property (nonatomic) CGPoint dragPoint;
 
+@property (nonatomic) UIView *frontView;
+@property (nonatomic) UIView *backView;
 
+@property (nonatomic) id <UIViewControllerContextTransitioning> transitionContext;
+
+
+-(void)update;
+-(void)setup;
 
 -(BOOL)updateInteractiveTransitionWithGestureRecognizer:(UIPanGestureRecognizer*) pan;
 

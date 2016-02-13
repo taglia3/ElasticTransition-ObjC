@@ -14,7 +14,6 @@
 @interface ElasticShapeLayer ()
 
 @property (nonatomic) Edge *edge;
-@property (nonatomic) CGPoint dragPoint;
 @property (nonatomic) CGFloat radiusFactor;
 
 

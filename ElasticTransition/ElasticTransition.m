@@ -238,6 +238,281 @@
     }
 }
 
+-(void)update{
+    
+    [super update];
+    
+    if (self.cb != nil && self.lb != nil){
+        
+        CGPoint initialPoint = [self finalPoint:[NSNumber numberWithBool:!self.presenting]];
+        
+        
+        
+        CGPoint p = (self.useTranlation && self.interactive) ? [self translatedPoint] : self.dragPoint;
+        
+        switch (self.edge.type){
+        case LEFT:
+            {
+                self.cb.point = CGPointMake(p.x < self.contentLength ? p.x : (p.x - self.contentLength)/3.0 + self.contentLength, self.dragPoint.y);
+                self.lb.point = CGPointMake(MIN(self.contentLength, CGPointDistance(p, initialPoint) < self.stickDistance ? initialPoint.x : p.x), self.dragPoint.y);
+            }
+        case RIGHT:
+            {
+                CGFloat maxX = self.size.width - self.contentLength;
+                self.cb.point = CGPointMake(p.x > maxX ? p.x : maxX - (maxX - p.x)/3.0, self.dragPoint.y);
+                self.lb.point = CGPointMake(MAX(maxX, CGPointDistance(p, initialPoint) < self.stickDistance ? initialPoint.x : p.x), self.dragPoint.y);
+            }
+        case BOTTOM:
+            {
+                CGFloat maxY = self.size.height - self.contentLength;
+                self.cb.point = CGPointMake(self.dragPoint.x, p.y > maxY ? p.y : maxY - (maxY - p.y)/3.0);
+                self.lb.point = CGPointMake(self.dragPoint.x, MAX(maxY, CGPointDistance(p, initialPoint) < self.stickDistance ? initialPoint.y : p.y));
+            }
+        case TOP:
+            {
+                self.cb.point = CGPointMake(self.dragPoint.x, p.y < self.contentLength ? p.y : (p.y-self.contentLength)/3.0+self.contentLength);
+                self.lb.point = CGPointMake(self.dragPoint.x, MIN(self.contentLength, CGPointDistance(p, initialPoint) < self.stickDistance ? initialPoint.y : p.y));
+            }
+        }
+    }
+}
+
+
+-(void)updateShape{
+    
+    if (self.animator == nil){
+        return;
+    }
+    
+    self.backView.layer.zPosition = 0;
+    self.overlayView.layer.zPosition = 298;
+    self.shadowView.layer.zPosition = 299;
+    self.frontView.layer.zPosition = 300;
+    
+    CGPoint finalPoint = [self finalPoint:[NSNumber numberWithBool:YES]];
+    CGPoint initialPoint = [self finalPoint:[NSNumber numberWithBool:NO]];
+    
+    
+    CGFloat progress = 1.0 - (CGPointDistance(self.lc.center, finalPoint) / CGPointDistance(initialPoint, finalPoint));
+    
+    switch (self.edge.type){
+            
+    case LEFT:
+        {
+            CGRect frame = self.frontView.frame;
+            frame.origin.x = MIN(self.cc.center.x, self.lc.center.x) - self.contentLength;
+            self.frontView.frame = frame;
+            self.shadowMaskLayer.frame = CGRectMake(0, 0, self.lc.center.x, self.size.height);
+        }
+    case RIGHT:
+        {
+            CGRect frame = self.frontView.frame;
+            frame.origin.x = MAX(self.cc.center.x, self.lc.center.x);
+            self.frontView.frame = frame;
+            self.shadowMaskLayer.frame = CGRectMake(self.lc.center.x, 0, self.size.width - self.lc.center.x, self.size.height);
+        }
+    case BOTTOM:
+        {
+            CGRect frame = self.frontView.frame;
+            frame.origin.y = MAX(self.cc.center.y, self.lc.center.y);
+            self.frontView.frame = frame;
+        self.shadowMaskLayer.frame = CGRectMake(0, self.lc.center.y, self.size.width, self.size.height - self.lc.center.y);
+        }
+    case TOP:
+        {
+            CGRect frame = self.frontView.frame;
+            frame.origin.y = MIN(self.cc.center.y, self.lc.center.y) - self.contentLength;
+            self.frontView.frame = frame;
+        self.shadowMaskLayer.frame = CGRectMake(0, 0, self.size.width, self.lc.center.y);
+        }
+    }
+    self.shadowMaskLayer.dragPoint = [self.shadowMaskLayer convertPoint:self.cc.center fromLayer:self.container.layer];
+
+    
+    if (self.transform != nil){
+        
+      //  transform!(progress: progress, view: backView)
+    }else{
+        // transform backView
+        switch (self.transformType){
+        case ROTATE:
+            {
+                CGFloat scale = MIN(1, 1.0 - 0.2 * progress);
+                CGFloat rotate = MAX(0, 0.15 * progress);
+                CGFloat rotateY = self.edge.type == LEFT ? -1.0 : self.edge.type == RIGHT ? 1.0 : 0;
+                CGFloat rotateX = self.edge.type == BOTTOM ? -1.0 : self.edge.type == TOP ? 1.0 : 0;
+            
+                CATransform3D t = CATransform3DMakeScale(scale, scale, 1);
+                t.m34 = 1.0 / -500;
+                t = CATransform3DRotate(t, rotate, rotateX, rotateY, 0.0);
+                self.backView.layer.transform = t;
+            }
+            case TRANSLATEMID:
+            case TRANSLATEPULL:
+            case TRANSLATEPUSH:
+            {
+                CGFloat x = 0;
+                CGFloat y = 0;
+                
+                self.container.backgroundColor = self.backView.backgroundColor;
+                
+                NSString *minFunctionType = self.transformType == TRANSLATEMID ?  @"1" : self.transformType == TRANSLATEPULL ?  @"3" :  @"2";
+                NSString *maxFunctionType = self.transformType == TRANSLATEMID ?  @"1" : self.transformType == TRANSLATEPULL ?  @"2" :  @"3";
+                
+                
+                
+                
+                
+                
+            switch (self.edge.type){
+            case LEFT:
+                {
+                    if ([minFunctionType isEqualToString:@"1"]) {
+                        x = [HelperFunctions avgOfA:self.cc.center.x AndB: self.lc.center.x];
+                    }else if ([minFunctionType isEqualToString:@"2"]) {
+                        x = MIN(self.cc.center.x, self.lc.center.x);
+                    }else if ([minFunctionType isEqualToString:@"3"]) {
+                        x = MAX(self.cc.center.x, self.lc.center.x);
+                    }
+                }
+            case RIGHT:
+                {
+                    if ([maxFunctionType isEqualToString:@"1"]) {
+                        x = [HelperFunctions avgOfA:self.cc.center.x AndB: self.lc.center.x] - self.size.width;
+                    }else if ([maxFunctionType isEqualToString:@"2"]) {
+                        x = MIN(self.cc.center.x, self.lc.center.x) - self.size.width;
+                    }else if ([maxFunctionType isEqualToString:@"3"]) {
+                        x = MAX(self.cc.center.x, self.lc.center.x) - self.size.width;
+                    }
+                }
+            case BOTTOM:
+                {
+                    if ([maxFunctionType isEqualToString:@"1"]) {
+                        y = [HelperFunctions avgOfA:self.cc.center.y AndB: self.lc.center.y] - self.size.height;
+                    }else if ([maxFunctionType isEqualToString:@"2"]) {
+                        y = MIN(self.cc.center.y, self.lc.center.y) - self.size.height;
+                    }else if ([maxFunctionType isEqualToString:@"3"]) {
+                        y = MAX(self.cc.center.y, self.lc.center.y) - self.size.height;
+                    }
+                }
+            case TOP:
+                {
+                    if ([minFunctionType isEqualToString:@"1"]) {
+                        y = [HelperFunctions avgOfA:self.cc.center.y AndB: self.lc.center.y];
+                    }else if ([minFunctionType isEqualToString:@"2"]) {
+                        y = MIN(self.cc.center.y, self.lc.center.y);
+                    }else if ([minFunctionType isEqualToString:@"3"]) {
+                        y = MAX(self.cc.center.y, self.lc.center.y);
+                    }
+                    
+                }
+            }
+                self.backView.layer.transform = CATransform3DMakeTranslation(x, y, 0);
+        }
+        default:
+                self.backView.layer.transform = CATransform3DIdentity;
+        }
+    }
+    
+    self.overlayView.alpha = progress;
+    
+    [self updateShadow:progress];
+    
+    [self.transitionContext updateInteractiveTransition:(self.presenting ? progress : 1.0 - progress)];
+    
+}
+
+
+-(void)setup{
+    
+    [super setup];
+    
+    // 1. get content length
+    [self.frontView layoutIfNeeded];
+    
+    switch (self.edge.type){
+        case LEFT:
+        case RIGHT:
+            self.contentLength = self.frontView.bounds.size.width;
+        case TOP:
+        case BOTTOM:
+            self.contentLength = self.frontView.bounds.size.height;
+    }
+    
+    if let vc = frontViewController as? ElasticMenuTransitionDelegate,
+        let vcl = vc.contentLength{
+            contentLength = vcl
+        }
+    
+    
+    // 2. setup shadow and background view
+    self.shadowView.frame = self.container.bounds;
+    if let frontViewBackgroundColor = frontViewBackgroundColor{
+        shadowMaskLayer.fillColor = frontViewBackgroundColor.CGColor
+    }else if let vc = frontViewController as? UINavigationController,
+        let rootVC = vc.childViewControllers.last{
+            shadowMaskLayer.fillColor = rootVC.view.backgroundColor?.CGColor
+        }else{
+            shadowMaskLayer.fillColor = frontView.backgroundColor?.CGColor
+        }
+    shadowMaskLayer.edge = edge.opposite()
+    shadowMaskLayer.radiusFactor = radiusFactor
+    container.addSubview(shadowView)
+    
+    
+    // 3. setup overlay view
+    overlayView.frame = container.bounds
+    overlayView.backgroundColor = overlayColor
+    overlayView.addGestureRecognizer(backgroundExitPanGestureRecognizer)
+    container.addSubview(overlayView)
+    
+    // 4. setup front view
+    var rect = container.bounds
+    switch edge{
+    case .Right, .Left:
+        rect.size.width = contentLength
+    case .Bottom, .Top:
+        rect.size.height = contentLength
+    }
+    frontView.frame = rect
+    if navigation{
+        frontViewController.navigationController?.view.addGestureRecognizer(navigationExitPanGestureRecognizer)
+    }else{
+        frontView.addGestureRecognizer(foregroundExitPanGestureRecognizer)
+    }
+    frontView.layoutIfNeeded()
+    
+    // 5. container color
+    switch transformType{
+    case .TranslateMid, .TranslatePull, .TranslatePush:
+        container.backgroundColor = backView.backgroundColor
+    default:
+        container.backgroundColor = containerColor
+    }
+    
+    // 6. setup uikitdynamic
+    setupDynamics()
+    
+    // 7. do a initial update (put everything into its place)
+    updateShape()
+    
+    // if not doing an interactive transition, move the drag point to the final position
+    if !interactive{
+        let duration = self.transitionDuration(transitionContext)
+        lb.action = {
+            if self.animator != nil && self.animator.elapsedTime() >= duration {
+                self.cc.center = self.dragPoint
+                self.lc.center = self.dragPoint
+                self.updateShape()
+                self.clean(true)
+            }
+        }
+        
+        dragPoint = self.startingPoint ?? container.center
+        dragPoint = finalPoint()
+        update()
+    }
+}
 
 
 

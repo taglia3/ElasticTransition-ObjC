@@ -21,7 +21,7 @@
 
 @property (nonatomic) CGFloat frequency;
 @property (nonatomic) CGFloat damping;
-@property (nonatomic) CGPoint point;
+
 
 @end
 

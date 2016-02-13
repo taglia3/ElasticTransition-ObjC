@@ -13,12 +13,11 @@
 @interface EdgePanTransition () <UIViewControllerAnimatedTransitioning, UIViewControllerInteractiveTransitioning,UIViewControllerTransitioningDelegate, UINavigationControllerDelegate>
 
 
-@property (nonatomic) id <UIViewControllerContextTransitioning> transitionContext;
 
 
 
-@property (nonatomic) UIView *frontView;
-@property (nonatomic) UIView *backView;
+
+
 @property (nonatomic) UIViewController *frontViewController;
 @property (nonatomic) UIViewController *backViewController;
 @property (nonatomic) UIView *toView;

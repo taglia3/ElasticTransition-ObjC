@@ -10,4 +10,6 @@
 
 @interface ElasticShapeLayer : CAShapeLayer
 
+@property (nonatomic) CGPoint dragPoint;
+
 @end

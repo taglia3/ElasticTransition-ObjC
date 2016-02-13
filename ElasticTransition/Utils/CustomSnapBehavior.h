@@ -10,4 +10,6 @@
 
 @interface CustomSnapBehavior : UIDynamicBehavior
 
+@property (nonatomic) CGPoint point;
+
 @end
