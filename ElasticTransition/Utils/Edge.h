@@ -22,7 +22,7 @@ typedef NS_ENUM(int,EdgeType){
 
 - (id)initWithEdgeType:(EdgeType)type;
 
-- (EdgeType)opposite;
+- (Edge*)opposite;
 - (UIRectEdge)toUIRectEdge;
 
 - (UIRectEdge)oppositeAndToUIRectEdge;

@@ -447,73 +447,219 @@
     
     // 2. setup shadow and background view
     self.shadowView.frame = self.container.bounds;
-    if let frontViewBackgroundColor = frontViewBackgroundColor{
-        shadowMaskLayer.fillColor = frontViewBackgroundColor.CGColor
-    }else if let vc = frontViewController as? UINavigationController,
-        let rootVC = vc.childViewControllers.last{
-            shadowMaskLayer.fillColor = rootVC.view.backgroundColor?.CGColor
-        }else{
-            shadowMaskLayer.fillColor = frontView.backgroundColor?.CGColor
-        }
-    shadowMaskLayer.edge = edge.opposite()
-    shadowMaskLayer.radiusFactor = radiusFactor
-    container.addSubview(shadowView)
+    
+    if (self.frontViewBackgroundColor){
+        self.shadowMaskLayer.fillColor = self.frontViewBackgroundColor.CGColor;
+    }else if ([self.frontViewController isKindOfClass:[UINavigationController class]]){
+        
+        UINavigationController *vc = (UINavigationController*) self.frontViewController;
+        
+        UIViewController *rootVC = [vc.childViewControllers lastObject];
+        
+        self.shadowMaskLayer.fillColor = rootVC.view.backgroundColor.CGColor;
+    }else{
+        self.shadowMaskLayer.fillColor = self.frontView.backgroundColor.CGColor;
+    }
+    
+    self.shadowMaskLayer.edge = [self.edge opposite];
+    self.shadowMaskLayer.radiusFactor = self.radiusFactor;
+    [self.container addSubview:self.shadowView];
     
     
     // 3. setup overlay view
-    overlayView.frame = container.bounds
-    overlayView.backgroundColor = overlayColor
-    overlayView.addGestureRecognizer(backgroundExitPanGestureRecognizer)
-    container.addSubview(overlayView)
+    self.overlayView.frame = self.container.bounds;
+    self.overlayView.backgroundColor = self.overlayColor;
+    [self.overlayView addGestureRecognizer:self.backgroundExitPanGestureRecognizer];
+    [self.container addSubview:self.overlayView];
     
     // 4. setup front view
-    var rect = container.bounds
-    switch edge{
-    case .Right, .Left:
-        rect.size.width = contentLength
-    case .Bottom, .Top:
-        rect.size.height = contentLength
+    CGRect rect = self.container.bounds;
+    switch (self.edge.type){
+        case LEFT:
+        case RIGHT:
+            rect.size.width = self.contentLength;
+        case TOP:
+        case BOTTOM:
+            rect.size.height = self.contentLength;
     }
-    frontView.frame = rect
-    if navigation{
-        frontViewController.navigationController?.view.addGestureRecognizer(navigationExitPanGestureRecognizer)
+    
+    self.frontView.frame = rect;
+    
+    if (self.navigation){
+        
+        [self.frontViewController.navigationController.view addGestureRecognizer:self.navigationExitPanGestureRecognizer];
     }else{
-        frontView.addGestureRecognizer(foregroundExitPanGestureRecognizer)
+        
+        [self.frontView addGestureRecognizer:self.foregroundExitPanGestureRecognizer];
     }
-    frontView.layoutIfNeeded()
+    
+    [self.frontView layoutIfNeeded];
+    
     
     // 5. container color
-    switch transformType{
-    case .TranslateMid, .TranslatePull, .TranslatePush:
-        container.backgroundColor = backView.backgroundColor
-    default:
-        container.backgroundColor = containerColor
+    switch (self.transformType){
+        case TRANSLATEMID:
+        case TRANSLATEPULL:
+        case TRANSLATEPUSH:
+            self.container.backgroundColor = self.backView.backgroundColor;
+        default:
+            self.container.backgroundColor = self.containerColor;
     }
     
     // 6. setup uikitdynamic
-    setupDynamics()
+    [self setupDynamics];
     
     // 7. do a initial update (put everything into its place)
-    updateShape()
+    [self updateShape];
     
     // if not doing an interactive transition, move the drag point to the final position
-    if !interactive{
-        let duration = self.transitionDuration(transitionContext)
-        lb.action = {
-            if self.animator != nil && self.animator.elapsedTime() >= duration {
-                self.cc.center = self.dragPoint
-                self.lc.center = self.dragPoint
-                self.updateShape()
-                self.clean(true)
+    if (!self.interactive){
+        
+        CGFloat duration = [self transitionDuration:self.transitionContext];
+        
+        __weak typeof(self) weakSelf = self;
+        
+        self.lb.action = ^void{
+            
+            if ((weakSelf.animator != nil) && ([weakSelf.animator elapsedTime] >= duration)) {
+                
+                weakSelf.cc.center = weakSelf.dragPoint;
+                weakSelf.lc.center = weakSelf.dragPoint;
+                [weakSelf updateShape];
+                [weakSelf clean:true];
             }
+        };
+        
+        
+        if(self.startingPoint != [NSNull null]){
+            
+            self.dragPoint = self.dragPoint;
+        }else{
+            
+            self.dragPoint = self.container.center;
         }
         
-        dragPoint = self.startingPoint ?? container.center
-        dragPoint = finalPoint()
-        update()
+        self.dragPoint = [self finalPoint:nil];
+        [self update];
     }
 }
 
+
+
+func updateShadow(progress:CGFloat){
+    if showShadow{
+        shadowView.layer.shadowColor = shadowColor.CGColor
+        shadowView.layer.shadowRadius = shadowRadius
+        shadowView.layer.shadowOffset = CGSizeMake(0, 0)
+        shadowView.layer.shadowOpacity = Float(progress)
+        shadowView.layer.masksToBounds = false
+    }else{
+        shadowView.layer.shadowColor = nil
+        shadowView.layer.shadowRadius = 0
+        shadowView.layer.shadowOffset = CGSizeMake(0, 0)
+        shadowView.layer.shadowOpacity = 0
+        shadowView.layer.masksToBounds = true
+    }
+}
+
+func setupDynamics(){
+    animator = UIDynamicAnimator(referenceView: container)
+    let initialPoint = finalPoint(!presenting)
+    
+    cc = DynamicItem(center: initialPoint)
+    lc = DynamicItem(center: initialPoint)
+    
+    cb = CustomSnapBehavior(item: cc, point: dragPoint)
+    cb.damping = damping
+    cb.frequency = 2.5
+    lb = CustomSnapBehavior(item: lc, point: dragPoint)
+    lb.damping = min(1.0, damping * 1.5)
+    lb.frequency = 2.5
+    
+    update()
+    cb.action = {
+        self.updateShape()
+    }
+    animator.addBehavior(cb)
+    animator.addBehavior(lb)
+}
+
+override func clean(finished:Bool){
+    animator.removeAllBehaviors()
+    animator = nil
+    frontView.layer.zPosition = 0
+    if navigation{
+        shadowView.removeFromSuperview()
+        overlayView.removeFromSuperview()
+    }
+    if presenting && finished{
+        pushedControllers.append(frontViewController)
+    }else if !presenting && finished{
+        pushedControllers.popLast()
+    }
+    super.clean(finished)
+}
+
+override func cancelInteractiveTransition(){
+    super.cancelInteractiveTransition()
+    let finalPoint = self.finalPoint(!self.presenting)
+    
+    cb.point = finalPoint
+    lb.point = finalPoint
+    lb.action = {
+        if finalPoint.distance(self.cc.center) < 1 &&
+            finalPoint.distance(self.lc.center) < 1 &&
+            self.lastPoint.distance(self.cc.center) < 0.05{
+                self.cc.center = finalPoint
+                self.lc.center = finalPoint
+                self.updateShape()
+                self.clean(false)
+            }else{
+                self.updateShape()
+            }
+        self.lastPoint = self.cc.center
+    }
+}
+
+override func finishInteractiveTransition(){
+    super.finishInteractiveTransition()
+    let finalPoint = self.finalPoint()
+    
+    cb.point = finalPoint
+    lb.point = finalPoint
+    lb.action = {
+        if finalPoint.distance(self.cc.center) < 1 &&
+            finalPoint.distance(self.lc.center) < 1 &&
+            self.lastPoint.distance(self.cc.center) < 0.05{
+                self.cc.center = finalPoint
+                self.lc.center = finalPoint
+                self.updateShape()
+                self.clean(true)
+            }else{
+                self.updateShape()
+            }
+        self.lastPoint = self.cc.center
+    }
+}
+
+override func endInteractiveTransition() -> Bool{
+    let finalPoint = self.finalPoint()
+    let initialPoint = self.finalPoint(!self.presenting)
+    let p = (useTranlation && interactive) ? translatedPoint() : dragPoint
+    
+    if (p.distance(initialPoint) >= contentLength * panThreshold) &&
+        initialPoint.distance(finalPoint) > p.distance(finalPoint){
+            self.finishInteractiveTransition()
+            return true
+        } else {
+            self.cancelInteractiveTransition()
+            return false
+        }
+}
+
+override public func transitionDuration(transitionContext: UIViewControllerContextTransitioning?) -> NSTimeInterval {
+    return NSTimeInterval(abs(damping - 0.2) * 0.5 + 0.6)
+}
 
 
 @end

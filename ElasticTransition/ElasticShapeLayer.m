@@ -13,8 +13,7 @@
 
 @interface ElasticShapeLayer ()
 
-@property (nonatomic) Edge *edge;
-@property (nonatomic) CGFloat radiusFactor;
+
 
 
 @end

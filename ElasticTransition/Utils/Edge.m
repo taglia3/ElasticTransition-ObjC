@@ -21,23 +21,21 @@
     return self;
 }
 
-- (EdgeType)opposite{
+- (Edge*)opposite{
     
     switch (self.type) {
             
         case LEFT:
             self.type = RIGHT;
-            return RIGHT;
         case RIGHT:
             self.type = LEFT;
-            return LEFT;
         case BOTTOM:
             self.type = TOP;
-            return TOP;
         case TOP:
             self.type = BOTTOM;
-            return BOTTOM;
     }
+    
+    return self;
 }
 
 - (UIRectEdge)toUIRectEdge{

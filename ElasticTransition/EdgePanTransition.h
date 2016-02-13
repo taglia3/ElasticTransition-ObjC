@@ -27,12 +27,16 @@
 
 @property (nonatomic) UIView *frontView;
 @property (nonatomic) UIView *backView;
+@property (nonatomic) UIViewController *frontViewController;
+@property (nonatomic) UIViewController *backViewController;
 
 @property (nonatomic) id <UIViewControllerContextTransitioning> transitionContext;
 
 
 -(void)update;
 -(void)setup;
+
+- (NSTimeInterval)transitionDuration:(id <UIViewControllerContextTransitioning>)transitionContext;
 
 -(BOOL)updateInteractiveTransitionWithGestureRecognizer:(UIPanGestureRecognizer*) pan;
 
