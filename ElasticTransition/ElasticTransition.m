@@ -36,6 +36,8 @@
 
 @implementation ElasticTransition
 
+@synthesize damping;
+
 -(id)init{
     
     self = [super init];
@@ -116,9 +118,9 @@
     }
 }
 
--(void)setDamping:(CGFloat)damping{
+-(void)setDamping:(CGFloat)aDamping{
     
-    self.damping = MIN(1.0, MAX(0.0, self.damping));
+    self->damping = MIN(1.0, MAX(0.0, self.damping));
 }
 
 
@@ -329,7 +331,7 @@
     self.shadowMaskLayer.dragPoint = [self.shadowMaskLayer convertPoint:self.cc.center fromLayer:self.container.layer];
     
     
-    if (self.transform != nil){
+    if (0){
         
         //  transform!(progress: progress, view: backView)
     }else{
@@ -439,10 +441,9 @@
             self.contentLength = self.frontView.bounds.size.height;
     }
     
-    if let vc = frontViewController as? ElasticMenuTransitionDelegate,
-        let vcl = vc.contentLength{
-            contentLength = vcl
-        }
+    UIViewController * vc = self.frontViewController;
+    CGFloat vcl =300;// vc.contentLength;
+    self.contentLength = vcl;
     
     
     // 2. setup shadow and background view
@@ -531,7 +532,7 @@
         };
         
         
-        if(self.startingPoint != [NSNull null]){
+        if(self.startingPoint.x == 0 && self.startingPoint.y == 0){
             
             self.dragPoint = self.dragPoint;
         }else{
@@ -586,7 +587,7 @@
     
     self.cb.action = ^void{
         [weakSelf updateShape];
-    }
+    };
     
     [self.animator addBehavior:self.cb];
     [self.animator addBehavior:self.lb];

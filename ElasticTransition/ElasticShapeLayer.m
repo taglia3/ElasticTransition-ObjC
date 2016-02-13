@@ -7,8 +7,6 @@
 //
 
 #import "ElasticShapeLayer.h"
-#import "Utils.h"
-
 #import <CoreGraphics/CoreGraphics.h>
 
 @interface ElasticShapeLayer ()

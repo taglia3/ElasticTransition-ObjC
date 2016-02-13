@@ -7,6 +7,7 @@
 //
 
 #import <QuartzCore/QuartzCore.h>
+#import "Utils.h"
 
 @interface ElasticShapeLayer : CAShapeLayer
 
