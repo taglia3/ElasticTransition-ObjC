@@ -26,7 +26,7 @@
 @property (nonatomic) UIView *shadowView;
 @property (nonatomic) ElasticShapeLayer *shadowMaskLayer;
 
-@property (nonatomic) NSArray < UIViewController* > *pushedControllers;
+@property (nonatomic) NSMutableArray < UIViewController* > *pushedControllers;
 @property (nonatomic) UIPanGestureRecognizer *backgroundExitPanGestureRecognizer;
 @property (nonatomic) UIPanGestureRecognizer *foregroundExitPanGestureRecognizer;
 @property (nonatomic) UIScreenEdgePanGestureRecognizer * navigationExitPanGestureRecognizer;
@@ -69,7 +69,7 @@
         
         self.shadowMaskLayer = [[ElasticShapeLayer alloc] init];
         
-
+        
         self.backgroundExitPanGestureRecognizer = [[UIPanGestureRecognizer alloc] init];
         self.foregroundExitPanGestureRecognizer = [[UIPanGestureRecognizer alloc] init];
         self.navigationExitPanGestureRecognizer = [[UIScreenEdgePanGestureRecognizer alloc] init];
@@ -137,13 +137,13 @@
     }
     
     switch (self.edge.type){
-    case LEFT:
+        case LEFT:
             return p ? CGPointMake(self.contentLength, self.dragPoint.y) : CGPointMake(0, self.dragPoint.y);
-    case RIGHT:
+        case RIGHT:
             return p ? CGPointMake(self.size.width - self.contentLength, self.dragPoint.y) : CGPointMake(self.size.width, self.dragPoint.y);
-    case BOTTOM:
+        case BOTTOM:
             return p ? CGPointMake(self.dragPoint.x, self.size.height - self.contentLength) : CGPointMake(self.dragPoint.x, self.size.height);
-    case TOP:
+        case TOP:
             return p ? CGPointMake(self.dragPoint.x, self.contentLength) : CGPointMake(self.dragPoint.x, 0);
     }
 }
@@ -155,7 +155,7 @@
     
     switch (self.edge.type){
         case LEFT:
-            case RIGHT:
+        case RIGHT:
             return CGPointMake(MAX(0,MIN(self.size.width,initialPoint.x+self.translation.x)), initialPoint.y);
         case TOP:
         case BOTTOM:
@@ -181,18 +181,18 @@
     
     if (vc){
         
-            if (gestureRecognizer == self.backgroundExitPanGestureRecognizer){
-                
-                 id<ElasticMenuTransitionDelegate> strongDelegate = self.delegate;
-                
-                return  strongDelegate.dismissByBackgroundDrag;
-                
-            }else if (gestureRecognizer == self.foregroundExitPanGestureRecognizer){
-                
-                id<ElasticMenuTransitionDelegate> strongDelegate = self.delegate;
-                
-                return  strongDelegate.dismissByForegroundDrag;
-            }
+        if (gestureRecognizer == self.backgroundExitPanGestureRecognizer){
+            
+            id<ElasticMenuTransitionDelegate> strongDelegate = self.delegate;
+            
+            return  strongDelegate.dismissByBackgroundDrag;
+            
+        }else if (gestureRecognizer == self.foregroundExitPanGestureRecognizer){
+            
+            id<ElasticMenuTransitionDelegate> strongDelegate = self.delegate;
+            
+            return  strongDelegate.dismissByForegroundDrag;
+        }
         
     }
     
@@ -251,24 +251,24 @@
         CGPoint p = (self.useTranlation && self.interactive) ? [self translatedPoint] : self.dragPoint;
         
         switch (self.edge.type){
-        case LEFT:
+            case LEFT:
             {
                 self.cb.point = CGPointMake(p.x < self.contentLength ? p.x : (p.x - self.contentLength)/3.0 + self.contentLength, self.dragPoint.y);
                 self.lb.point = CGPointMake(MIN(self.contentLength, CGPointDistance(p, initialPoint) < self.stickDistance ? initialPoint.x : p.x), self.dragPoint.y);
             }
-        case RIGHT:
+            case RIGHT:
             {
                 CGFloat maxX = self.size.width - self.contentLength;
                 self.cb.point = CGPointMake(p.x > maxX ? p.x : maxX - (maxX - p.x)/3.0, self.dragPoint.y);
                 self.lb.point = CGPointMake(MAX(maxX, CGPointDistance(p, initialPoint) < self.stickDistance ? initialPoint.x : p.x), self.dragPoint.y);
             }
-        case BOTTOM:
+            case BOTTOM:
             {
                 CGFloat maxY = self.size.height - self.contentLength;
                 self.cb.point = CGPointMake(self.dragPoint.x, p.y > maxY ? p.y : maxY - (maxY - p.y)/3.0);
                 self.lb.point = CGPointMake(self.dragPoint.x, MAX(maxY, CGPointDistance(p, initialPoint) < self.stickDistance ? initialPoint.y : p.y));
             }
-        case TOP:
+            case TOP:
             {
                 self.cb.point = CGPointMake(self.dragPoint.x, p.y < self.contentLength ? p.y : (p.y-self.contentLength)/3.0+self.contentLength);
                 self.lb.point = CGPointMake(self.dragPoint.x, MIN(self.contentLength, CGPointDistance(p, initialPoint) < self.stickDistance ? initialPoint.y : p.y));
@@ -297,51 +297,51 @@
     
     switch (self.edge.type){
             
-    case LEFT:
+        case LEFT:
         {
             CGRect frame = self.frontView.frame;
             frame.origin.x = MIN(self.cc.center.x, self.lc.center.x) - self.contentLength;
             self.frontView.frame = frame;
             self.shadowMaskLayer.frame = CGRectMake(0, 0, self.lc.center.x, self.size.height);
         }
-    case RIGHT:
+        case RIGHT:
         {
             CGRect frame = self.frontView.frame;
             frame.origin.x = MAX(self.cc.center.x, self.lc.center.x);
             self.frontView.frame = frame;
             self.shadowMaskLayer.frame = CGRectMake(self.lc.center.x, 0, self.size.width - self.lc.center.x, self.size.height);
         }
-    case BOTTOM:
+        case BOTTOM:
         {
             CGRect frame = self.frontView.frame;
             frame.origin.y = MAX(self.cc.center.y, self.lc.center.y);
             self.frontView.frame = frame;
-        self.shadowMaskLayer.frame = CGRectMake(0, self.lc.center.y, self.size.width, self.size.height - self.lc.center.y);
+            self.shadowMaskLayer.frame = CGRectMake(0, self.lc.center.y, self.size.width, self.size.height - self.lc.center.y);
         }
-    case TOP:
+        case TOP:
         {
             CGRect frame = self.frontView.frame;
             frame.origin.y = MIN(self.cc.center.y, self.lc.center.y) - self.contentLength;
             self.frontView.frame = frame;
-        self.shadowMaskLayer.frame = CGRectMake(0, 0, self.size.width, self.lc.center.y);
+            self.shadowMaskLayer.frame = CGRectMake(0, 0, self.size.width, self.lc.center.y);
         }
     }
     self.shadowMaskLayer.dragPoint = [self.shadowMaskLayer convertPoint:self.cc.center fromLayer:self.container.layer];
-
+    
     
     if (self.transform != nil){
         
-      //  transform!(progress: progress, view: backView)
+        //  transform!(progress: progress, view: backView)
     }else{
         // transform backView
         switch (self.transformType){
-        case ROTATE:
+            case ROTATE:
             {
                 CGFloat scale = MIN(1, 1.0 - 0.2 * progress);
                 CGFloat rotate = MAX(0, 0.15 * progress);
                 CGFloat rotateY = self.edge.type == LEFT ? -1.0 : self.edge.type == RIGHT ? 1.0 : 0;
                 CGFloat rotateX = self.edge.type == BOTTOM ? -1.0 : self.edge.type == TOP ? 1.0 : 0;
-            
+                
                 CATransform3D t = CATransform3DMakeScale(scale, scale, 1);
                 t.m34 = 1.0 / -500;
                 t = CATransform3DRotate(t, rotate, rotateX, rotateY, 0.0);
@@ -364,52 +364,52 @@
                 
                 
                 
-            switch (self.edge.type){
-            case LEFT:
-                {
-                    if ([minFunctionType isEqualToString:@"1"]) {
-                        x = [HelperFunctions avgOfA:self.cc.center.x AndB: self.lc.center.x];
-                    }else if ([minFunctionType isEqualToString:@"2"]) {
-                        x = MIN(self.cc.center.x, self.lc.center.x);
-                    }else if ([minFunctionType isEqualToString:@"3"]) {
-                        x = MAX(self.cc.center.x, self.lc.center.x);
+                switch (self.edge.type){
+                    case LEFT:
+                    {
+                        if ([minFunctionType isEqualToString:@"1"]) {
+                            x = [HelperFunctions avgOfA:self.cc.center.x AndB: self.lc.center.x];
+                        }else if ([minFunctionType isEqualToString:@"2"]) {
+                            x = MIN(self.cc.center.x, self.lc.center.x);
+                        }else if ([minFunctionType isEqualToString:@"3"]) {
+                            x = MAX(self.cc.center.x, self.lc.center.x);
+                        }
+                    }
+                    case RIGHT:
+                    {
+                        if ([maxFunctionType isEqualToString:@"1"]) {
+                            x = [HelperFunctions avgOfA:self.cc.center.x AndB: self.lc.center.x] - self.size.width;
+                        }else if ([maxFunctionType isEqualToString:@"2"]) {
+                            x = MIN(self.cc.center.x, self.lc.center.x) - self.size.width;
+                        }else if ([maxFunctionType isEqualToString:@"3"]) {
+                            x = MAX(self.cc.center.x, self.lc.center.x) - self.size.width;
+                        }
+                    }
+                    case BOTTOM:
+                    {
+                        if ([maxFunctionType isEqualToString:@"1"]) {
+                            y = [HelperFunctions avgOfA:self.cc.center.y AndB: self.lc.center.y] - self.size.height;
+                        }else if ([maxFunctionType isEqualToString:@"2"]) {
+                            y = MIN(self.cc.center.y, self.lc.center.y) - self.size.height;
+                        }else if ([maxFunctionType isEqualToString:@"3"]) {
+                            y = MAX(self.cc.center.y, self.lc.center.y) - self.size.height;
+                        }
+                    }
+                    case TOP:
+                    {
+                        if ([minFunctionType isEqualToString:@"1"]) {
+                            y = [HelperFunctions avgOfA:self.cc.center.y AndB: self.lc.center.y];
+                        }else if ([minFunctionType isEqualToString:@"2"]) {
+                            y = MIN(self.cc.center.y, self.lc.center.y);
+                        }else if ([minFunctionType isEqualToString:@"3"]) {
+                            y = MAX(self.cc.center.y, self.lc.center.y);
+                        }
+                        
                     }
                 }
-            case RIGHT:
-                {
-                    if ([maxFunctionType isEqualToString:@"1"]) {
-                        x = [HelperFunctions avgOfA:self.cc.center.x AndB: self.lc.center.x] - self.size.width;
-                    }else if ([maxFunctionType isEqualToString:@"2"]) {
-                        x = MIN(self.cc.center.x, self.lc.center.x) - self.size.width;
-                    }else if ([maxFunctionType isEqualToString:@"3"]) {
-                        x = MAX(self.cc.center.x, self.lc.center.x) - self.size.width;
-                    }
-                }
-            case BOTTOM:
-                {
-                    if ([maxFunctionType isEqualToString:@"1"]) {
-                        y = [HelperFunctions avgOfA:self.cc.center.y AndB: self.lc.center.y] - self.size.height;
-                    }else if ([maxFunctionType isEqualToString:@"2"]) {
-                        y = MIN(self.cc.center.y, self.lc.center.y) - self.size.height;
-                    }else if ([maxFunctionType isEqualToString:@"3"]) {
-                        y = MAX(self.cc.center.y, self.lc.center.y) - self.size.height;
-                    }
-                }
-            case TOP:
-                {
-                    if ([minFunctionType isEqualToString:@"1"]) {
-                        y = [HelperFunctions avgOfA:self.cc.center.y AndB: self.lc.center.y];
-                    }else if ([minFunctionType isEqualToString:@"2"]) {
-                        y = MIN(self.cc.center.y, self.lc.center.y);
-                    }else if ([minFunctionType isEqualToString:@"3"]) {
-                        y = MAX(self.cc.center.y, self.lc.center.y);
-                    }
-                    
-                }
-            }
                 self.backView.layer.transform = CATransform3DMakeTranslation(x, y, 0);
-        }
-        default:
+            }
+            default:
                 self.backView.layer.transform = CATransform3DIdentity;
         }
     }
@@ -546,119 +546,151 @@
 
 
 
-func updateShadow(progress:CGFloat){
-    if showShadow{
-        shadowView.layer.shadowColor = shadowColor.CGColor
-        shadowView.layer.shadowRadius = shadowRadius
-        shadowView.layer.shadowOffset = CGSizeMake(0, 0)
-        shadowView.layer.shadowOpacity = Float(progress)
-        shadowView.layer.masksToBounds = false
+-(void)updateShadow:(CGFloat)progress{
+    
+    if (self.showShadow){
+        
+        self.shadowView.layer.shadowColor = self.shadowColor.CGColor;
+        self.shadowView.layer.shadowRadius = self.shadowRadius;
+        self.shadowView.layer.shadowOffset = CGSizeMake(0, 0);
+        self.shadowView.layer.shadowOpacity = progress;
+        self.shadowView.layer.masksToBounds = false;
     }else{
-        shadowView.layer.shadowColor = nil
-        shadowView.layer.shadowRadius = 0
-        shadowView.layer.shadowOffset = CGSizeMake(0, 0)
-        shadowView.layer.shadowOpacity = 0
-        shadowView.layer.masksToBounds = true
+        
+        self.shadowView.layer.shadowColor = nil;
+        self.shadowView.layer.shadowRadius = 0;
+        self.shadowView.layer.shadowOffset = CGSizeMake(0, 0);
+        self.shadowView.layer.shadowOpacity = 0;
+        self.shadowView.layer.masksToBounds = true;
     }
 }
 
-func setupDynamics(){
-    animator = UIDynamicAnimator(referenceView: container)
-    let initialPoint = finalPoint(!presenting)
+-(void)setupDynamics{
     
-    cc = DynamicItem(center: initialPoint)
-    lc = DynamicItem(center: initialPoint)
+    self.animator = [[UIDynamicAnimator alloc] initWithReferenceView:self.container];
+    CGPoint initialPoint = [self finalPoint:[NSNumber numberWithBool:!self.presenting ]];
     
-    cb = CustomSnapBehavior(item: cc, point: dragPoint)
-    cb.damping = damping
-    cb.frequency = 2.5
-    lb = CustomSnapBehavior(item: lc, point: dragPoint)
-    lb.damping = min(1.0, damping * 1.5)
-    lb.frequency = 2.5
+    self.cc = [[DynamicItem alloc] initWithCenter:initialPoint];
+    self.lc = [[DynamicItem alloc] initWithCenter:initialPoint];
     
-    update()
-    cb.action = {
-        self.updateShape()
+    self.cb = [[CustomSnapBehavior alloc] initWithItem:self.cc Point:self.dragPoint];
+    self.cb.damping = self.damping;
+    self.cb.frequency = 2.5;
+    self.lb = [[CustomSnapBehavior alloc] initWithItem:self.lc Point:self.dragPoint];
+    self.lb.damping = MIN(1.0, self.damping * 1.5);
+    self.lb.frequency = 2.5;
+    
+    [self update];
+    
+    __weak typeof(self) weakSelf = self;
+    
+    self.cb.action = ^void{
+        [weakSelf updateShape];
     }
-    animator.addBehavior(cb)
-    animator.addBehavior(lb)
+    
+    [self.animator addBehavior:self.cb];
+    [self.animator addBehavior:self.lb];
 }
 
-override func clean(finished:Bool){
-    animator.removeAllBehaviors()
-    animator = nil
-    frontView.layer.zPosition = 0
-    if navigation{
-        shadowView.removeFromSuperview()
-        overlayView.removeFromSuperview()
+-(void)clean:(BOOL)finished{
+    
+    [self.animator removeAllBehaviors];
+    
+    self.animator = nil;
+    
+    self.frontView.layer.zPosition = 0;
+    
+    if (self.navigation){
+        
+        [self.shadowView removeFromSuperview];
+        [self.overlayView removeFromSuperview];
     }
-    if presenting && finished{
-        pushedControllers.append(frontViewController)
-    }else if !presenting && finished{
-        pushedControllers.popLast()
+    if (self.presenting && finished){
+        
+        [self.pushedControllers addObject:self.frontViewController];
+    }else if (!self.presenting && finished){
+        [self.pushedControllers removeLastObject];
     }
-    super.clean(finished)
+    
+    [super clean:finished];
 }
 
-override func cancelInteractiveTransition(){
-    super.cancelInteractiveTransition()
-    let finalPoint = self.finalPoint(!self.presenting)
+-(void)cancelInteractiveTransition{
     
-    cb.point = finalPoint
-    lb.point = finalPoint
-    lb.action = {
-        if finalPoint.distance(self.cc.center) < 1 &&
-            finalPoint.distance(self.lc.center) < 1 &&
-            self.lastPoint.distance(self.cc.center) < 0.05{
-                self.cc.center = finalPoint
-                self.lc.center = finalPoint
-                self.updateShape()
-                self.clean(false)
-            }else{
-                self.updateShape()
-            }
-        self.lastPoint = self.cc.center
-    }
-}
-
-override func finishInteractiveTransition(){
-    super.finishInteractiveTransition()
-    let finalPoint = self.finalPoint()
+    [super cancelInteractiveTransition];
     
-    cb.point = finalPoint
-    lb.point = finalPoint
-    lb.action = {
-        if finalPoint.distance(self.cc.center) < 1 &&
-            finalPoint.distance(self.lc.center) < 1 &&
-            self.lastPoint.distance(self.cc.center) < 0.05{
-                self.cc.center = finalPoint
-                self.lc.center = finalPoint
-                self.updateShape()
-                self.clean(true)
-            }else{
-                self.updateShape()
-            }
-        self.lastPoint = self.cc.center
-    }
-}
-
-override func endInteractiveTransition() -> Bool{
-    let finalPoint = self.finalPoint()
-    let initialPoint = self.finalPoint(!self.presenting)
-    let p = (useTranlation && interactive) ? translatedPoint() : dragPoint
+    CGPoint finalPoint = [self finalPoint:[NSNumber numberWithBool:!self.presenting ]];
     
-    if (p.distance(initialPoint) >= contentLength * panThreshold) &&
-        initialPoint.distance(finalPoint) > p.distance(finalPoint){
-            self.finishInteractiveTransition()
-            return true
-        } else {
-            self.cancelInteractiveTransition()
-            return false
+    self.cb.point = finalPoint;
+    self.lb.point = finalPoint;
+    
+    __weak typeof(self) weakSelf = self;
+    
+    
+    self.lb.action = ^void{
+        
+        if (CGPointDistance(finalPoint, weakSelf.cc.center) < 1 && CGPointDistance(finalPoint, weakSelf.lc.center) < 1 && CGPointDistance(weakSelf.lastPoint, weakSelf.cc.center) < 0.05){
+            
+            weakSelf.cc.center = finalPoint;
+            weakSelf.lc.center = finalPoint;
+            
+            [weakSelf updateShape];
+            [weakSelf clean:FALSE];
+        }else{
+            
+            [weakSelf updateShape];
         }
+        weakSelf.lastPoint = weakSelf.cc.center;
+    };
 }
 
-override public func transitionDuration(transitionContext: UIViewControllerContextTransitioning?) -> NSTimeInterval {
-    return NSTimeInterval(abs(damping - 0.2) * 0.5 + 0.6)
+-(void)finishInteractiveTransition{
+    
+    [super finishInteractiveTransition];
+    
+    CGPoint finalPoint = [self finalPoint:nil];
+    
+    self.cb.point = finalPoint;
+    self.lb.point = finalPoint;
+    
+    __weak typeof(self) weakSelf = self;
+    
+    self.lb.action = ^void{
+        
+        if (CGPointDistance(finalPoint, weakSelf.cc.center) < 1 && CGPointDistance(finalPoint, weakSelf.lc.center) < 1 && CGPointDistance(weakSelf.lastPoint, weakSelf.cc.center) < 0.05){
+            
+            weakSelf.cc.center = finalPoint;
+            weakSelf.lc.center = finalPoint;
+            
+            [weakSelf updateShape];
+            [weakSelf clean:FALSE];
+        }else{
+            [weakSelf updateShape];
+        }
+        weakSelf.lastPoint = weakSelf.cc.center;
+    };
+}
+
+-(BOOL)endInteractiveTransition{
+    
+    CGPoint finalPoint = [self finalPoint:nil];
+    CGPoint initialPoint = [self finalPoint:[NSNumber numberWithBool:!self.presenting ]];
+    
+    CGPoint p = (self.useTranlation && self.interactive) ? [self translatedPoint] : self.dragPoint;
+    
+    if ((CGPointDistance(p, initialPoint) >= self.contentLength * self.panThreshold) && (CGPointDistance(initialPoint, finalPoint) > CGPointDistance(p, finalPoint))){
+        
+        [self finishInteractiveTransition];
+        return true;
+    } else {
+        [self cancelInteractiveTransition];
+        return false;
+    }
+}
+
+- (NSTimeInterval)transitionDuration:(id <UIViewControllerContextTransitioning>)transitionContext{
+    
+    return (ABS(self.damping - 0.2) * 0.5 + 0.6);
 }
 
 

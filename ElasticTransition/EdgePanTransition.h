@@ -36,6 +36,11 @@
 -(void)update;
 -(void)setup;
 
+-(void)clean:(BOOL)finished;
+
+-(void)cancelInteractiveTransition;
+-(void)finishInteractiveTransition;
+
 - (NSTimeInterval)transitionDuration:(id <UIViewControllerContextTransitioning>)transitionContext;
 
 -(BOOL)updateInteractiveTransitionWithGestureRecognizer:(UIPanGestureRecognizer*) pan;

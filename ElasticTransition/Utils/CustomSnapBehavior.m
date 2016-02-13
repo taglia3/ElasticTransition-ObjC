@@ -19,8 +19,7 @@
 
 @property (nonatomic) id <UIDynamicItem> item;
 
-@property (nonatomic) CGFloat frequency;
-@property (nonatomic) CGFloat damping;
+
 
 
 @end

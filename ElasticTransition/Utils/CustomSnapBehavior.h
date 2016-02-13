@@ -11,5 +11,9 @@
 @interface CustomSnapBehavior : UIDynamicBehavior
 
 @property (nonatomic) CGPoint point;
+@property (nonatomic) CGFloat frequency;
+@property (nonatomic) CGFloat damping;
+
+-(id)initWithItem:(id <UIDynamicItem>)item Point:(CGPoint)point;
 
 @end

@@ -14,12 +14,6 @@
 
 
 
-
-
-
-
-@property (nonatomic) UIViewController *frontViewController;
-@property (nonatomic) UIViewController *backViewController;
 @property (nonatomic) UIView *toView;
 @property (nonatomic) UIView *fromView;
 @property (nonatomic) UIViewController *toViewController;
