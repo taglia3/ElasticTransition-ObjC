@@ -9,15 +9,6 @@
 
 #import <UIKit/UIKit.h>
 
-/*
-typedef enum{
-    TOP = 0,
-    BOTTOM,
-    LEFT,
-    RIGHT
-}EdgeType;
-*/
-
 typedef NS_ENUM(int,EdgeType){
     TOP = 0,
     BOTTOM,
@@ -29,9 +20,11 @@ typedef NS_ENUM(int,EdgeType){
 
 @property EdgeType type;
 
-- (id)initWithEdgeType:(EdgeType)theType;
+- (id)initWithEdgeType:(EdgeType)type;
 
 - (EdgeType)opposite;
 - (UIRectEdge)toUIRectEdge;
+
+- (UIRectEdge)oppositeAndToUIRectEdge;
 
 @end

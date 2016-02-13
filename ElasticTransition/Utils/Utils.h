@@ -10,3 +10,4 @@
 #import "PointExtension.h"
 #import "DynamicItem.h"
 #import "CustomSnapBehavior.h"
+#import "HelperFunctions.h"

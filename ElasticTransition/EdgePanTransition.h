@@ -13,5 +13,27 @@
 
 @property (nonatomic) CGFloat panThreshold;
 @property (nonatomic) Edge *edge;
+@property (nonatomic) UIView *container;
+
+@property (nonatomic) CGSize size;
+
+@property (nonatomic) BOOL transitioning;
+@property (nonatomic) BOOL presenting;
+@property (nonatomic) BOOL interactive;
+@property (nonatomic) BOOL navigation;
+
+@property (nonatomic) CGPoint translation;
+@property (nonatomic) CGPoint dragPoint;
+
+
+
+-(BOOL)updateInteractiveTransitionWithGestureRecognizer:(UIPanGestureRecognizer*) pan;
+
+-(void)startInteractiveTransitionFromViewController:(UIViewController*)fromViewController SegueIdentifier:(NSString*)identifier GestureRecognizer:(UIPanGestureRecognizer*)pan;
+
+-(void)startInteractiveTransitionFromViewController:(UIViewController*)fromViewController ToViewController:(UIViewController*)toViewController GestureRecognizer:(UIPanGestureRecognizer*)pan;
+
+-(void)dismissInteractiveTransitionViewController:(UIViewController*)viewController GestureRecognizer:(UIPanGestureRecognizer*)pan Completion:(void (^)(void))completion;
+
 
 @end

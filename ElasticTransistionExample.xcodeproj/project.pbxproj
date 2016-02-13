@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BA70DEB91C6F7F10008B5DB4 /* HelperFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = BA70DEB81C6F7F10008B5DB4 /* HelperFunctions.m */; };
 		BAC47DF81C6C09D200F8E005 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BAC47DF71C6C09D200F8E005 /* main.m */; };
 		BAC47DFB1C6C09D200F8E005 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BAC47DFA1C6C09D200F8E005 /* AppDelegate.m */; };
 		BAC47E011C6C09D200F8E005 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BAC47DFF1C6C09D200F8E005 /* Main.storyboard */; };
@@ -26,6 +27,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BA70DEB71C6F7F10008B5DB4 /* HelperFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HelperFunctions.h; path = ElasticTransition/Utils/HelperFunctions.h; sourceTree = SOURCE_ROOT; };
+		BA70DEB81C6F7F10008B5DB4 /* HelperFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HelperFunctions.m; path = ElasticTransition/Utils/HelperFunctions.m; sourceTree = SOURCE_ROOT; };
 		BAC47DF31C6C09D200F8E005 /* ElasticTransistionExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ElasticTransistionExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BAC47DF71C6C09D200F8E005 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		BAC47DF91C6C09D200F8E005 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -145,6 +148,8 @@
 				BAC47E4C1C6CB11600F8E005 /* DynamicItem.m */,
 				BAC47E4E1C6CB3DE00F8E005 /* CustomSnapBehavior.h */,
 				BAC47E4F1C6CB3DE00F8E005 /* CustomSnapBehavior.m */,
+				BA70DEB71C6F7F10008B5DB4 /* HelperFunctions.h */,
+				BA70DEB81C6F7F10008B5DB4 /* HelperFunctions.m */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -226,6 +231,7 @@
 				BAC47E481C6CA24E00F8E005 /* Edge.m in Sources */,
 				BAC47E381C6C97F900F8E005 /* NavigationExampleViewController.m in Sources */,
 				BAC47E441C6C999900F8E005 /* ElasticTransition.m in Sources */,
+				BA70DEB91C6F7F10008B5DB4 /* HelperFunctions.m in Sources */,
 				BAC47DFB1C6C09D200F8E005 /* AppDelegate.m in Sources */,
 				BAC47E4D1C6CB11600F8E005 /* DynamicItem.m in Sources */,
 				BAC47E501C6CB3DE00F8E005 /* CustomSnapBehavior.m in Sources */,
@@ -380,6 +386,7 @@
 				BAC47E221C6C09D200F8E005 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

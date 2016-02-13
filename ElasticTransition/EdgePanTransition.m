@@ -12,14 +12,11 @@
 
 @interface EdgePanTransition () <UIViewControllerAnimatedTransitioning, UIViewControllerInteractiveTransitioning,UIViewControllerTransitioningDelegate, UINavigationControllerDelegate>
 
-@property (nonatomic) BOOL transitioning;
-@property (nonatomic) BOOL presenting;
-@property (nonatomic) BOOL interactive;
-@property (nonatomic) BOOL navigation;
-@property (nonatomic) id <UIViewControllerContextTransitioning> transitionContext;
-@property (nonatomic) UIView *container;
 
-@property (nonatomic) CGSize size;
+@property (nonatomic) id <UIViewControllerContextTransitioning> transitionContext;
+
+
+
 @property (nonatomic) UIView *frontView;
 @property (nonatomic) UIView *backView;
 @property (nonatomic) UIViewController *frontViewController;
@@ -30,8 +27,8 @@
 @property (nonatomic) UIViewController *fromViewController;
 
 @property (nonatomic) UIPanGestureRecognizer *currentPanGR;
-@property (nonatomic) CGPoint translation;
-@property (nonatomic) CGPoint dragPoint;
+
+
 
 
 @end
@@ -204,7 +201,7 @@
     [self startInteractivePresentFromViewController:fromViewController ToViewController:toViewController SegueIdentifier:nil GestureRecognizer:pan Presenting:YES Completion:nil];
 }
 
--(void)dissmissInteractiveTransitionViewController:(UIViewController*)viewController GestureRecognizer:(UIPanGestureRecognizer*)pan Completion:(void (^)(void))completion{
+-(void)dismissInteractiveTransitionViewController:(UIViewController*)viewController GestureRecognizer:(UIPanGestureRecognizer*)pan Completion:(void (^)(void))completion{
     
     [self startInteractivePresentFromViewController:viewController ToViewController:nil SegueIdentifier:nil GestureRecognizer:nil Presenting:NO Completion:completion];
 }

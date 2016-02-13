@@ -11,14 +11,12 @@
 
 @implementation Edge
 
-@synthesize type;
-
--(id)initWithEdgeType:(EdgeType)theType{
+-(id)initWithEdgeType:(EdgeType)type{
     
     self = [super init];
     
     if(self){
-        self.type = theType;
+        self.type = type;
     }
     return self;
 }
@@ -28,12 +26,16 @@
     switch (self.type) {
             
         case LEFT:
+            self.type = RIGHT;
             return RIGHT;
         case RIGHT:
+            self.type = LEFT;
             return LEFT;
         case BOTTOM:
+            self.type = TOP;
             return TOP;
         case TOP:
+            self.type = BOTTOM;
             return BOTTOM;
     }
 }
@@ -51,6 +53,12 @@
         case TOP:
             return UIRectEdgeTop;
     }
+}
+
+- (UIRectEdge)oppositeAndToUIRectEdge{
+    
+    [self opposite];
+    return [self toUIRectEdge];
 }
 
 @end
