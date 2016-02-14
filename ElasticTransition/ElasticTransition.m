@@ -191,15 +191,19 @@
         
         if (gestureRecognizer == self.backgroundExitPanGestureRecognizer){
             
-            id<ElasticMenuTransitionDelegate> strongDelegate = self.delegate;
-            
-            return  strongDelegate.dismissByBackgroundDrag;
+            if ([[vc class] conformsToProtocol:@protocol(ElasticMenuTransitionDelegate)]) {
+                
+                UIViewController <ElasticMenuTransitionDelegate> *vcc = (UIViewController <ElasticMenuTransitionDelegate> *) self.frontViewController;
+                return  vcc.dismissByBackgroundDrag;
+            }
             
         }else if (gestureRecognizer == self.foregroundExitPanGestureRecognizer){
             
-            id<ElasticMenuTransitionDelegate> strongDelegate = self.delegate;
-            
-            return  strongDelegate.dismissByForegroundDrag;
+            if ([[vc class] conformsToProtocol:@protocol(ElasticMenuTransitionDelegate)]) {
+                
+                UIViewController <ElasticMenuTransitionDelegate> *vcc = (UIViewController <ElasticMenuTransitionDelegate> *) self.frontViewController;
+                return  vcc.dismissByForegroundDrag;
+            }
         }
         
     }
@@ -233,11 +237,16 @@
 -(void)overlayTapped:(UITapGestureRecognizer*)tapGR{
     
     UIViewController *vc = [self.pushedControllers lastObject];
-    id<ElasticMenuTransitionDelegate> strongDelegate = self.delegate;
     
-    if (vc && strongDelegate){
+    if (vc){
         
-        BOOL touchToDismiss = strongDelegate.dismissByBackgroundTouch;
+        BOOL touchToDismiss;
+        
+        if ([[vc class] conformsToProtocol:@protocol(ElasticMenuTransitionDelegate)]) {
+            
+            UIViewController <ElasticMenuTransitionDelegate> *vcc = (UIViewController <ElasticMenuTransitionDelegate> *) self.frontViewController;
+            touchToDismiss =   vcc.dismissByBackgroundTouch;
+        }
         
         if (touchToDismiss){
             
