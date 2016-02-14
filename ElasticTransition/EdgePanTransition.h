@@ -11,27 +11,34 @@
 
 @interface EdgePanTransition : NSObject  <UIViewControllerAnimatedTransitioning, UIViewControllerInteractiveTransitioning,UIViewControllerTransitioningDelegate, UINavigationControllerDelegate>
 
-@property (nonatomic) Edge edge;
+@property (nonatomic) CGFloat   panThreshold;
+@property (nonatomic) Edge      edge;
 
-@property (nonatomic) CGFloat panThreshold;
+@property (nonatomic) BOOL  transitioning;
+@property (nonatomic) BOOL  presenting;
+@property (nonatomic) BOOL  interactive;
+@property (nonatomic) BOOL  navigation;
+
+@property (nonatomic) id <UIViewControllerContextTransitioning> transitionContext;
 @property (nonatomic) UIView *container;
 
-@property (nonatomic) CGSize size;
 
-@property (nonatomic) BOOL transitioning;
-@property (nonatomic) BOOL presenting;
-@property (nonatomic) BOOL interactive;
-@property (nonatomic) BOOL navigation;
+@property (nonatomic) CGSize    size;
 
-@property (nonatomic) CGPoint translation;
-@property (nonatomic) CGPoint dragPoint;
-
-@property (nonatomic) UIView *frontView;
-@property (nonatomic) UIView *backView;
+@property (nonatomic) UIView    *frontView;
+@property (nonatomic) UIView    *backView;
 @property (nonatomic) UIViewController *frontViewController;
 @property (nonatomic) UIViewController *backViewController;
 
-@property (nonatomic) id <UIViewControllerContextTransitioning> transitionContext;
+@property (nonatomic) UIView    *toView;
+@property (nonatomic) UIView *  fromView;
+@property (nonatomic) UIViewController *toViewController;
+@property (nonatomic) UIViewController *fromViewController;
+
+@property (nonatomic) UIPanGestureRecognizer *currentPanGR;
+
+@property (nonatomic) CGPoint translation;
+@property (nonatomic) CGPoint dragPoint;
 
 
 -(void)update;

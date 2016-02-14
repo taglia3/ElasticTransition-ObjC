@@ -19,10 +19,8 @@
 
 @property (nonatomic) id <UIDynamicItem> item;
 
-
-
-
 @end
+
 
 @implementation CustomSnapBehavior
 

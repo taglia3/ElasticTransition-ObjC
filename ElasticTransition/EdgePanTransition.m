@@ -11,12 +11,6 @@
 
 @interface EdgePanTransition ()
 
-@property (nonatomic) UIView *toView;
-@property (nonatomic) UIView *fromView;
-@property (nonatomic) UIViewController *toViewController;
-@property (nonatomic) UIViewController *fromViewController;
-@property (nonatomic) UIPanGestureRecognizer *currentPanGR;
-
 @end
 
 
@@ -31,9 +25,8 @@
     
     if (self) {
         
-        self.panThreshold = 0.2;
-        
-        self.edge   = RIGHT;
+        self.panThreshold   = 0.2;
+        self.edge           = RIGHT;
         
         NSLog(@"[EdgePanTransition] %@" , [HelperFunctions typeToStringOfEdge:self.edge]);
         
@@ -41,7 +34,6 @@
         self.presenting     = YES;
         self.interactive    = NO;
         self.navigation     = NO;
-        
         
         self.translation    = CGPointZero;
         self.dragPoint      = CGPointZero;
@@ -101,11 +93,12 @@
 -(void)clean:(BOOL)finished{
     
     if (!self.navigation) {
-        // bug: http://openradar.appspot.com/radar?id=5320103646199808
         
         if (finished) {
+            
             [[UIApplication sharedApplication].keyWindow  addSubview:self.toView];
         }else{
+            
             [[UIApplication sharedApplication].keyWindow  addSubview:self.fromView];
         }
     }
@@ -119,14 +112,13 @@
         
         [self.frontView removeFromSuperview];
         self.backView.layer.transform = CATransform3DIdentity;
-        //      backView.frame = container.bounds
         [self.backViewController viewDidAppear:YES];
     }
     
-    self.currentPanGR = nil;
-    self.interactive = false;
-    self.transitioning = false;
-    self.navigation = false;
+    self.currentPanGR   = nil;
+    self.interactive    = false;
+    self.transitioning  = false;
+    self.navigation     = false;
     [self.transitionContext completeTransition:finished];
 }
 
@@ -162,8 +154,6 @@
     
     //NSLog(@"T:(%.1f,%.1f)\tD:(%.1f,%.1f)", self.translation.x, self.translation.y, self.dragPoint.x, self.dragPoint.y);
 }
-
-
 
 
 -(BOOL)updateInteractiveTransitionWithGestureRecognizer:(UIPanGestureRecognizer*) pan{
