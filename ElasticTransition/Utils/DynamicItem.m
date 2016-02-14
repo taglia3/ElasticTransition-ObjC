@@ -30,7 +30,9 @@
     
     if (self){
         
-        self.center = center;
+        self.center     = center;
+        self.bounds     = CGRectMake(0, 0, 1, 1);
+        self.transform  = CGAffineTransformIdentity;
     }
     
     return self;
