@@ -132,7 +132,7 @@
 
 -(void)startInteractivePresentFromViewController:(UIViewController*)fromVC ToViewController:(UIViewController*)toVC SegueIdentifier:(NSString*)identifier GestureRecognizer:(UIPanGestureRecognizer*)pan Presenting:(BOOL)presenting Completion:(void (^)(void))completion{
     
-    self.interactive = true;
+    self.interactive = YES;
     self.currentPanGR = pan;
     
     if (self.presenting){
@@ -157,8 +157,10 @@
         }
     }
     
-    self.translation = [pan translationInView:pan.view];
-    self.dragPoint = [pan locationInView:pan.view];
+    self.translation    = [pan translationInView:pan.view];
+    self.dragPoint      = [pan locationInView:pan.view];
+    
+    NSLog(@"T:(%.1f,%.1f)\tD:(%.1f,%.1f)", self.translation.x, self.translation.y, self.dragPoint.x, self.dragPoint.y);
 }
 
 
@@ -173,11 +175,16 @@
     
     if (pan.state == UIGestureRecognizerStateChanged){
         
-        self.translation = [pan translationInView:pan.view];
-        self.dragPoint = [pan locationInView:pan.view];
+        self.translation    = [pan translationInView:pan.view];
+        self.dragPoint      = [pan locationInView:pan.view];
+        
+        NSLog(@"T:(%.1f,%.1f)\tD:(%.1f,%.1f)", self.translation.x, self.translation.y, self.dragPoint.x, self.dragPoint.y);
+        
         [self update];
+        
         return NO;
     }else{
+        
         return [self endInteractiveTransition];
     }
 }

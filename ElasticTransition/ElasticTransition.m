@@ -470,6 +470,7 @@
     // 2. setup shadow and background view
     self.shadowView.frame = self.container.bounds;
     
+    
     if (self.frontViewBackgroundColor){
         self.shadowMaskLayer.fillColor = self.frontViewBackgroundColor.CGColor;
     }else if ([self.frontViewController isKindOfClass:[UINavigationController class]]){
@@ -481,7 +482,13 @@
         self.shadowMaskLayer.fillColor = rootVC.view.backgroundColor.CGColor;
     }else{
         self.shadowMaskLayer.fillColor = self.frontView.backgroundColor.CGColor;
+        
+        
     }
+    
+    NSLog(@"%@",self.shadowMaskLayer.fillColor);
+    NSLog(@"%@",[HelperFunctions typeToStringOfEdge:self.edge]);
+    NSLog(@"%@",[HelperFunctions typeToStringOfEdge:[HelperFunctions oppositeOfEdge:self.edge]]);
     
     self.shadowMaskLayer.edge = [HelperFunctions oppositeOfEdge:self.edge];
     self.shadowMaskLayer.radiusFactor = self.radiusFactor;

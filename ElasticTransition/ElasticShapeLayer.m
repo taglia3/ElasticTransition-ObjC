@@ -15,13 +15,15 @@
 
 @implementation ElasticShapeLayer
 
+@synthesize edge;
+
 -(id)init{
     
     self = [super init];
     
     if(self){
         
-        self.edge           = BOTTOM;
+       // self.edge           = BOTTOM;
         self.dragPoint      = CGPointZero;
         self.radiusFactor   = 0.25;
         
@@ -44,7 +46,7 @@
     
     if(self){
         
-        self.edge           = BOTTOM;
+        //self.edge           = BOTTOM;
         self.dragPoint      = CGPointZero;
         self.radiusFactor   = 0.25;
     }
@@ -52,7 +54,9 @@
     return self;
 }
 
--(void)setEdge:(Edge)edge{
+-(void)setEdge:(Edge)anEdge{
+    
+    self->edge = anEdge;
     
     self.path = [self currentPath];
 }
