@@ -123,10 +123,12 @@
             case BOTTOM:
                 rightControl = CGPointMake((rightPoint.x - centerPoint.x)*0.8+centerPoint.x, centerPoint.y);
                 leftControl = CGPointMake((centerPoint.x - leftPoint.x)*0.2+leftPoint.x, centerPoint.y);
+                break;
             case LEFT:
             case RIGHT:
                 rightControl = CGPointMake(centerPoint.x, (rightPoint.y - centerPoint.y)*0.8+centerPoint.y);
                 leftControl = CGPointMake(centerPoint.x, (centerPoint.y - leftPoint.y)*0.2+leftPoint.y);
+                break;
         }
         
         [shapePath addCurveToPoint:centerPoint
@@ -145,18 +147,23 @@
                 
         case TOP:
                 centerPoint.y += (centerPoint.y - CGRectGetMinY(self.bounds))/4;
+                break;
         case BOTTOM:
                 centerPoint.y += (centerPoint.y - CGRectGetMaxY(self.bounds))/4;
+                break;
         case LEFT:
                 centerPoint.x += (centerPoint.x - CGRectGetMinX(self.bounds))/4;
+                break;
         case RIGHT:
                 centerPoint.x += (centerPoint.x - CGRectGetMaxX(self.bounds))/4;
+                break;
         }
         
         switch (self.edge){
                 
             case TOP:
             case BOTTOM:
+            {
                 rightControl = CGPointMake((rightPoint.x - centerPoint.x)*self.radiusFactor+centerPoint.x, (centerPoint.y + rightPoint.y)/2);
                 leftControl = CGPointMake((centerPoint.x - leftPoint.x)*(1-self.radiusFactor)+leftPoint.x, (centerPoint.y + leftPoint.y)/2);
                 
@@ -178,8 +185,11 @@
             
                 rightRightControl = CGPointMake((rightPoint.x - centerPoint.x)*(2*self.radiusFactor)+centerPoint.x, rrCtrlY);
                 leftLeftControl = CGPointMake((centerPoint.x - leftPoint.x)*(1-2*self.radiusFactor)+leftPoint.x,llCtrlY);
+                break;
+            }
             case LEFT:
             case RIGHT:
+            {
                 rightControl = CGPointMake((centerPoint.x + rightPoint.x)/2, (rightPoint.y - centerPoint.y)*self.radiusFactor+centerPoint.y);
                 leftControl = CGPointMake((centerPoint.x + leftPoint.x)/2, (centerPoint.y - leftPoint.y)*(1-self.radiusFactor)+leftPoint.y);
                 
@@ -201,6 +211,8 @@
             
                 rightRightControl = CGPointMake(rrCtrlX,(rightPoint.y - centerPoint.y)*(2*self.radiusFactor)+centerPoint.y);
                 leftLeftControl = CGPointMake(llCtrlX, (centerPoint.y - leftPoint.y)*(1-2*self.radiusFactor)+leftPoint.y);
+                break;
+            }
         }
         
         [shapePath addCurveToPoint:leftControl

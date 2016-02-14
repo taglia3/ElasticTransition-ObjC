@@ -248,12 +248,16 @@
             
         case LEFT:
                 progress =  translation.x / pan.view.frame.size.width;
+                break;
         case RIGHT:
                 progress =  translation.x / pan.view.frame.size.width * -1;
+                break;
         case BOTTOM:
                 progress =  translation.y / pan.view.frame.size.height * -1;
+                break;
         case TOP:
                 progress =  translation.y / pan.view.frame.size.height;
+                break;
         }
         
         progress = self.presenting ? progress : -progress;

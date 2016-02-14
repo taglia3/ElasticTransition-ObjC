@@ -272,23 +272,27 @@
             {
                 self.cb.point = CGPointMake(p.x < self.contentLength ? p.x : (p.x - self.contentLength)/3.0 + self.contentLength, self.dragPoint.y);
                 self.lb.point = CGPointMake(MIN(self.contentLength, CGPointDistance(p, initialPoint) < self.stickDistance ? initialPoint.x : p.x), self.dragPoint.y);
+                break;
             }
             case RIGHT:
             {
                 CGFloat maxX = self.size.width - self.contentLength;
                 self.cb.point = CGPointMake(p.x > maxX ? p.x : maxX - (maxX - p.x)/3.0, self.dragPoint.y);
                 self.lb.point = CGPointMake(MAX(maxX, CGPointDistance(p, initialPoint) < self.stickDistance ? initialPoint.x : p.x), self.dragPoint.y);
+                break;
             }
             case BOTTOM:
             {
                 CGFloat maxY = self.size.height - self.contentLength;
                 self.cb.point = CGPointMake(self.dragPoint.x, p.y > maxY ? p.y : maxY - (maxY - p.y)/3.0);
                 self.lb.point = CGPointMake(self.dragPoint.x, MAX(maxY, CGPointDistance(p, initialPoint) < self.stickDistance ? initialPoint.y : p.y));
+                break;
             }
             case TOP:
             {
                 self.cb.point = CGPointMake(self.dragPoint.x, p.y < self.contentLength ? p.y : (p.y-self.contentLength)/3.0+self.contentLength);
                 self.lb.point = CGPointMake(self.dragPoint.x, MIN(self.contentLength, CGPointDistance(p, initialPoint) < self.stickDistance ? initialPoint.y : p.y));
+                break;
             }
         }
     }
@@ -320,6 +324,7 @@
             frame.origin.x = MIN(self.cc.center.x, self.lc.center.x) - self.contentLength;
             self.frontView.frame = frame;
             self.shadowMaskLayer.frame = CGRectMake(0, 0, self.lc.center.x, self.size.height);
+            break;
         }
         case RIGHT:
         {
@@ -327,6 +332,7 @@
             frame.origin.x = MAX(self.cc.center.x, self.lc.center.x);
             self.frontView.frame = frame;
             self.shadowMaskLayer.frame = CGRectMake(self.lc.center.x, 0, self.size.width - self.lc.center.x, self.size.height);
+            break;
         }
         case BOTTOM:
         {
@@ -334,6 +340,7 @@
             frame.origin.y = MAX(self.cc.center.y, self.lc.center.y);
             self.frontView.frame = frame;
             self.shadowMaskLayer.frame = CGRectMake(0, self.lc.center.y, self.size.width, self.size.height - self.lc.center.y);
+            break;
         }
         case TOP:
         {
@@ -341,6 +348,7 @@
             frame.origin.y = MIN(self.cc.center.y, self.lc.center.y) - self.contentLength;
             self.frontView.frame = frame;
             self.shadowMaskLayer.frame = CGRectMake(0, 0, self.size.width, self.lc.center.y);
+            break;
         }
     }
     self.shadowMaskLayer.dragPoint = [self.shadowMaskLayer convertPoint:self.cc.center fromLayer:self.container.layer];
@@ -363,6 +371,7 @@
                 t.m34 = 1.0 / -500;
                 t = CATransform3DRotate(t, rotate, rotateX, rotateY, 0.0);
                 self.backView.layer.transform = t;
+                break;
             }
             case TRANSLATEMID:
             case TRANSLATEPULL:
@@ -391,6 +400,7 @@
                         }else if ([minFunctionType isEqualToString:@"3"]) {
                             x = MAX(self.cc.center.x, self.lc.center.x);
                         }
+                        break;
                     }
                     case RIGHT:
                     {
@@ -401,6 +411,7 @@
                         }else if ([maxFunctionType isEqualToString:@"3"]) {
                             x = MAX(self.cc.center.x, self.lc.center.x) - self.size.width;
                         }
+                        break;
                     }
                     case BOTTOM:
                     {
@@ -411,6 +422,7 @@
                         }else if ([maxFunctionType isEqualToString:@"3"]) {
                             y = MAX(self.cc.center.y, self.lc.center.y) - self.size.height;
                         }
+                        break;
                     }
                     case TOP:
                     {
@@ -421,10 +433,12 @@
                         }else if ([minFunctionType isEqualToString:@"3"]) {
                             y = MAX(self.cc.center.y, self.lc.center.y);
                         }
+                        break;
                         
                     }
                 }
                 self.backView.layer.transform = CATransform3DMakeTranslation(x, y, 0);
+                break;
             }
             default:
                 self.backView.layer.transform = CATransform3DIdentity;
@@ -451,9 +465,11 @@
         case LEFT:
         case RIGHT:
             self.contentLength = self.frontView.bounds.size.width;
+            break;
         case TOP:
         case BOTTOM:
             self.contentLength = self.frontView.bounds.size.height;
+            break;
     }
     
     if ([[self.frontViewController class] conformsToProtocol:@protocol(ElasticMenuTransitionDelegate)]) {
@@ -472,6 +488,7 @@
     
     
     if (self.frontViewBackgroundColor){
+        
         self.shadowMaskLayer.fillColor = self.frontViewBackgroundColor.CGColor;
     }else if ([self.frontViewController isKindOfClass:[UINavigationController class]]){
         
@@ -507,9 +524,11 @@
         case LEFT:
         case RIGHT:
             rect.size.width = self.contentLength;
+            break;
         case TOP:
         case BOTTOM:
             rect.size.height = self.contentLength;
+            break;
     }
     
     self.frontView.frame = rect;
@@ -531,8 +550,10 @@
         case TRANSLATEPULL:
         case TRANSLATEPUSH:
             self.container.backgroundColor = self.backView.backgroundColor;
+            break;
         default:
             self.container.backgroundColor = self.containerColor;
+            break;
     }
     
     // 6. setup uikitdynamic
