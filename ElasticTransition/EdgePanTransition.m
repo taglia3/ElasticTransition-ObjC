@@ -160,7 +160,7 @@
     self.translation    = [pan translationInView:pan.view];
     self.dragPoint      = [pan locationInView:pan.view];
     
-    NSLog(@"T:(%.1f,%.1f)\tD:(%.1f,%.1f)", self.translation.x, self.translation.y, self.dragPoint.x, self.dragPoint.y);
+    //NSLog(@"T:(%.1f,%.1f)\tD:(%.1f,%.1f)", self.translation.x, self.translation.y, self.dragPoint.x, self.dragPoint.y);
 }
 
 
@@ -178,7 +178,7 @@
         self.translation    = [pan translationInView:pan.view];
         self.dragPoint      = [pan locationInView:pan.view];
         
-        NSLog(@"T:(%.1f,%.1f)\tD:(%.1f,%.1f)", self.translation.x, self.translation.y, self.dragPoint.x, self.dragPoint.y);
+        //NSLog(@"T:(%.1f,%.1f)\tD:(%.1f,%.1f)", self.translation.x, self.translation.y, self.dragPoint.x, self.dragPoint.y);
         
         [self update];
         

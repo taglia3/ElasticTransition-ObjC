@@ -130,8 +130,6 @@
 }
 
 
-
-
 - (CGPoint)finalPoint:(NSNumber*)presentingIn{
     
     static BOOL p;

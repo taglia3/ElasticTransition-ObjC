@@ -16,6 +16,9 @@
 @implementation ElasticShapeLayer
 
 @synthesize edge;
+@synthesize dragPoint;
+@synthesize radiusFactor;
+
 
 -(id)init{
     
@@ -23,18 +26,17 @@
     
     if(self){
         
-       // self.edge           = BOTTOM;
+        self.edge           = BOTTOM;
         self.dragPoint      = CGPointZero;
         self.radiusFactor   = 0.25;
         
-        self.backgroundColor = [UIColor clearColor].CGColor;
-        self.fillColor = [UIColor blackColor].CGColor;
-        self.actions = [NSDictionary dictionaryWithObjectsAndKeys:
-                              [NSNull null], @"path",
-                              [NSNull null], @"position",
-                              [NSNull null], @"bounds",
-                              [NSNull null], @"fillColor",
-                              nil];
+        self.backgroundColor    = [UIColor clearColor].CGColor;
+        self.fillColor          = [UIColor blackColor].CGColor;
+        self.actions            = [NSDictionary dictionaryWithObjectsAndKeys:   [NSNull null], @"path",
+                                                                                [NSNull null], @"position",
+                                                                                [NSNull null], @"bounds",
+                                                                                [NSNull null], @"fillColor",
+                                                                                nil];
     }
     
     return self;
@@ -46,7 +48,7 @@
     
     if(self){
         
-        //self.edge           = BOTTOM;
+        self.edge           = BOTTOM;
         self.dragPoint      = CGPointZero;
         self.radiusFactor   = 0.25;
     }
@@ -61,16 +63,20 @@
     self.path = [self currentPath];
 }
 
--(void) setDragPoint:(CGPoint)dragPoint{
+-(void) setDragPoint:(CGPoint)aDragPoint{
+    
+    self->dragPoint = aDragPoint;
  
     self.path = [self currentPath];
 }
 
--(void)setRadiusFactor:(CGFloat)radiusFactor{
+-(void)setRadiusFactor:(CGFloat)aRadiusFactor{
     
-    if (radiusFactor < 0) {
+    self->radiusFactor = aRadiusFactor;
+    
+    if (self.radiusFactor < 0) {
         
-        radiusFactor = 0;
+        self->radiusFactor = 0;
     }
 }
 
@@ -78,18 +84,20 @@
     
     CGPoint centerPoint = self.dragPoint;
     
+    NSLog(@"D:(%.1f,%.1f)",self.dragPoint.x, self.dragPoint.y);
+    
     CGPoint leftPoint, rightPoint, bottomRightPoint, bottomLeftPoint;
     
     
     switch (self.edge){
     case TOP:
-            leftPoint = CGPointMake(0 - MAX(0,self.bounds.size.width/2 - self.dragPoint.x), CGRectGetMinY(self.bounds));
-            rightPoint = CGPointMake(self.bounds.size.width + MAX(0,self.dragPoint.x-self.bounds.size.width/2), CGRectGetMinY(self.bounds));
+            leftPoint = CGPointMake(0 - MAX(0,self.bounds.size.width/2.0 - self.dragPoint.x), CGRectGetMinY(self.bounds));
+            rightPoint = CGPointMake(self.bounds.size.width + MAX(0,self.dragPoint.x - self.bounds.size.width/2), CGRectGetMinY(self.bounds));
             bottomRightPoint = CGPointMake(CGRectGetMaxX(self.bounds), CGRectGetMaxY(self.bounds));
             bottomLeftPoint = CGPointMake(CGRectGetMinX(self.bounds), CGRectGetMaxY(self.bounds));
             break;
     case BOTTOM:
-            leftPoint = CGPointMake(self.bounds.size.width + MAX(0,self.dragPoint.x-self.bounds.size.width/2), CGRectGetMaxY(self.bounds));
+            leftPoint = CGPointMake(self.bounds.size.width + MAX(0,self.dragPoint.x - self.bounds.size.width/2), CGRectGetMaxY(self.bounds));
             rightPoint = CGPointMake(0 - MAX(0,self.bounds.size.width/2 - self.dragPoint.x), CGRectGetMaxY(self.bounds));
             bottomRightPoint = CGPointMake(CGRectGetMinX(self.bounds), CGRectGetMinY(self.bounds));
             bottomLeftPoint = CGPointMake(CGRectGetMaxX(self.bounds), CGRectGetMinY(self.bounds));
@@ -98,12 +106,12 @@
             leftPoint = CGPointMake(CGRectGetMinX(self.bounds), self.bounds.size.height + MAX(0,self.dragPoint.y-self.bounds.size.height/2));
             rightPoint = CGPointMake(CGRectGetMinX(self.bounds), 0 - MAX(0,self.bounds.size.height/2 - self.dragPoint.y));
             bottomRightPoint = CGPointMake(CGRectGetMaxX(self.bounds), CGRectGetMinY(self.bounds));
-            bottomLeftPoint = CGPointMake(CGRectGetMaxX(self.bounds), CGRectGetMaxX(self.bounds));
+            bottomLeftPoint = CGPointMake(CGRectGetMaxX(self.bounds), CGRectGetMaxY(self.bounds));
             break;
     case RIGHT:
             leftPoint = CGPointMake(CGRectGetMaxX(self.bounds), 0 - MAX(0,self.bounds.size.height/2 - self.dragPoint.y));
             rightPoint = CGPointMake(CGRectGetMaxX(self.bounds), self.bounds.size.height + MAX(0,self.dragPoint.y-self.bounds.size.height/2));
-            bottomRightPoint = CGPointMake(CGRectGetMinX(self.bounds), CGRectGetMaxX(self.bounds));
+            bottomRightPoint = CGPointMake(CGRectGetMinX(self.bounds), CGRectGetMaxY(self.bounds));
             bottomLeftPoint = CGPointMake(CGRectGetMinX(self.bounds), CGRectGetMinY(self.bounds));
             break;
     }
@@ -146,16 +154,16 @@
         switch (self.edge){
                 
         case TOP:
-                centerPoint.y += (centerPoint.y - CGRectGetMinY(self.bounds))/4;
+                centerPoint.y += (centerPoint.y - CGRectGetMinY(self.bounds))/4.0;
                 break;
         case BOTTOM:
-                centerPoint.y += (centerPoint.y - CGRectGetMaxY(self.bounds))/4;
+                centerPoint.y += (centerPoint.y - CGRectGetMaxY(self.bounds))/4.0;
                 break;
         case LEFT:
-                centerPoint.x += (centerPoint.x - CGRectGetMinX(self.bounds))/4;
+                centerPoint.x += (centerPoint.x - CGRectGetMinX(self.bounds))/4.0;
                 break;
         case RIGHT:
-                centerPoint.x += (centerPoint.x - CGRectGetMaxX(self.bounds))/4;
+                centerPoint.x += (centerPoint.x - CGRectGetMaxX(self.bounds))/4.0;
                 break;
         }
         
@@ -164,8 +172,8 @@
             case TOP:
             case BOTTOM:
             {
-                rightControl = CGPointMake((rightPoint.x - centerPoint.x)*self.radiusFactor+centerPoint.x, (centerPoint.y + rightPoint.y)/2);
-                leftControl = CGPointMake((centerPoint.x - leftPoint.x)*(1-self.radiusFactor)+leftPoint.x, (centerPoint.y + leftPoint.y)/2);
+                rightControl = CGPointMake((rightPoint.x - centerPoint.x)*self.radiusFactor+centerPoint.x, (centerPoint.y + rightPoint.y)/2.0);
+                leftControl = CGPointMake((centerPoint.x - leftPoint.x)*(1.0-self.radiusFactor)+leftPoint.x, (centerPoint.y + leftPoint.y)/2.0);
                 
                 float rrCtrlY = 0.0;
                 float llCtrlY = 0.0;
@@ -183,15 +191,15 @@
                 }
                 
             
-                rightRightControl = CGPointMake((rightPoint.x - centerPoint.x)*(2*self.radiusFactor)+centerPoint.x, rrCtrlY);
-                leftLeftControl = CGPointMake((centerPoint.x - leftPoint.x)*(1-2*self.radiusFactor)+leftPoint.x,llCtrlY);
+                rightRightControl = CGPointMake((rightPoint.x - centerPoint.x)*(2.0*self.radiusFactor)+centerPoint.x, rrCtrlY);
+                leftLeftControl = CGPointMake((centerPoint.x - leftPoint.x)*(1.0-2.0*self.radiusFactor)+leftPoint.x,llCtrlY);
                 break;
             }
             case LEFT:
             case RIGHT:
             {
-                rightControl = CGPointMake((centerPoint.x + rightPoint.x)/2, (rightPoint.y - centerPoint.y)*self.radiusFactor+centerPoint.y);
-                leftControl = CGPointMake((centerPoint.x + leftPoint.x)/2, (centerPoint.y - leftPoint.y)*(1-self.radiusFactor)+leftPoint.y);
+                rightControl = CGPointMake((centerPoint.x + rightPoint.x)/2.0, (rightPoint.y - centerPoint.y)*self.radiusFactor+centerPoint.y);
+                leftControl = CGPointMake((centerPoint.x + leftPoint.x)/2.0, (centerPoint.y - leftPoint.y)*(1.0-self.radiusFactor)+leftPoint.y);
                 
                 
                 float rrCtrlX = 0.0;
@@ -209,8 +217,8 @@
                     llCtrlX = MAX(centerPoint.x,leftPoint.x);
                 }
             
-                rightRightControl = CGPointMake(rrCtrlX,(rightPoint.y - centerPoint.y)*(2*self.radiusFactor)+centerPoint.y);
-                leftLeftControl = CGPointMake(llCtrlX, (centerPoint.y - leftPoint.y)*(1-2*self.radiusFactor)+leftPoint.y);
+                rightRightControl = CGPointMake(rrCtrlX,(rightPoint.y - centerPoint.y)*(2.0*self.radiusFactor)+centerPoint.y);
+                leftLeftControl = CGPointMake(llCtrlX, (centerPoint.y - leftPoint.y)*(1.0-2.0*self.radiusFactor)+leftPoint.y);
                 break;
             }
         }
@@ -232,7 +240,7 @@
     }
     
     [shapePath addLineToPoint:bottomRightPoint];
-    [shapePath addLineToPoint: bottomLeftPoint];
+    [shapePath addLineToPoint:bottomLeftPoint];
     [shapePath addLineToPoint:leftPoint];
     [shapePath closePath];
     
