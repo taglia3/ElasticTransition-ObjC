@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Utils.h"
 
-@interface EdgePanTransition : NSObject
+@interface EdgePanTransition : NSObject  <UIViewControllerAnimatedTransitioning, UIViewControllerInteractiveTransitioning,UIViewControllerTransitioningDelegate, UINavigationControllerDelegate>
 
 @property (nonatomic) Edge edge;
 
@@ -51,6 +51,7 @@
 -(void)startInteractiveTransitionFromViewController:(UIViewController*)fromViewController ToViewController:(UIViewController*)toViewController GestureRecognizer:(UIPanGestureRecognizer*)pan;
 
 -(void)dismissInteractiveTransitionViewController:(UIViewController*)viewController GestureRecognizer:(UIPanGestureRecognizer*)pan Completion:(void (^)(void))completion;
+
 
 
 @end

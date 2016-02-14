@@ -10,4 +10,10 @@
 
 @interface InitialViewController : UIViewController
 
+- (IBAction)codeBtnTouched:(id)sender;
+- (IBAction)optionBtnTouched:(id)sender;
+- (IBAction)aboutBtnTouched:(id)sender;
+- (IBAction)navigationBtnTouched:(id)sender;
+
+
 @end

@@ -41,7 +41,7 @@
     
     self.textView.text = [NSString stringWithFormat:@"transition.edge = %@\ntransition.transformType = %@\ntransition.sticky = %@\ntransition.showShadow = %@", [HelperFunctions typeToStringOfEdge:tm.edge], [tm transformTypeToString], tm.sticky ? @"YES" : @"NO", tm.showShadow ? @"YES" : @"NO"];
     
-    self.codeView2.text =[NSString stringWithFormat:@"Codice di inizializzazione"];
+    self.codeView2.text =[NSString stringWithFormat:@"Obj-C Init Code Here"];
 }
 
 

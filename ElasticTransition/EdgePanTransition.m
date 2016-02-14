@@ -9,7 +9,7 @@
 #import "EdgePanTransition.h"
 
 
-@interface EdgePanTransition () <UIViewControllerAnimatedTransitioning, UIViewControllerInteractiveTransitioning,UIViewControllerTransitioningDelegate, UINavigationControllerDelegate>
+@interface EdgePanTransition ()
 
 @property (nonatomic) UIView *toView;
 @property (nonatomic) UIView *fromView;

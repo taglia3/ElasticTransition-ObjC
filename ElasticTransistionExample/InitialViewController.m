@@ -9,6 +9,7 @@
 #import "InitialViewController.h"
 
 #import "ElasticTransition.h"
+#import "AboutViewController.h"
 
 @interface InitialViewController (){
     
@@ -70,6 +71,70 @@
     }else{
         
         [transition updateInteractiveTransitionWithGestureRecognizer:pan];
+    }
+}
+
+- (IBAction)codeBtnTouched:(id)sender{
+    
+    UIButton* button = (UIButton*)sender;
+    
+    transition.edge = LEFT;
+    transition.startingPoint = button.center;
+    [self performSegueWithIdentifier:@"menu" sender:self];
+}
+
+- (IBAction)optionBtnTouched:(id)sender{
+    
+    UIButton* button = (UIButton*)sender;
+    
+    transition.edge = BOTTOM;
+    transition.startingPoint = button.center;
+    [self performSegueWithIdentifier:@"option" sender:self];
+}
+
+- (IBAction)aboutBtnTouched:(id)sender{
+    
+    UIButton* button = (UIButton*)sender;
+    
+    transition.edge = RIGHT;
+    transition.startingPoint = button.center;
+    [self performSegueWithIdentifier:@"about" sender:self];
+}
+
+- (IBAction)navigationBtnTouched:(id)sender{
+    
+    UIButton* button = (UIButton*)sender;
+    
+    transition.edge = RIGHT;
+    transition.startingPoint = button.center;
+    [self performSegueWithIdentifier:@"navigation" sender:self];
+}
+
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+   
+    UIViewController *vc = segue.destinationViewController;
+    vc.transitioningDelegate = transition;
+    vc.modalPresentationStyle = UIModalPresentationCustom;
+    
+    if ([segue.identifier isEqualToString:@"navigation"]){
+        
+        
+        UINavigationController *vc = segue.destinationViewController;
+        vc.transitioningDelegate = transition;
+        vc.modalPresentationStyle = UIModalPresentationCustom;
+        vc.delegate = transition;
+        
+    }else{
+        
+        if ([vc isKindOfClass:[AboutViewController class]]) {
+            
+            AboutViewController *vc = segue.destinationViewController;
+            vc.transitioningDelegate = transition;
+            vc.modalPresentationStyle = UIModalPresentationCustom;
+            vc.transition = transition;
+        }
+
     }
 }
 

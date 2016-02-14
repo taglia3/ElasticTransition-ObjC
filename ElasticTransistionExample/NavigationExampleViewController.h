@@ -10,4 +10,7 @@
 
 @interface NavigationExampleViewController : UIViewController
 
+-(IBAction)dismiss:(id)sender;
+-(IBAction)showMore:(id)sender;
+
 @end

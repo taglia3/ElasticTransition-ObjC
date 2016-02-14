@@ -7,7 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ElasticTransition.h"
 
 @interface AboutViewController : UIViewController
 
+@property (nonatomic) ElasticTransition *transition;
+
+-(IBAction)dismiss:(id)sender;
+
 @end
+
+

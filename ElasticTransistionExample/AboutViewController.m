@@ -8,30 +8,81 @@
 
 #import "AboutViewController.h"
 
-@interface AboutViewController ()
+@interface AboutViewController (){
+    
+    UIScreenEdgePanGestureRecognizer *rgr;
+    UIScreenEdgePanGestureRecognizer *lgr;
+}
 
 @end
 
 @implementation AboutViewController
 
 - (void)viewDidLoad {
+    
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    self.view.backgroundColor = [self getRandomColor];
+    
+    
+    // gesture recognizer
+    lgr = [[UIScreenEdgePanGestureRecognizer alloc] init];
+    [lgr addTarget:self action:@selector(handleLeftPan:)];
+    lgr.edges = LEFT;
+    [self.view addGestureRecognizer:lgr];
+    
+    
+    rgr = [[UIScreenEdgePanGestureRecognizer alloc] init];
+    [rgr addTarget:self action:@selector(handleRightPan:)];
+    rgr.edges = RIGHT;
+    [self.view addGestureRecognizer:rgr];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+-(void)handleLeftPan:(UIPanGestureRecognizer*)pan{
+    
+    if (pan.state == UIGestureRecognizerStateBegan){
+        
+        [self.transition dismissInteractiveTransitionViewController:self GestureRecognizer:pan Completion:nil];
+    }else{
+        
+        [self.transition updateInteractiveTransitionWithGestureRecognizer:pan];
+    }
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+-(void)handleRightPan:(UIPanGestureRecognizer*)pan{
+    
+    if (pan.state == UIGestureRecognizerStateBegan){
+        
+        AboutViewController *nextViewController =[[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"about"];
+        
+        nextViewController.transition = self.transition;
+        nextViewController.transitioningDelegate = self.transition;
+        nextViewController.modalPresentationStyle = UIModalPresentationCustom;
+        self.transition.edge = RIGHT;
+        [self.transition startInteractiveTransitionFromViewController:self SegueIdentifier:@"menu" GestureRecognizer:pan];
+    }else{
+        
+        [self.transition updateInteractiveTransitionWithGestureRecognizer:pan];
+    }
 }
-*/
+
+-(IBAction)dismiss:(id)sender{
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+-(UIStatusBarStyle)preferredStatusBarStyle{
+    return UIStatusBarStyleLightContent;
+}
+
+-(UIColor*)getRandomColor{
+    
+    CGFloat randomRed   = drand48();
+    CGFloat randomGreen = drand48();
+    CGFloat randomBlue  = drand48();
+    
+    return [UIColor colorWithRed:randomRed green:randomGreen blue:randomBlue alpha:1.0];
+}
+
 
 @end
