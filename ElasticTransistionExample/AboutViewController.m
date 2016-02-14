@@ -59,7 +59,7 @@
         nextViewController.transitioningDelegate = self.transition;
         nextViewController.modalPresentationStyle = UIModalPresentationCustom;
         self.transition.edge = RIGHT;
-        [self.transition startInteractiveTransitionFromViewController:self SegueIdentifier:@"menu" GestureRecognizer:pan];
+        [self.transition startInteractiveTransitionFromViewController:self ToViewController:nextViewController GestureRecognizer:pan];
     }else{
         
         [self.transition updateInteractiveTransitionWithGestureRecognizer:pan];

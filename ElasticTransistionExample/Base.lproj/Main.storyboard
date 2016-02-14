@@ -254,7 +254,7 @@
         <!--Navigation Example View Controller-->
         <scene sceneID="3Jw-P3-oZl">
             <objects>
-                <viewController storyboardIdentifier="navigationExample" id="xQV-7W-sfl" customClass="NavigationExampleViewController" customModule="ElasticTransistionExample" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="navigationExample" id="xQV-7W-sfl" customClass="NavigationExampleViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="obC-fP-TlP"/>
                         <viewControllerLayoutGuide type="bottom" id="8Ug-ze-Zgd"/>
@@ -269,7 +269,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="showMore:" destination="xQV-7W-sfl" eventType="touchUpInside" id="Gxo-d7-utV"/>
+                                    <action selector="showMore:" destination="xQV-7W-sfl" eventType="touchUpInside" id="xhO-3B-6wf"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -293,7 +293,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="dismiss:" destination="xQV-7W-sfl" eventType="touchUpInside" id="QrZ-eN-Z5t"/>
+                                    <action selector="dismiss:" destination="xQV-7W-sfl" eventType="touchUpInside" id="lHS-EF-goL"/>
                                 </connections>
                             </button>
                         </barButtonItem>
@@ -391,7 +391,7 @@
         <!--About View Controller-->
         <scene sceneID="cjb-Pt-fcl">
             <objects>
-                <viewController storyboardIdentifier="about" id="iZ9-5h-p9x" customClass="AboutViewController" customModule="ElasticTransistionExample" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="about" id="iZ9-5h-p9x" customClass="AboutViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Fmn-8J-QGh"/>
                         <viewControllerLayoutGuide type="bottom" id="GbG-c7-aTm"/>
@@ -411,53 +411,21 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="dismiss:" destination="iZ9-5h-p9x" eventType="touchUpInside" id="L2P-Ya-SfE"/>
+                                    <action selector="dismiss:" destination="iZ9-5h-p9x" eventType="touchUpInside" id="aIF-Ar-RkF"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="from Borghetto, IT" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2iP-Il-o61">
-                                <rect key="frame" x="110.5" y="494.5" width="140" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;-- Try dragging from the edges --&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gDg-yt-Iup">
                                 <rect key="frame" x="27.5" y="140" width="264.5" height="19.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="textColor" white="1" alpha="0.49191046100000002" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h9R-F9-XJb">
-                                <rect key="frame" x="70.5" y="485.5" width="40" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="40" id="f5C-lb-nxh"/>
-                                    <constraint firstAttribute="height" constant="40" id="gOQ-N8-AuI"/>
-                                </constraints>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <state key="normal" image="ic_favorite">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="dismiss:" destination="iZ9-5h-p9x" eventType="touchUpInside" id="9kC-tl-d2Z"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Taglia3" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XSM-7X-JLv">
-                                <rect key="frame" x="122.5" y="425.5" width="77" height="29"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.94117647059999998" green="0.35294117650000001" blue="0.32549019610000002" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="2iP-Il-o61" firstAttribute="centerX" secondItem="T5b-Ev-nkA" secondAttribute="centerX" constant="20" id="01g-39-QvE"/>
                             <constraint firstItem="3qY-yk-XyR" firstAttribute="top" secondItem="Fmn-8J-QGh" secondAttribute="bottom" id="2dd-bp-hZ5"/>
                             <constraint firstItem="gDg-yt-Iup" firstAttribute="top" secondItem="3qY-yk-XyR" secondAttribute="bottom" constant="80" id="3cM-0S-1bh"/>
                             <constraint firstItem="gDg-yt-Iup" firstAttribute="centerX" secondItem="T5b-Ev-nkA" secondAttribute="centerX" id="7G5-3h-2NK"/>
-                            <constraint firstItem="2iP-Il-o61" firstAttribute="leading" secondItem="h9R-F9-XJb" secondAttribute="trailing" id="F3e-JC-PB3"/>
-                            <constraint firstItem="2iP-Il-o61" firstAttribute="centerY" secondItem="h9R-F9-XJb" secondAttribute="centerY" id="MH5-wB-HYt"/>
-                            <constraint firstItem="2iP-Il-o61" firstAttribute="top" secondItem="XSM-7X-JLv" secondAttribute="bottom" constant="40" id="enT-NC-cVh"/>
-                            <constraint firstItem="GbG-c7-aTm" firstAttribute="top" secondItem="2iP-Il-o61" secondAttribute="bottom" constant="53.5" id="hy3-bz-aOp"/>
-                            <constraint firstItem="XSM-7X-JLv" firstAttribute="centerX" secondItem="T5b-Ev-nkA" secondAttribute="centerX" id="jQK-DI-GTf"/>
                             <constraint firstItem="3qY-yk-XyR" firstAttribute="leading" secondItem="T5b-Ev-nkA" secondAttribute="leading" constant="12" id="utf-BS-Bsv"/>
                         </constraints>
                     </view>
@@ -469,6 +437,5 @@
     </scenes>
     <resources>
         <image name="ic_close" width="24" height="24"/>
-        <image name="ic_favorite" width="24" height="24"/>
     </resources>
 </document>

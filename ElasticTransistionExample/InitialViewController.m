@@ -29,20 +29,20 @@
     
     // customization
     transition = [[ElasticTransition alloc] init];
-    transition.sticky = YES;
-    transition.showShadow = YES;
-    transition.panThreshold = 0.3;
-    transition.transformType = TRANSLATEMID;
     
-    transition.overlayColor = [UIColor colorWithWhite:0 alpha:0.5];
-    transition.shadowColor  = [UIColor colorWithWhite:0 alpha:0.5];
+    transition.sticky           = YES;
+    transition.showShadow       = YES;
+    transition.panThreshold     = 0.3;
+    transition.transformType    = TRANSLATEMID;
+    transition.overlayColor     = [UIColor colorWithWhite:0 alpha:0.5];
+    transition.shadowColor      = [UIColor colorWithWhite:0 alpha:0.5];
     
-    // gesture recognizer
+    
+    // gesture recognizers
     lgr = [[UIScreenEdgePanGestureRecognizer alloc] init];
     [lgr addTarget:self action:@selector(handlePan:)];
     lgr.edges = UIRectEdgeLeft;
     [self.view addGestureRecognizer:lgr];
-    
     
     rgr = [[UIScreenEdgePanGestureRecognizer alloc] init];
     [rgr addTarget:self action:@selector(handleRightPan:)];

@@ -58,7 +58,7 @@
         
         self.useTranlation = TRUE;
         
-        self.damping = 0.2;
+        self.damping = 0.2f;
         
         self.contentLength = 0.0;
         
@@ -126,7 +126,7 @@
 
 -(void)setDamping:(CGFloat)aDamping{
     
-    self->damping = MIN(1.0, MAX(0.0, self.damping));
+    self->damping = MIN(1.0, MAX(0.0, aDamping));
 }
 
 
