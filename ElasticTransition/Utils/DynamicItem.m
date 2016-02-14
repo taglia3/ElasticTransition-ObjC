@@ -16,9 +16,9 @@
     
     if (self){
         
-        self.center = CGPointZero;
-        self.bounds =CGRectMake(0, 0, 1, 1);
-        self.transform = CGAffineTransformIdentity;
+        self.center     = CGPointZero;
+        self.bounds     = CGRectMake(0, 0, 1, 1);
+        self.transform  = CGAffineTransformIdentity;
     }
     
     return self;

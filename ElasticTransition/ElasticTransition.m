@@ -447,9 +447,15 @@
             self.contentLength = self.frontView.bounds.size.height;
     }
     
-    UIViewController * vc = self.frontViewController;
-    CGFloat vcl =300;// vc.contentLength;
-    self.contentLength = vcl;
+    if ([[self.frontViewController class] conformsToProtocol:@protocol(ElasticMenuTransitionDelegate)]) {
+        
+        UIViewController <ElasticMenuTransitionDelegate> *vc = (UIViewController <ElasticMenuTransitionDelegate> *) self.frontViewController;
+        CGFloat vcl = vc.contentLength;
+        self.contentLength = vcl;
+    }
+    
+    
+    
     
     
     // 2. setup shadow and background view
