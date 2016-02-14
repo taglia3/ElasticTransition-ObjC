@@ -10,7 +10,6 @@
 
 @implementation HelperFunctions
 
-
 + (Edge)oppositeOfEdge:(Edge)e{
     
     switch (e) {
@@ -64,6 +63,7 @@
 }
 
 +(CGFloat)avgOfA:(CGFloat)a AndB:(CGFloat)b{
+    
     return (a+b)/2.0;
 }
 

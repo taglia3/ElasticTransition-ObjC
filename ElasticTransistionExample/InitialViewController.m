@@ -25,7 +25,7 @@
 - (void)viewDidLoad {
     
     [super viewDidLoad];
-
+    
     
     // customization
     transition = [[ElasticTransition alloc] init];
@@ -40,13 +40,13 @@
     // gesture recognizer
     lgr = [[UIScreenEdgePanGestureRecognizer alloc] init];
     [lgr addTarget:self action:@selector(handlePan:)];
-    lgr.edges = LEFT;
+    lgr.edges = UIRectEdgeLeft;
     [self.view addGestureRecognizer:lgr];
     
     
     rgr = [[UIScreenEdgePanGestureRecognizer alloc] init];
     [rgr addTarget:self action:@selector(handleRightPan:)];
-    rgr.edges = RIGHT;
+    rgr.edges = UIRectEdgeRight;
     [self.view addGestureRecognizer:rgr];
 }
 
@@ -112,7 +112,7 @@
 
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-   
+    
     UIViewController *vc = segue.destinationViewController;
     vc.transitioningDelegate = transition;
     vc.modalPresentationStyle = UIModalPresentationCustom;
@@ -134,7 +134,7 @@
             vc.modalPresentationStyle = UIModalPresentationCustom;
             vc.transition = transition;
         }
-
+        
     }
 }
 

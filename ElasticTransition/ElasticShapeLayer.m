@@ -155,7 +155,6 @@
             case BOTTOM:
                 rightControl = CGPointMake((rightPoint.x - centerPoint.x)*self.radiusFactor+centerPoint.x, (centerPoint.y + rightPoint.y)/2);
                 leftControl = CGPointMake((centerPoint.x - leftPoint.x)*(1-self.radiusFactor)+leftPoint.x, (centerPoint.y + leftPoint.y)/2);
-            // | --- (1 - 2*radiusFactor) --- leftLeftControl --- radiusFactor --- leftControl --- radiusFactor --- center --- ...
                 
                 float rrCtrlY = 0.0;
                 float llCtrlY = 0.0;

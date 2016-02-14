@@ -28,13 +28,13 @@
     // gesture recognizer
     lgr = [[UIScreenEdgePanGestureRecognizer alloc] init];
     [lgr addTarget:self action:@selector(handleLeftPan:)];
-    lgr.edges = LEFT;
+    lgr.edges = UIRectEdgeLeft;
     [self.view addGestureRecognizer:lgr];
     
     
     rgr = [[UIScreenEdgePanGestureRecognizer alloc] init];
     [rgr addTarget:self action:@selector(handleRightPan:)];
-    rgr.edges = RIGHT;
+    rgr.edges = UIRectEdgeRight;
     [self.view addGestureRecognizer:rgr];
 }
 
