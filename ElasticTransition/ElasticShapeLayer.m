@@ -11,9 +11,6 @@
 
 @interface ElasticShapeLayer ()
 
-
-
-
 @end
 
 @implementation ElasticShapeLayer
@@ -24,7 +21,7 @@
     
     if(self){
         
-        self.edge           = [[Edge alloc] initWithEdgeType:BOTTOM];
+        self.edge           = BOTTOM;
         self.dragPoint      = CGPointZero;
         self.radiusFactor   = 0.25;
         
@@ -47,7 +44,7 @@
     
     if(self){
         
-        self.edge           = [[Edge alloc] initWithEdgeType:BOTTOM];
+        self.edge           = BOTTOM;
         self.dragPoint      = CGPointZero;
         self.radiusFactor   = 0.25;
     }
@@ -55,7 +52,7 @@
     return self;
 }
 
--(void)setEdge:(Edge *)edge{
+-(void)setEdge:(Edge)edge{
     
     self.path = [self currentPath];
 }
@@ -80,7 +77,7 @@
     CGPoint leftPoint, rightPoint, bottomRightPoint, bottomLeftPoint;
     
     
-    switch (self.edge.type){
+    switch (self.edge){
     case TOP:
             leftPoint = CGPointMake(0 - MAX(0,self.bounds.size.width/2 - self.dragPoint.x), CGRectGetMinY(self.bounds));
             rightPoint = CGPointMake(self.bounds.size.width + MAX(0,self.dragPoint.x-self.bounds.size.width/2), CGRectGetMinY(self.bounds));
@@ -117,7 +114,7 @@
         
         CGPoint rightControl, leftControl;
         
-        switch (self.edge.type){
+        switch (self.edge){
             case TOP:
             case BOTTOM:
                 rightControl = CGPointMake((rightPoint.x - centerPoint.x)*0.8+centerPoint.x, centerPoint.y);
@@ -140,7 +137,7 @@
         
         CGPoint rightControl, leftControl, rightRightControl, leftLeftControl;
         
-        switch (self.edge.type){
+        switch (self.edge){
                 
         case TOP:
                 centerPoint.y += (centerPoint.y - CGRectGetMinY(self.bounds))/4;
@@ -152,7 +149,7 @@
                 centerPoint.x += (centerPoint.x - CGRectGetMaxX(self.bounds))/4;
         }
         
-        switch (self.edge.type){
+        switch (self.edge){
                 
             case TOP:
             case BOTTOM:

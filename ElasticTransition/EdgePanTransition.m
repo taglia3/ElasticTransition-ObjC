@@ -9,24 +9,20 @@
 #import "EdgePanTransition.h"
 
 
-
 @interface EdgePanTransition () <UIViewControllerAnimatedTransitioning, UIViewControllerInteractiveTransitioning,UIViewControllerTransitioningDelegate, UINavigationControllerDelegate>
-
-
 
 @property (nonatomic) UIView *toView;
 @property (nonatomic) UIView *fromView;
 @property (nonatomic) UIViewController *toViewController;
 @property (nonatomic) UIViewController *fromViewController;
-
 @property (nonatomic) UIPanGestureRecognizer *currentPanGR;
-
-
-
 
 @end
 
+
 @implementation EdgePanTransition
+
+@synthesize currentPanGR;
 
 
 -(id)init{
@@ -36,16 +32,19 @@
     if (self) {
         
         self.panThreshold = 0.2;
-        self.edge = [[Edge alloc] initWithEdgeType:RIGHT];
-        self.transitioning = false;
-        self.presenting = true;
-        self.interactive = false;
-        self.navigation = false;
+        
+        self.edge   = RIGHT;
+        
+        NSLog(@"[EdgePanTransition] %@" , [HelperFunctions typeToStringOfEdge:self.edge]);
+        
+        self.transitioning  = NO;
+        self.presenting     = YES;
+        self.interactive    = NO;
+        self.navigation     = NO;
         
         
-        self.translation = CGPointZero;
-        self.dragPoint = CGPointZero;
-
+        self.translation    = CGPointZero;
+        self.dragPoint      = CGPointZero;
     }
     
     return self;
@@ -54,7 +53,6 @@
 -(CGSize)size{
     return self.container.bounds.size;
 }
-
 
 -(UIView*)frontView{
     return self.frontViewController.view;
@@ -239,7 +237,7 @@
         
         CGFloat progress;
         
-        switch (self.edge.type){
+        switch (self.edge){
             
         case LEFT:
                 progress =  translation.x / pan.view.frame.size.width;

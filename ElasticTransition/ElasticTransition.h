@@ -112,6 +112,8 @@ typedef NS_ENUM(int,ElasticTransitionBackgroundTransform){
 @property (nonatomic, weak) id<ElasticMenuTransitionDelegate> delegate;
 
 
+-(NSString*)transformTypeToString;
+
 @end
 
 
@@ -119,9 +121,9 @@ typedef NS_ENUM(int,ElasticTransitionBackgroundTransform){
 @protocol ElasticMenuTransitionDelegate
 
 @optional
-@property (nonatomic, readonly) CGFloat contentLength;
-@property (nonatomic, readonly) BOOL dismissByBackgroundTouch;
-@property (nonatomic, readonly) BOOL dismissByBackgroundDrag;
-@property (nonatomic, readonly) BOOL dismissByForegroundDrag;
+@property (nonatomic) CGFloat contentLength;
+@property (nonatomic) BOOL dismissByBackgroundTouch;
+@property (nonatomic) BOOL dismissByBackgroundDrag;
+@property (nonatomic) BOOL dismissByForegroundDrag;
 
 @end

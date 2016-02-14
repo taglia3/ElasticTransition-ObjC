@@ -6,7 +6,6 @@
 //  Copyright © 2016 Matteo Tagliafico. All rights reserved.
 //
 
-#import "Edge.h"
 #import "PointExtension.h"
 #import "DynamicItem.h"
 #import "CustomSnapBehavior.h"

@@ -36,7 +36,7 @@
 
 @implementation ElasticTransition
 
-@synthesize damping;
+@synthesize damping, transformType;
 
 -(id)init{
     
@@ -53,6 +53,8 @@
         self.shadowRadius = 50.0;
         
         self.transformType = TRANSLATEMID;
+        
+        NSLog(@"[ElasticTransition] %@", [self transformTypeToString]);
         
         self.useTranlation = TRUE;
         
@@ -86,7 +88,7 @@
         self.navigationExitPanGestureRecognizer.delegate = self;
         [self.navigationExitPanGestureRecognizer addTarget:self action:@selector(handleOffstagePan:)];
         
-        self.navigationExitPanGestureRecognizer.edges = [self.edge oppositeAndToUIRectEdge];
+        self.navigationExitPanGestureRecognizer.edges = [HelperFunctions oppositeAndToUIRectEdgeOfEdge:self.edge];
         
         [self.shadowView.layer addSublayer: self.shadowMaskLayer];
         
@@ -104,13 +106,17 @@
 }
 
 
--(void)setEdge:(Edge *)edge{
+-(void)setEdge:(Edge)edge{
     
-    self.navigationExitPanGestureRecognizer.edges = [edge oppositeAndToUIRectEdge];
+    [super setEdge:edge];
+    
+    self.navigationExitPanGestureRecognizer.edges = [HelperFunctions oppositeAndToUIRectEdgeOfEdge:edge];
     
 }
 
--(void)setTransformType:(ElasticTransitionBackgroundTransform)transformType{
+-(void)setTransformType:(ElasticTransitionBackgroundTransform)aTransformType{
+    
+    self->transformType= aTransformType;
     
     if (self.container != nil){
         
@@ -138,7 +144,7 @@
         p = self.presenting;
     }
     
-    switch (self.edge.type){
+    switch (self.edge){
         case LEFT:
             return p ? CGPointMake(self.contentLength, self.dragPoint.y) : CGPointMake(0, self.dragPoint.y);
         case RIGHT:
@@ -155,7 +161,7 @@
     
     CGPoint initialPoint = [self finalPoint: [NSNumber numberWithBool:self.presenting]];
     
-    switch (self.edge.type){
+    switch (self.edge){
         case LEFT:
         case RIGHT:
             return CGPointMake(MAX(0,MIN(self.size.width,initialPoint.x+self.translation.x)), initialPoint.y);
@@ -252,7 +258,7 @@
         
         CGPoint p = (self.useTranlation && self.interactive) ? [self translatedPoint] : self.dragPoint;
         
-        switch (self.edge.type){
+        switch (self.edge){
             case LEFT:
             {
                 self.cb.point = CGPointMake(p.x < self.contentLength ? p.x : (p.x - self.contentLength)/3.0 + self.contentLength, self.dragPoint.y);
@@ -297,7 +303,7 @@
     
     CGFloat progress = 1.0 - (CGPointDistance(self.lc.center, finalPoint) / CGPointDistance(initialPoint, finalPoint));
     
-    switch (self.edge.type){
+    switch (self.edge){
             
         case LEFT:
         {
@@ -341,8 +347,8 @@
             {
                 CGFloat scale = MIN(1, 1.0 - 0.2 * progress);
                 CGFloat rotate = MAX(0, 0.15 * progress);
-                CGFloat rotateY = self.edge.type == LEFT ? -1.0 : self.edge.type == RIGHT ? 1.0 : 0;
-                CGFloat rotateX = self.edge.type == BOTTOM ? -1.0 : self.edge.type == TOP ? 1.0 : 0;
+                CGFloat rotateY = self.edge == LEFT ? -1.0 : self.edge == RIGHT ? 1.0 : 0;
+                CGFloat rotateX = self.edge == BOTTOM ? -1.0 : self.edge == TOP ? 1.0 : 0;
                 
                 CATransform3D t = CATransform3DMakeScale(scale, scale, 1);
                 t.m34 = 1.0 / -500;
@@ -366,7 +372,7 @@
                 
                 
                 
-                switch (self.edge.type){
+                switch (self.edge){
                     case LEFT:
                     {
                         if ([minFunctionType isEqualToString:@"1"]) {
@@ -432,7 +438,7 @@
     // 1. get content length
     [self.frontView layoutIfNeeded];
     
-    switch (self.edge.type){
+    switch (self.edge){
         case LEFT:
         case RIGHT:
             self.contentLength = self.frontView.bounds.size.width;
@@ -462,7 +468,7 @@
         self.shadowMaskLayer.fillColor = self.frontView.backgroundColor.CGColor;
     }
     
-    self.shadowMaskLayer.edge = [self.edge opposite];
+    self.shadowMaskLayer.edge = [HelperFunctions oppositeOfEdge:self.edge];
     self.shadowMaskLayer.radiusFactor = self.radiusFactor;
     [self.container addSubview:self.shadowView];
     
@@ -475,7 +481,7 @@
     
     // 4. setup front view
     CGRect rect = self.container.bounds;
-    switch (self.edge.type){
+    switch (self.edge){
         case LEFT:
         case RIGHT:
             rect.size.width = self.contentLength;
@@ -694,5 +700,21 @@
     return (ABS(self.damping - 0.2) * 0.5 + 0.6);
 }
 
+
+-(NSString*)transformTypeToString{
+    
+    switch (self.transformType) {
+        case NONE:
+            return @"NONE";
+        case ROTATE:
+            return @"ROTATE";
+        case TRANSLATEMID:
+            return @"TRANSLATEMID";
+        case TRANSLATEPULL:
+            return @"TRANSLATEPULL";
+        case TRANSLATEPUSH:
+            return @"TRANSLATEPUSH";
+    }
+}
 
 @end

@@ -323,7 +323,7 @@
         <!--Menu View Controller-->
         <scene sceneID="BD5-BR-yiW">
             <objects>
-                <viewController id="cLk-Uq-u4o" customClass="MenuViewController" customModule="ElasticTransistionExample" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="cLk-Uq-u4o" customClass="MenuViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="c0r-Pa-rwu"/>
                         <viewControllerLayoutGuide type="bottom" id="iR8-Kt-S45"/>
@@ -380,8 +380,8 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="codeView2" destination="0HC-uL-9hX" id="mTL-AO-xfC"/>
-                        <outlet property="textView" destination="Rce-F2-1X6" id="RWa-gZ-xl1"/>
+                        <outlet property="codeView2" destination="0HC-uL-9hX" id="VDn-DL-56b"/>
+                        <outlet property="textView" destination="Rce-F2-1X6" id="eBv-xP-eXl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yin-8d-km3" userLabel="First Responder" sceneMemberID="firstResponder"/>

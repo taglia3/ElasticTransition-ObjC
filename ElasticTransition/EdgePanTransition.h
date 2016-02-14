@@ -7,12 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Edge.h"
+#import "Utils.h"
 
 @interface EdgePanTransition : NSObject
 
+@property (nonatomic) Edge edge;
+
 @property (nonatomic) CGFloat panThreshold;
-@property (nonatomic) Edge *edge;
 @property (nonatomic) UIView *container;
 
 @property (nonatomic) CGSize size;

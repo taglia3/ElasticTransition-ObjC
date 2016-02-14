@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ElasticTransition.h"
 
-@interface MenuViewController : UIViewController
+@interface MenuViewController : UIViewController <ElasticMenuTransitionDelegate>
+
+@property (nonatomic, weak) IBOutlet UITextView *textView;
+@property (nonatomic, weak) IBOutlet UITextView *codeView2;
 
 @end

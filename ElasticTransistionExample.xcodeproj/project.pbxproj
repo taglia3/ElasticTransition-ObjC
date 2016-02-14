@@ -21,7 +21,6 @@
 		BAC47E3B1C6C98BD00F8E005 /* ElasticShapeLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = BAC47E3A1C6C98BD00F8E005 /* ElasticShapeLayer.m */; };
 		BAC47E3E1C6C98F000F8E005 /* EdgePanTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = BAC47E3D1C6C98F000F8E005 /* EdgePanTransition.m */; };
 		BAC47E441C6C999900F8E005 /* ElasticTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = BAC47E431C6C999900F8E005 /* ElasticTransition.m */; };
-		BAC47E481C6CA24E00F8E005 /* Edge.m in Sources */ = {isa = PBXBuildFile; fileRef = BAC47E471C6CA24E00F8E005 /* Edge.m */; };
 		BAC47E4D1C6CB11600F8E005 /* DynamicItem.m in Sources */ = {isa = PBXBuildFile; fileRef = BAC47E4C1C6CB11600F8E005 /* DynamicItem.m */; };
 		BAC47E501C6CB3DE00F8E005 /* CustomSnapBehavior.m in Sources */ = {isa = PBXBuildFile; fileRef = BAC47E4F1C6CB3DE00F8E005 /* CustomSnapBehavior.m */; };
 /* End PBXBuildFile section */
@@ -53,8 +52,6 @@
 		BAC47E3D1C6C98F000F8E005 /* EdgePanTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EdgePanTransition.m; path = ElasticTransition/EdgePanTransition.m; sourceTree = SOURCE_ROOT; };
 		BAC47E421C6C999900F8E005 /* ElasticTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ElasticTransition.h; path = ElasticTransition/ElasticTransition.h; sourceTree = SOURCE_ROOT; };
 		BAC47E431C6C999900F8E005 /* ElasticTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ElasticTransition.m; path = ElasticTransition/ElasticTransition.m; sourceTree = SOURCE_ROOT; };
-		BAC47E461C6CA24E00F8E005 /* Edge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Edge.h; path = ElasticTransition/Utils/Edge.h; sourceTree = SOURCE_ROOT; };
-		BAC47E471C6CA24E00F8E005 /* Edge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Edge.m; path = ElasticTransition/Utils/Edge.m; sourceTree = SOURCE_ROOT; };
 		BAC47E491C6CA63E00F8E005 /* Utils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Utils.h; path = ElasticTransition/Utils/Utils.h; sourceTree = SOURCE_ROOT; };
 		BAC47E4A1C6CA88600F8E005 /* PointExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PointExtension.h; path = ElasticTransition/Utils/PointExtension.h; sourceTree = SOURCE_ROOT; };
 		BAC47E4B1C6CB11600F8E005 /* DynamicItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DynamicItem.h; path = ElasticTransition/Utils/DynamicItem.h; sourceTree = SOURCE_ROOT; };
@@ -98,12 +95,12 @@
 				BAC47DFA1C6C09D200F8E005 /* AppDelegate.m */,
 				BAC47E2A1C6C978700F8E005 /* InitialViewController.h */,
 				BAC47E2B1C6C978700F8E005 /* InitialViewController.m */,
+				BAC47E331C6C97CD00F8E005 /* MenuViewController.h */,
+				BAC47E341C6C97CD00F8E005 /* MenuViewController.m */,
 				BAC47E2D1C6C979600F8E005 /* AboutViewController.h */,
 				BAC47E2E1C6C979600F8E005 /* AboutViewController.m */,
 				BAC47E301C6C97B600F8E005 /* OptionsViewController.h */,
 				BAC47E311C6C97B600F8E005 /* OptionsViewController.m */,
-				BAC47E331C6C97CD00F8E005 /* MenuViewController.h */,
-				BAC47E341C6C97CD00F8E005 /* MenuViewController.m */,
 				BAC47E361C6C97F900F8E005 /* NavigationExampleViewController.h */,
 				BAC47E371C6C97F900F8E005 /* NavigationExampleViewController.m */,
 				BAC47DFF1C6C09D200F8E005 /* Main.storyboard */,
@@ -141,8 +138,6 @@
 			isa = PBXGroup;
 			children = (
 				BAC47E491C6CA63E00F8E005 /* Utils.h */,
-				BAC47E461C6CA24E00F8E005 /* Edge.h */,
-				BAC47E471C6CA24E00F8E005 /* Edge.m */,
 				BAC47E4A1C6CA88600F8E005 /* PointExtension.h */,
 				BAC47E4B1C6CB11600F8E005 /* DynamicItem.h */,
 				BAC47E4C1C6CB11600F8E005 /* DynamicItem.m */,
@@ -228,7 +223,6 @@
 				BAC47E2C1C6C978700F8E005 /* InitialViewController.m in Sources */,
 				BAC47E3B1C6C98BD00F8E005 /* ElasticShapeLayer.m in Sources */,
 				BAC47E351C6C97CD00F8E005 /* MenuViewController.m in Sources */,
-				BAC47E481C6CA24E00F8E005 /* Edge.m in Sources */,
 				BAC47E381C6C97F900F8E005 /* NavigationExampleViewController.m in Sources */,
 				BAC47E441C6C999900F8E005 /* ElasticTransition.m in Sources */,
 				BA70DEB91C6F7F10008B5DB4 /* HelperFunctions.m in Sources */,

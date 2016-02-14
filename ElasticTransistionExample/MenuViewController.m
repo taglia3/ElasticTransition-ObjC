@@ -14,24 +14,40 @@
 
 @implementation MenuViewController
 
+@synthesize contentLength, dismissByBackgroundDrag, dismissByBackgroundTouch, dismissByForegroundDrag;
+
+
+-(id)initWithCoder:(NSCoder *)aDecoder{
+    
+    self = [super initWithCoder:aDecoder];
+    
+    if (self) {
+        
+        self.contentLength = 320;
+        self.dismissByBackgroundTouch = true;
+        self.dismissByBackgroundDrag = true;
+        self.dismissByForegroundDrag = true;
+    }
+    
+    return self;
+}
+
+
 - (void)viewDidLoad {
+    
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    ElasticTransition *tm = (ElasticTransition*)self.transitioningDelegate;
+    
+    self.textView.text = [NSString stringWithFormat:@"transition.edge = %@\ntransition.transformType = %@\ntransition.sticky = %@\ntransition.showShadow = %@", [HelperFunctions typeToStringOfEdge:tm.edge], [tm transformTypeToString], tm.sticky ? @"YES" : @"NO", tm.showShadow ? @"YES" : @"NO"];
+    
+    self.codeView2.text =[NSString stringWithFormat:@"Codice di inizializzazione"];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+
+-(UIStatusBarStyle)preferredStatusBarStyle{
+    return UIStatusBarStyleLightContent;
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

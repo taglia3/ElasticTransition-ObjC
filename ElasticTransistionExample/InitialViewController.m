@@ -24,35 +24,39 @@
 - (void)viewDidLoad {
     
     [super viewDidLoad];
-    
+
     
     // customization
     transition = [[ElasticTransition alloc] init];
-    transition.sticky = true;
-    transition.showShadow = true;
+    transition.sticky = YES;
+    transition.showShadow = YES;
     transition.panThreshold = 0.3;
     transition.transformType = TRANSLATEMID;
     
-    //    transition.overlayColor = UIColor(white: 0, alpha: 0.5)
-    //    transition.shadowColor = UIColor(white: 0, alpha: 0.5)
+    transition.overlayColor = [UIColor colorWithWhite:0 alpha:0.5];
+    transition.shadowColor  = [UIColor colorWithWhite:0 alpha:0.5];
     
     // gesture recognizer
     lgr = [[UIScreenEdgePanGestureRecognizer alloc] init];
     [lgr addTarget:self action:@selector(handlePan:)];
+    lgr.edges = LEFT;
+    [self.view addGestureRecognizer:lgr];
+    
+    
     rgr = [[UIScreenEdgePanGestureRecognizer alloc] init];
     [rgr addTarget:self action:@selector(handleRightPan:)];
-    lgr.edges = LEFT;
     rgr.edges = RIGHT;
-    [self.view addGestureRecognizer:lgr];
     [self.view addGestureRecognizer:rgr];
 }
 
 -(void)handlePan:(UIPanGestureRecognizer*)pan{
     
     if (pan.state == UIGestureRecognizerStateBegan){
-        transition.edge.type = LEFT;
+        
+        transition.edge = LEFT;
         [transition startInteractiveTransitionFromViewController:self SegueIdentifier:@"menu" GestureRecognizer:pan];
     }else{
+        
         [transition updateInteractiveTransitionWithGestureRecognizer:pan];
     }
 }
@@ -60,9 +64,11 @@
 -(void)handleRightPan:(UIPanGestureRecognizer*)pan{
     
     if (pan.state == UIGestureRecognizerStateBegan){
-        transition.edge.type = RIGHT;
+        
+        transition.edge = RIGHT;
         [transition startInteractiveTransitionFromViewController:self SegueIdentifier:@"about" GestureRecognizer:pan];
     }else{
+        
         [transition updateInteractiveTransitionWithGestureRecognizer:pan];
     }
 }
