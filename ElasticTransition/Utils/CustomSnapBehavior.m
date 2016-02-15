@@ -24,6 +24,7 @@
 
 @implementation CustomSnapBehavior
 
+@synthesize point;
 @synthesize ab1, ab2, ab3, ab4;
 
 -(id)init{
@@ -86,7 +87,9 @@
     ab4.damping = damping;
 }
 
--(void)setPoint:(CGPoint)point{
+-(void)setPoint:(CGPoint)aPoint{
+    
+    self->point =aPoint;
     
     [self updatePoints];
 }

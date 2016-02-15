@@ -62,7 +62,7 @@
         self.contentLength  = 0.0;
         self.lastPoint      = CGPointZero;
         
-        self.maskLayer      = [[CALayer alloc]  init];
+       // self.maskLayer      = [[CALayer alloc]  init];
         
         self.useTranlation  = TRUE;
         self.damping        = 0.2f;
@@ -160,8 +160,8 @@
     
     p = presentingIn;
     
-   // NSLog(@"presenting: %@", presentingIn ? @"1" : @"0");
-   // NSLog(@"%@| self %@", p ? @"1" : @"0", self.presenting ? @"Yes" : @"No");
+    NSLog(@"presenting: %@", presentingIn ? @"1" : @"0");
+    NSLog(@"%@| self %@", p ? @"1" : @"0", self.presenting ? @"Yes" : @"No");
     
     switch (self.edge){
         case LEFT:
@@ -315,6 +315,9 @@
                 break;
             }
         }
+        
+        
+        NSLog(@"cb.point:(%.1f,%.1f) | lb.point:(%.1f,%.1f)", self.cb.point.x, self.cb.point.y, self.lb.point.x, self.lb.point.y);
     }
 }
 
@@ -519,20 +522,16 @@
         
     }
     
-    NSLog(@"%@",self.shadowMaskLayer.fillColor);
-    NSLog(@"%@",[HelperFunctions typeToStringOfEdge:self.edge]);
-    NSLog(@"%@",[HelperFunctions typeToStringOfEdge:[HelperFunctions oppositeOfEdge:self.edge]]);
-    
     self.shadowMaskLayer.edge = [HelperFunctions oppositeOfEdge:self.edge];
     self.shadowMaskLayer.radiusFactor = self.radiusFactor;
     [self.container addSubview:self.shadowView];
     
     
     // 3. setup overlay view
-    self.overlayView.frame = self.container.bounds;
-    self.overlayView.backgroundColor = self.overlayColor;
+    self.overlayView.frame              = self.container.bounds;
+    self.overlayView.backgroundColor    = self.overlayColor;
     [self.overlayView addGestureRecognizer:self.backgroundExitPanGestureRecognizer];
-    [self.container addSubview:self.overlayView];
+    //[self.container addSubview:self.overlayView];
     
     // 4. setup front view
     CGRect rect = self.container.bounds;
