@@ -16,8 +16,6 @@ typedef NS_ENUM(int,ElasticTransitionBackgroundTransform){
     TRANSLATEPUSH
 };
 
-@protocol ElasticMenuTransitionDelegate;
-
 @interface ElasticTransition : EdgePanTransition <UIGestureRecognizerDelegate>
 
 /**
@@ -108,14 +106,10 @@ typedef NS_ENUM(int,ElasticTransitionBackgroundTransform){
 
 @property (nonatomic) CGFloat damping;
 
-// - Delegate
-@property (nonatomic, weak) id<ElasticMenuTransitionDelegate> delegate;
-
 
 -(NSString*)transformTypeToString;
 
 @end
-
 
 
 @protocol ElasticMenuTransitionDelegate

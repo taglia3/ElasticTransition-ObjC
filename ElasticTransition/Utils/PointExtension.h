@@ -20,7 +20,7 @@ CGPointTransform(CGPoint p, CGAffineTransform t) {
     return CGPointApplyAffineTransform(p, t);
 }
 
-CG_INLINE float
+CG_INLINE CGFloat
 CGPointDistance(CGPoint p, CGPoint b) {
     return sqrt(pow(p.x-b.x,2)+pow(p.y-b.y,2));
 }

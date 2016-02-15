@@ -44,36 +44,37 @@
     
     if (self) {
         
-        self.radiusFactor = 0.5;
-        self.sticky = TRUE;
+        self.radiusFactor   = 0.5;
+        self.sticky         = TRUE;
         self.containerColor = [UIColor colorWithRed:152.0/255.0 green:174.0/255.0 blue:196.0/255.0 alpha:1.0];
-        self.overlayColor = [UIColor colorWithRed:152.0/255.0 green:174.0/255.0 blue:196.0/255.0 alpha:0.5];
-        self.showShadow = FALSE;
-        self.shadowColor = [UIColor colorWithRed:100.0/255.0 green:122.0/255.0 blue:144.0/255.0 alpha:0.5];
-        self.shadowRadius = 50.0;
+        self.overlayColor   = [UIColor colorWithRed:152.0/255.0 green:174.0/255.0 blue:196.0/255.0 alpha:0.5];
+        self.showShadow     = FALSE;
+        self.shadowColor    = [UIColor colorWithRed:100.0/255.0 green:122.0/255.0 blue:144.0/255.0 alpha:0.5];
+        self.shadowRadius   = 50.0;
         
-        self.transformType = TRANSLATEMID;
+        self.transformType  = TRANSLATEMID;
         
         NSLog(@"[ElasticTransition] %@", [self transformTypeToString]);
+
+        self.startingPoint = CGPointZero;
         
-        self.useTranlation = TRUE;
-        
-        self.damping = 0.2f;
-        
+    
         self.contentLength = 0.0;
-        
         self.lastPoint = CGPointZero;
         
         self.maskLayer = [[CALayer alloc]  init];
         
+        self.useTranlation  = TRUE;
+        self.damping        = 0.2f;
+        
         self.stickDistance = self.sticky ? self.contentLength*self.panThreshold : 0.0;
         
-        self.overlayView = [[UIView alloc] init];
-        self.shadowView = [[UIView alloc] init];
+        self.overlayView    = [[UIView alloc] init];
+        self.shadowView     = [[UIView alloc] init];
         
         self.shadowMaskLayer = [[ElasticShapeLayer alloc] init];
         
-        
+        self.pushedControllers                  = [[NSMutableArray alloc] init];
         self.backgroundExitPanGestureRecognizer = [[UIPanGestureRecognizer alloc] init];
         self.foregroundExitPanGestureRecognizer = [[UIPanGestureRecognizer alloc] init];
         self.navigationExitPanGestureRecognizer = [[UIScreenEdgePanGestureRecognizer alloc] init];
@@ -105,13 +106,16 @@
     return self;
 }
 
+-(void)transformWithProgress:(CGFloat)progress AndView:(UIView*)view{
+    
+}
+
 
 -(void)setEdge:(Edge)edge{
     
     [super setEdge:edge];
     
     self.navigationExitPanGestureRecognizer.edges = [HelperFunctions oppositeAndToUIRectEdgeOfEdge:edge];
-    
 }
 
 -(void)setTransformType:(ElasticTransitionBackgroundTransform)aTransformType{
@@ -129,18 +133,35 @@
     self->damping = MIN(1.0, MAX(0.0, aDamping));
 }
 
-
-- (CGPoint)finalPoint:(NSNumber*)presentingIn{
+- (CGPoint)finalPoint{
     
     static BOOL p;
     
-    if (presentingIn != nil) {
-        
-        p = p;
-    }else{
-        
-        p = self.presenting;
+    p = TRUE;
+    
+   // NSLog(@"presenting è nil");
+   // NSLog(@"%@| self %@", p ? @"1" : @"0", self.presenting ? @"Yes" : @"No");
+    
+    switch (self.edge){
+        case LEFT:
+            return p ? CGPointMake(self.contentLength, self.dragPoint.y) : CGPointMake(0, self.dragPoint.y);
+        case RIGHT:
+            return p ? CGPointMake(self.size.width - self.contentLength, self.dragPoint.y) : CGPointMake(self.size.width, self.dragPoint.y);
+        case BOTTOM:
+            return p ? CGPointMake(self.dragPoint.x, self.size.height - self.contentLength) : CGPointMake(self.dragPoint.x, self.size.height);
+        case TOP:
+            return p ? CGPointMake(self.dragPoint.x, self.contentLength) : CGPointMake(self.dragPoint.x, 0);
     }
+}
+
+- (CGPoint)finalPoint:(BOOL)presentingIn{
+    
+    BOOL p;
+    
+    p = presentingIn;
+    
+   // NSLog(@"presenting: %@", presentingIn ? @"1" : @"0");
+   // NSLog(@"%@| self %@", p ? @"1" : @"0", self.presenting ? @"Yes" : @"No");
     
     switch (self.edge){
         case LEFT:
@@ -156,21 +177,21 @@
 
 -(CGPoint) translatedPoint{
     
-    
-    CGPoint initialPoint = [self finalPoint: [NSNumber numberWithBool:self.presenting]];
+    CGPoint initialPoint = [self finalPoint: !self.presenting];
     
     switch (self.edge){
         case LEFT:
         case RIGHT:
-            return CGPointMake(MAX(0,MIN(self.size.width,initialPoint.x+self.translation.x)), initialPoint.y);
+            return CGPointMake(MAX(0,MIN(self.size.width,initialPoint.x + self.translation.x)), initialPoint.y);
         case TOP:
         case BOTTOM:
-            return CGPointMake(initialPoint.x, MAX(0,MIN(self.size.height,initialPoint.y+self.translation.y)));
+            return CGPointMake(initialPoint.x, MAX(0,MIN(self.size.height,initialPoint.y + self.translation.y)));
     }
 }
 
 
 -(BOOL) gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer{
+    
     return  !self.transitioning;
 }
 
@@ -193,6 +214,8 @@
                 
                 UIViewController <ElasticMenuTransitionDelegate> *vcc = (UIViewController <ElasticMenuTransitionDelegate> *) self.frontViewController;
                 return  vcc.dismissByBackgroundDrag;
+            }else{
+                return FALSE;
             }
             
         }else if (gestureRecognizer == self.foregroundExitPanGestureRecognizer){
@@ -201,6 +224,8 @@
                 
                 UIViewController <ElasticMenuTransitionDelegate> *vcc = (UIViewController <ElasticMenuTransitionDelegate> *) self.frontViewController;
                 return  vcc.dismissByForegroundDrag;
+            }else{
+                return FALSE;
             }
         }
         
@@ -224,10 +249,10 @@
                     self.navigation = TRUE;
                 }
                 [self dismissInteractiveTransitionViewController:vc GestureRecognizer:pan Completion:nil];
-                
+                break;
             default:
-                
                 [self updateInteractiveTransitionWithGestureRecognizer:pan];
+                break;
         }
     }
 }
@@ -259,9 +284,7 @@
     
     if (self.cb != nil && self.lb != nil){
         
-        CGPoint initialPoint = [self finalPoint:[NSNumber numberWithBool:!self.presenting]];
-        
-        
+        CGPoint initialPoint = [self finalPoint: !self.presenting];
         
         CGPoint p = (self.useTranlation && self.interactive) ? [self translatedPoint] : self.dragPoint;
         
@@ -303,16 +326,18 @@
         return;
     }
     
-    self.backView.layer.zPosition = 0;
-    self.overlayView.layer.zPosition = 298;
-    self.shadowView.layer.zPosition = 299;
-    self.frontView.layer.zPosition = 300;
+    self.backView.layer.zPosition       = 0;
+    self.overlayView.layer.zPosition    = 298;
+    self.shadowView.layer.zPosition     = 299;
+    self.frontView.layer.zPosition      = 300;
     
-    CGPoint finalPoint = [self finalPoint:[NSNumber numberWithBool:YES]];
-    CGPoint initialPoint = [self finalPoint:[NSNumber numberWithBool:NO]];
+    CGPoint finalPoint      = [self finalPoint:YES];
+    CGPoint initialPoint    = [self finalPoint:NO];
     
     
     CGFloat progress = 1.0 - (CGPointDistance(self.lc.center, finalPoint) / CGPointDistance(initialPoint, finalPoint));
+    
+    NSLog(@"Progress: %f", progress);
     
     switch (self.edge){
             
@@ -352,7 +377,7 @@
     self.shadowMaskLayer.dragPoint = [self.shadowMaskLayer convertPoint:self.cc.center fromLayer:self.container.layer];
     
     
-    if (0){
+    if (false){
         
         //  transform!(progress: progress, view: backView)
     }else{
@@ -382,9 +407,6 @@
                 
                 NSString *minFunctionType = self.transformType == TRANSLATEMID ?  @"1" : self.transformType == TRANSLATEPULL ?  @"3" :  @"2";
                 NSString *maxFunctionType = self.transformType == TRANSLATEMID ?  @"1" : self.transformType == TRANSLATEPULL ?  @"2" :  @"3";
-                
-                
-                
                 
                 
                 
@@ -432,7 +454,6 @@
                             y = MAX(self.cc.center.y, self.lc.center.y);
                         }
                         break;
-                        
                     }
                 }
                 self.backView.layer.transform = CATransform3DMakeTranslation(x, y, 0);
@@ -440,6 +461,7 @@
             }
             default:
                 self.backView.layer.transform = CATransform3DIdentity;
+                break;
         }
     }
     
@@ -448,7 +470,6 @@
     [self updateShadow:progress];
     
     [self.transitionContext updateInteractiveTransition:(self.presenting ? progress : 1.0 - progress)];
-    
 }
 
 
@@ -476,8 +497,6 @@
         CGFloat vcl = vc.contentLength;
         self.contentLength = vcl;
     }
-    
-    
     
     
     
@@ -567,7 +586,7 @@
         
         __weak typeof(self) weakSelf = self;
         
-        self.lb.action = ^void{
+        self.lb.action = ^{
             
             if ((weakSelf.animator != nil) && ([weakSelf.animator elapsedTime] >= duration)) {
                 
@@ -579,15 +598,15 @@
         };
         
         
-        if(self.startingPoint.x == 0 && self.startingPoint.y == 0){
+        if(self.startingPoint.x != 0 || self.startingPoint.y != 0){
             
-            self.dragPoint = self.dragPoint;
+            self.dragPoint = self.startingPoint;
         }else{
             
             self.dragPoint = self.container.center;
         }
         
-        self.dragPoint = [self finalPoint:nil];
+        self.dragPoint = [self finalPoint];
         [self update];
     }
 }
@@ -616,7 +635,7 @@
 -(void)setupDynamics{
     
     self.animator = [[UIDynamicAnimator alloc] initWithReferenceView:self.container];
-    CGPoint initialPoint = [self finalPoint:[NSNumber numberWithBool:!self.presenting ]];
+    CGPoint initialPoint = [self finalPoint:!self.presenting];
     
     self.cc = [[DynamicItem alloc] initWithCenter:initialPoint];
     self.lc = [[DynamicItem alloc] initWithCenter:initialPoint];
@@ -632,7 +651,7 @@
     
     __weak typeof(self) weakSelf = self;
     
-    self.cb.action = ^void{
+    self.cb.action = ^{
         [weakSelf updateShape];
     };
     
@@ -667,7 +686,7 @@
     
     [super cancelInteractiveTransition];
     
-    CGPoint finalPoint = [self finalPoint:[NSNumber numberWithBool:!self.presenting ]];
+    CGPoint finalPoint = [self finalPoint:!self.presenting];
     
     self.cb.point = finalPoint;
     self.lb.point = finalPoint;
@@ -675,7 +694,7 @@
     __weak typeof(self) weakSelf = self;
     
     
-    self.lb.action = ^void{
+    self.lb.action = ^{
         
         if (CGPointDistance(finalPoint, weakSelf.cc.center) < 1 && CGPointDistance(finalPoint, weakSelf.lc.center) < 1 && CGPointDistance(weakSelf.lastPoint, weakSelf.cc.center) < 0.05){
             
@@ -696,14 +715,14 @@
     
     [super finishInteractiveTransition];
     
-    CGPoint finalPoint = [self finalPoint:nil];
+    CGPoint finalPoint = [self finalPoint];
     
     self.cb.point = finalPoint;
     self.lb.point = finalPoint;
     
     __weak typeof(self) weakSelf = self;
     
-    self.lb.action = ^void{
+    self.lb.action = ^{
         
         if (CGPointDistance(finalPoint, weakSelf.cc.center) < 1 && CGPointDistance(finalPoint, weakSelf.lc.center) < 1 && CGPointDistance(weakSelf.lastPoint, weakSelf.cc.center) < 0.05){
             
@@ -721,8 +740,8 @@
 
 -(BOOL)endInteractiveTransition{
     
-    CGPoint finalPoint = [self finalPoint:nil];
-    CGPoint initialPoint = [self finalPoint:[NSNumber numberWithBool:!self.presenting ]];
+    CGPoint finalPoint      = [self finalPoint];
+    CGPoint initialPoint    = [self finalPoint:!self.presenting];
     
     CGPoint p = (self.useTranlation && self.interactive) ? [self translatedPoint] : self.dragPoint;
     
