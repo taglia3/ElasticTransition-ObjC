@@ -1,7 +1,7 @@
-# ElasticTransition ObjC Version (Under Dev)
+# ElasticTransition ObjC Version
 This is the Objective-C Version of Elastic Transition written in Swift by lkzhao https://github.com/lkzhao/ElasticTransition
 
-A UIKit custom modal transition that simulates an elastic drag. Written in Objective-C.
+A UIKit custom modal transition that simulates an elastic drag. Written in Objective-C. Feel free to contribute!
 
 ![demo](https://github.com/lkzhao/ElasticTransition/blob/master/imgs/demo.gif?raw=true)
 
