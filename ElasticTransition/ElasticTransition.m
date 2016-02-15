@@ -37,6 +37,7 @@
 @implementation ElasticTransition
 
 @synthesize damping, transformType;
+@synthesize contentLength;
 
 -(id)init{
     
@@ -66,8 +67,6 @@
         
         self.useTranlation  = TRUE;
         self.damping        = 0.2f;
-        
-        self.stickDistance = self.sticky ? self.contentLength * self.panThreshold : 0.0;
         
         self.overlayView    = [[UIView alloc] init];
         self.shadowView     = [[UIView alloc] init];
@@ -108,6 +107,15 @@
 
 -(void)transformWithProgress:(CGFloat)progress AndView:(UIView*)view{
     
+}
+
+-(void)setContentLength:(CGFloat)aContentLength{
+    
+    self->contentLength = aContentLength;
+    
+    self.stickDistance = self.sticky ? self.contentLength * self.panThreshold : 0.0;
+    
+    NSLog(@"stickDistance: %f", self.stickDistance);
 }
 
 
@@ -378,7 +386,6 @@
     }
     self.shadowMaskLayer.dragPoint = [self.shadowMaskLayer convertPoint:self.cc.center fromLayer:self.container.layer];
     
-    
     if (false){
         
         //  transform!(progress: progress, view: backView)
@@ -387,8 +394,13 @@
         switch (self.transformType){
             case ROTATE:
             {
-                CGFloat scale = MIN(1, 1.0 - 0.2 * progress);
+                NSLog(@"progress: %f", progress);
+                
+                CGFloat scale = MIN(1.0, 1.0 - 0.2 * progress);
                 CGFloat rotate = MAX(0, 0.15 * progress);
+                
+                NSLog(@"scale: %f | rotate: %f", scale, rotate);
+                
                 CGFloat rotateY = self.edge == LEFT ? -1.0 : self.edge == RIGHT ? 1.0 : 0;
                 CGFloat rotateX = self.edge == BOTTOM ? -1.0 : self.edge == TOP ? 1.0 : 0;
                 
@@ -466,12 +478,13 @@
                 break;
         }
     }
-    
+
     self.overlayView.alpha = progress;
     
     [self updateShadow:progress];
     
     [self.transitionContext updateInteractiveTransition:(self.presenting ? progress : 1.0 - progress)];
+ 
 }
 
 
@@ -499,7 +512,6 @@
         CGFloat vcl = vc.contentLength;
         self.contentLength = vcl;
     }
-    
     
     
     // 2. setup shadow and background view

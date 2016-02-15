@@ -74,9 +74,9 @@
     
     self->radiusFactor = aRadiusFactor;
     
-    if (self.radiusFactor < 0) {
+    if (self.radiusFactor < 0.0) {
         
-        self->radiusFactor = 0;
+        self->radiusFactor = 0.0;
     }
 }
 
@@ -116,6 +116,12 @@
             break;
     }
     
+    /*
+    NSLog(@"leftPoint :(%.1f,%.1f)", leftPoint.x, leftPoint.y);
+    NSLog(@"rightPoint :(%.1f,%.1f)", rightPoint.x, rightPoint.y);
+    NSLog(@"bottomRightPoint :(%.1f,%.1f)", bottomRightPoint.x, bottomRightPoint.y);
+    NSLog(@"bottomLeftPoint :(%.1f,%.1f)", bottomLeftPoint.x, bottomLeftPoint.y);
+    */
     
     UIBezierPath *shapePath = [UIBezierPath new];
     

@@ -24,7 +24,7 @@
 
 @implementation CustomSnapBehavior
 
-@synthesize point;
+@synthesize point, damping, frequency;
 @synthesize ab1, ab2, ab3, ab4;
 
 -(id)init{
@@ -40,7 +40,7 @@
     return self;
 }
 
--(id)initWithItem:(id <UIDynamicItem>)item Point:(CGPoint)point{
+-(id)initWithItem:(id <UIDynamicItem>)item Point:(CGPoint)aPoint{
     
     self = [super init];
     
@@ -49,13 +49,13 @@
         self.item = item;
         self.point =point;
         
-        ab1 = [[UIAttachmentBehavior alloc] initWithItem:item attachedToAnchor:point];
+        ab1 = [[UIAttachmentBehavior alloc] initWithItem:item attachedToAnchor:aPoint];
         [self addChildBehavior:ab1];
-        ab2 = [[UIAttachmentBehavior alloc] initWithItem:item attachedToAnchor:point];
+        ab2 = [[UIAttachmentBehavior alloc] initWithItem:item attachedToAnchor:aPoint];
         [self addChildBehavior:ab2];
-        ab3 = [[UIAttachmentBehavior alloc] initWithItem:item attachedToAnchor:point];
+        ab3 = [[UIAttachmentBehavior alloc] initWithItem:item attachedToAnchor:aPoint];
         [self addChildBehavior:ab3];
-        ab4 = [[UIAttachmentBehavior alloc] initWithItem:item attachedToAnchor:point];
+        ab4 = [[UIAttachmentBehavior alloc] initWithItem:item attachedToAnchor:aPoint];
         [self addChildBehavior:ab4];
         
         ab1.length = 50;
@@ -71,7 +71,9 @@
 }
 
 
-- (void) setFrequency:(CGFloat)frequency{
+- (void) setFrequency:(CGFloat)aFrequency{
+    
+    self->frequency = aFrequency;
     
     ab1.frequency = frequency;
     ab2.frequency = frequency;
@@ -79,7 +81,9 @@
     ab4.frequency = frequency;
 }
 
-- (void) setDamping:(CGFloat)damping{
+- (void) setDamping:(CGFloat)aDamping{
+    
+     self->damping = aDamping;
     
     ab1.damping = damping;
     ab2.damping = damping;

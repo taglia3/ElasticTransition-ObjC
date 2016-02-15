@@ -32,8 +32,8 @@
     
     transition.sticky           = YES;
     transition.showShadow       = YES;
-    transition.panThreshold     = 0.3;
-    transition.transformType    = TRANSLATEMID;
+    transition.panThreshold     = 0.4;
+    transition.transformType    = ROTATE;
     transition.overlayColor     = [UIColor colorWithWhite:0 alpha:0.5];
     transition.shadowColor      = [UIColor colorWithWhite:0 alpha:0.5];
     
