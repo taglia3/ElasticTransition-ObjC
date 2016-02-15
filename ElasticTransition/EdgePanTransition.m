@@ -17,9 +17,6 @@
 @implementation EdgePanTransition
 
 @synthesize currentPanGR;
-@synthesize backView, frontView;
-@synthesize backViewController, frontViewController;
-@synthesize toViewController, fromViewController;
 
 
 -(id)init{
@@ -130,7 +127,8 @@
     self.interactive = YES;
     self.currentPanGR = pan;
     
-    if (self.presenting){
+    
+    if (presenting){
         
         
         if (identifier){

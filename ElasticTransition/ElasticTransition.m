@@ -487,7 +487,7 @@
         }
     }
     
-    self.overlayView.alpha = 0.1;
+    self.overlayView.alpha = progress;
     
     [self updateShadow:progress];
     
@@ -719,7 +719,7 @@
             weakSelf.lc.center = finalPoint;
             
             [weakSelf updateShape];
-            [weakSelf clean:FALSE];
+            [weakSelf clean:false];
         }else{
             
             [weakSelf updateShape];
@@ -747,7 +747,7 @@
             weakSelf.lc.center = finalPoint;
             
             [weakSelf updateShape];
-            [weakSelf clean:FALSE];
+            [weakSelf clean:true];
         }else{
             [weakSelf updateShape];
         }
