@@ -9,7 +9,7 @@
         <!--Options View Controller-->
         <scene sceneID="xX8-QH-4T0">
             <objects>
-                <viewController id="HCU-Zb-neY" customClass="OptionsViewController" customModule="ElasticTransistionExample" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="HCU-Zb-neY" customClass="OptionsViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="P7w-06-SiT"/>
                         <viewControllerLayoutGuide type="bottom" id="nAt-Kr-jNV"/>
@@ -23,7 +23,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="separatorColor" red="0.79490621699999997" green="0.85930380650000004" blue="0.92937184340000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="switch" rowHeight="40" id="827-ga-1bX" customClass="SwitchCell" customModule="ElasticTransistionExample" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="switch" rowHeight="40" id="827-ga-1bX" customClass="SwitchCell">
                                         <rect key="frame" x="0.0" y="28" width="320" height="40"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="827-ga-1bX" id="oNH-bI-ZrI">
@@ -40,7 +40,7 @@
                                                     <rect key="frame" x="223" y="4" width="51" height="31"/>
                                                     <color key="onTintColor" red="0.94117647059999998" green="0.35294117650000001" blue="0.32549019610000002" alpha="1" colorSpace="calibratedRGB"/>
                                                     <connections>
-                                                        <action selector="switchChanged:" destination="827-ga-1bX" eventType="valueChanged" id="Nvd-E1-yCz"/>
+                                                        <action selector="switchChanged:" destination="827-ga-1bX" eventType="valueChanged" id="b6R-0j-iLR"/>
                                                     </connections>
                                                 </switch>
                                             </subviews>
@@ -53,11 +53,11 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <connections>
-                                            <outlet property="control" destination="aFo-Vw-vSo" id="33g-gC-vCf"/>
-                                            <outlet property="nameLabel" destination="nbW-xK-xGd" id="NKI-Ik-LOF"/>
+                                            <outlet property="control" destination="aFo-Vw-vSo" id="tff-w3-2eE"/>
+                                            <outlet property="nameLabel" destination="nbW-xK-xGd" id="LOD-vc-VmP"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="segment" rowHeight="83" id="Oql-j9-O9v" customClass="SegmentCell" customModule="ElasticTransistionExample" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="segment" rowHeight="83" id="Oql-j9-O9v" customClass="SegmentCell">
                                         <rect key="frame" x="0.0" y="68" width="320" height="83"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Oql-j9-O9v" id="M10-ri-d6c">
@@ -72,7 +72,7 @@
                                                     </segments>
                                                     <color key="tintColor" red="0.94117647059999998" green="0.35294117650000001" blue="0.32549019610000002" alpha="1" colorSpace="calibratedRGB"/>
                                                     <connections>
-                                                        <action selector="segmentChanged:" destination="Oql-j9-O9v" eventType="valueChanged" id="Ak2-aa-6E6"/>
+                                                        <action selector="segmentChanged:" destination="Oql-j9-O9v" eventType="valueChanged" id="QkA-Vb-Gda"/>
                                                     </connections>
                                                 </segmentedControl>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Slider" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ksf-TV-bpI">
@@ -93,11 +93,11 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <connections>
-                                            <outlet property="nameLabel" destination="ksf-TV-bpI" id="PNF-Cw-EQh"/>
-                                            <outlet property="segment" destination="fIf-hN-1v3" id="rnP-sr-V3F"/>
+                                            <outlet property="nameLabel" destination="ksf-TV-bpI" id="EPX-QJ-bv0"/>
+                                            <outlet property="segment" destination="fIf-hN-1v3" id="Wj4-Cq-z6l"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="slider" rowHeight="83" id="oog-k8-8Hm" customClass="SliderCell" customModule="ElasticTransistionExample" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="slider" rowHeight="83" id="oog-k8-8Hm" customClass="SliderCell">
                                         <rect key="frame" x="0.0" y="151" width="320" height="83"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="oog-k8-8Hm" id="D7O-G5-iiW">
@@ -108,7 +108,7 @@
                                                     <rect key="frame" x="26" y="10" width="268" height="31"/>
                                                     <color key="minimumTrackTintColor" red="0.94117647059999998" green="0.35294117650000001" blue="0.32549019610000002" alpha="1" colorSpace="calibratedRGB"/>
                                                     <connections>
-                                                        <action selector="sliderChanged:" destination="oog-k8-8Hm" eventType="valueChanged" id="Gbu-yz-CAs"/>
+                                                        <action selector="sliderChanged:" destination="oog-k8-8Hm" eventType="valueChanged" id="IYA-md-sFX"/>
                                                     </connections>
                                                 </slider>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Slider" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tki-c4-eo1">
@@ -129,14 +129,14 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <connections>
-                                            <outlet property="nameLabel" destination="Tki-c4-eo1" id="hsn-mt-ekb"/>
-                                            <outlet property="slider" destination="Wwz-YH-tn0" id="mXm-AV-OVO"/>
+                                            <outlet property="nameLabel" destination="Tki-c4-eo1" id="P1P-CF-ELW"/>
+                                            <outlet property="slider" destination="Wwz-YH-tn0" id="sK3-wa-akw"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
-                                    <outlet property="dataSource" destination="HCU-Zb-neY" id="PmY-Gx-Yqo"/>
-                                    <outlet property="delegate" destination="HCU-Zb-neY" id="bTs-VF-1Ba"/>
+                                    <outlet property="dataSource" destination="HCU-Zb-neY" id="7yW-DT-Kj5"/>
+                                    <outlet property="delegate" destination="HCU-Zb-neY" id="aDg-wC-c7f"/>
                                 </connections>
                             </tableView>
                         </subviews>
@@ -149,7 +149,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="tableView" destination="Qck-HK-bAz" id="SO7-QK-WTF"/>
+                        <outlet property="tableView" destination="Qck-HK-bAz" id="OWh-q7-szm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zjc-UA-cHE" userLabel="First Responder" sceneMemberID="firstResponder"/>

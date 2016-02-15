@@ -23,10 +23,10 @@
     
     if (self) {
         
-        self.contentLength = 320;
-        self.dismissByBackgroundTouch = true;
-        self.dismissByBackgroundDrag = true;
-        self.dismissByForegroundDrag = true;
+        self.contentLength = 320.0;
+        self.dismissByBackgroundTouch   = YES;
+        self.dismissByBackgroundDrag    = YES;
+        self.dismissByForegroundDrag    = YES;
     }
     
     return self;

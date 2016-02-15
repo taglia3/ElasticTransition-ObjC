@@ -84,7 +84,7 @@
 
 -(void)setup{
     
-    self.transitioning = true;
+    self.transitioning = YES;
     
     [self.container addSubview:self.backView];
     [self.container addSubview:self.frontView];
@@ -152,23 +152,32 @@
     self.translation    = [pan translationInView:pan.view];
     self.dragPoint      = [pan locationInView:pan.view];
     
-    //NSLog(@"T:(%.1f,%.1f)\tD:(%.1f,%.1f)", self.translation.x, self.translation.y, self.dragPoint.x, self.dragPoint.y);
+    NSLog(@"START T:(%.1f,%.1f)\tD:(%.1f,%.1f)", self.translation.x, self.translation.y, self.dragPoint.x, self.dragPoint.y);
 }
 
 
 -(BOOL)updateInteractiveTransitionWithGestureRecognizer:(UIPanGestureRecognizer*) pan{
     
+    if (self.transitioning == true){
+        NSLog(@"YES");
+    }else{
+        NSLog(@"NO");
+    }
+    
+    
     if (!self.transitioning){
-        
+        NSLog(@"UPDATE NO");
         return NO;
     }
+    
+    NSLog(@"UPDATE YES");
     
     if (pan.state == UIGestureRecognizerStateChanged){
         
         self.translation    = [pan translationInView:pan.view];
         self.dragPoint      = [pan locationInView:pan.view];
         
-        //NSLog(@"T:(%.1f,%.1f)\tD:(%.1f,%.1f)", self.translation.x, self.translation.y, self.dragPoint.x, self.dragPoint.y);
+        NSLog(@"UPDATE T:(%.1f,%.1f)\tD:(%.1f,%.1f)", self.translation.x, self.translation.y, self.dragPoint.x, self.dragPoint.y);
         
         [self update];
         
@@ -191,7 +200,7 @@
 
 -(void)dismissInteractiveTransitionViewController:(UIViewController*)viewController GestureRecognizer:(UIPanGestureRecognizer*)pan Completion:(void (^)(void))completion{
     
-    [self startInteractivePresentFromViewController:viewController ToViewController:nil SegueIdentifier:nil GestureRecognizer:nil Presenting:NO Completion:completion];
+    [self startInteractivePresentFromViewController:viewController ToViewController:nil SegueIdentifier:nil GestureRecognizer:pan Presenting:NO Completion:completion];
 }
 
 

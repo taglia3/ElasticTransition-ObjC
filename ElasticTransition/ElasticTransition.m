@@ -59,15 +59,15 @@
         self.startingPoint = CGPointZero;
         
     
-        self.contentLength = 0.0;
-        self.lastPoint = CGPointZero;
+        self.contentLength  = 0.0;
+        self.lastPoint      = CGPointZero;
         
-        self.maskLayer = [[CALayer alloc]  init];
+        self.maskLayer      = [[CALayer alloc]  init];
         
         self.useTranlation  = TRUE;
         self.damping        = 0.2f;
         
-        self.stickDistance = self.sticky ? self.contentLength*self.panThreshold : 0.0;
+        self.stickDistance = self.sticky ? self.contentLength * self.panThreshold : 0.0;
         
         self.overlayView    = [[UIView alloc] init];
         self.shadowView     = [[UIView alloc] init];
@@ -188,7 +188,6 @@
             return CGPointMake(initialPoint.x, MAX(0,MIN(self.size.height,initialPoint.y + self.translation.y)));
     }
 }
-
 
 -(BOOL) gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer{
     
