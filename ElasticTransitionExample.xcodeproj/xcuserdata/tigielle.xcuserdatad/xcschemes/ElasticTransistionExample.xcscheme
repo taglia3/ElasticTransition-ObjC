@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "BAC47DF21C6C09D200F8E005"
-               BuildableName = "ElasticTransistionExample.app"
-               BlueprintName = "ElasticTransistionExample"
-               ReferencedContainer = "container:ElasticTransistionExample.xcodeproj">
+               BuildableName = "ElasticTransitionExample.app"
+               BlueprintName = "ElasticTransitionExample"
+               ReferencedContainer = "container:ElasticTransitionExample.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -35,7 +35,7 @@
                BlueprintIdentifier = "BAC47E0B1C6C09D200F8E005"
                BuildableName = "ElasticTransistionExampleTests.xctest"
                BlueprintName = "ElasticTransistionExampleTests"
-               ReferencedContainer = "container:ElasticTransistionExample.xcodeproj">
+               ReferencedContainer = "container:ElasticTransitionExample.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -45,7 +45,7 @@
                BlueprintIdentifier = "BAC47E161C6C09D200F8E005"
                BuildableName = "ElasticTransistionExampleUITests.xctest"
                BlueprintName = "ElasticTransistionExampleUITests"
-               ReferencedContainer = "container:ElasticTransistionExample.xcodeproj">
+               ReferencedContainer = "container:ElasticTransitionExample.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -53,9 +53,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "BAC47DF21C6C09D200F8E005"
-            BuildableName = "ElasticTransistionExample.app"
-            BlueprintName = "ElasticTransistionExample"
-            ReferencedContainer = "container:ElasticTransistionExample.xcodeproj">
+            BuildableName = "ElasticTransitionExample.app"
+            BlueprintName = "ElasticTransitionExample"
+            ReferencedContainer = "container:ElasticTransitionExample.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -76,9 +76,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "BAC47DF21C6C09D200F8E005"
-            BuildableName = "ElasticTransistionExample.app"
-            BlueprintName = "ElasticTransistionExample"
-            ReferencedContainer = "container:ElasticTransistionExample.xcodeproj">
+            BuildableName = "ElasticTransitionExample.app"
+            BlueprintName = "ElasticTransitionExample"
+            ReferencedContainer = "container:ElasticTransitionExample.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -95,9 +95,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "BAC47DF21C6C09D200F8E005"
-            BuildableName = "ElasticTransistionExample.app"
-            BlueprintName = "ElasticTransistionExample"
-            ReferencedContainer = "container:ElasticTransistionExample.xcodeproj">
+            BuildableName = "ElasticTransitionExample.app"
+            BlueprintName = "ElasticTransitionExample"
+            ReferencedContainer = "container:ElasticTransitionExample.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

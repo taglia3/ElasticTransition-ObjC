@@ -336,6 +336,13 @@
         return;
     }
     
+    /*
+    UIViewController *fromVCC = self.fromViewController;
+    UIViewController *toVCC = self.toViewController;
+    UIViewController *frontVCC = self.frontViewController;
+    UIViewController *backVCC = self.backViewController;
+    */
+    
     self.backView.layer.zPosition       = 0;
     self.overlayView.layer.zPosition    = 298;
     self.shadowView.layer.zPosition     = 299;
@@ -386,6 +393,7 @@
     }
     self.shadowMaskLayer.dragPoint = [self.shadowMaskLayer convertPoint:self.cc.center fromLayer:self.container.layer];
     
+    
     if (false){
         
         //  transform!(progress: progress, view: backView)
@@ -394,13 +402,8 @@
         switch (self.transformType){
             case ROTATE:
             {
-                NSLog(@"progress: %f", progress);
-                
-                CGFloat scale = MIN(1.0, 1.0 - 0.2 * progress);
+                CGFloat scale = MIN(1, 1.0 - 0.2 * progress);
                 CGFloat rotate = MAX(0, 0.15 * progress);
-                
-                NSLog(@"scale: %f | rotate: %f", scale, rotate);
-                
                 CGFloat rotateY = self.edge == LEFT ? -1.0 : self.edge == RIGHT ? 1.0 : 0;
                 CGFloat rotateX = self.edge == BOTTOM ? -1.0 : self.edge == TOP ? 1.0 : 0;
                 
@@ -470,21 +473,25 @@
                         break;
                     }
                 }
+                
+                NSLog(@"Translation: (%.1f, %.1f)", x, y);
+                
                 self.backView.layer.transform = CATransform3DMakeTranslation(x, y, 0);
+                
                 break;
             }
             default:
+                
                 self.backView.layer.transform = CATransform3DIdentity;
                 break;
         }
     }
-
-    self.overlayView.alpha = progress;
+    
+    self.overlayView.alpha = 0.1;
     
     [self updateShadow:progress];
     
     [self.transitionContext updateInteractiveTransition:(self.presenting ? progress : 1.0 - progress)];
- 
 }
 
 

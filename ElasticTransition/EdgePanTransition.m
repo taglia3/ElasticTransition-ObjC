@@ -17,6 +17,9 @@
 @implementation EdgePanTransition
 
 @synthesize currentPanGR;
+@synthesize backView, frontView;
+@synthesize backViewController, frontViewController;
+@synthesize toViewController, fromViewController;
 
 
 -(id)init{
@@ -74,7 +77,7 @@
     return [self.transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
 }
 
--(UIViewController*)fromViewController:UIViewController{
+-(UIViewController*)fromViewController{
     return [self.transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
 }
 

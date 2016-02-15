@@ -28,7 +28,7 @@
 /* Begin PBXFileReference section */
 		BA70DEB71C6F7F10008B5DB4 /* HelperFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HelperFunctions.h; path = ElasticTransition/Utils/HelperFunctions.h; sourceTree = SOURCE_ROOT; };
 		BA70DEB81C6F7F10008B5DB4 /* HelperFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HelperFunctions.m; path = ElasticTransition/Utils/HelperFunctions.m; sourceTree = SOURCE_ROOT; };
-		BAC47DF31C6C09D200F8E005 /* ElasticTransistionExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ElasticTransistionExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BAC47DF31C6C09D200F8E005 /* ElasticTransitionExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ElasticTransitionExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BAC47DF71C6C09D200F8E005 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		BAC47DF91C6C09D200F8E005 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		BAC47DFA1C6C09D200F8E005 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -74,7 +74,7 @@
 		BAC47DEA1C6C09D200F8E005 = {
 			isa = PBXGroup;
 			children = (
-				BAC47DF51C6C09D200F8E005 /* ElasticTransistionExample */,
+				BAC47DF51C6C09D200F8E005 /* ElasticTransitionExample */,
 				BAC47DF41C6C09D200F8E005 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -82,12 +82,12 @@
 		BAC47DF41C6C09D200F8E005 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				BAC47DF31C6C09D200F8E005 /* ElasticTransistionExample.app */,
+				BAC47DF31C6C09D200F8E005 /* ElasticTransitionExample.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		BAC47DF51C6C09D200F8E005 /* ElasticTransistionExample */ = {
+		BAC47DF51C6C09D200F8E005 /* ElasticTransitionExample */ = {
 			isa = PBXGroup;
 			children = (
 				BAC47E291C6C0D3400F8E005 /* ElasticTransition */,
@@ -109,6 +109,7 @@
 				BAC47E071C6C09D200F8E005 /* Info.plist */,
 				BAC47DF61C6C09D200F8E005 /* Supporting Files */,
 			);
+			name = ElasticTransitionExample;
 			path = ElasticTransistionExample;
 			sourceTree = "<group>";
 		};
@@ -152,9 +153,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		BAC47DF21C6C09D200F8E005 /* ElasticTransistionExample */ = {
+		BAC47DF21C6C09D200F8E005 /* ElasticTransitionExample */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = BAC47E201C6C09D200F8E005 /* Build configuration list for PBXNativeTarget "ElasticTransistionExample" */;
+			buildConfigurationList = BAC47E201C6C09D200F8E005 /* Build configuration list for PBXNativeTarget "ElasticTransitionExample" */;
 			buildPhases = (
 				BAC47DEF1C6C09D200F8E005 /* Sources */,
 				BAC47DF01C6C09D200F8E005 /* Frameworks */,
@@ -164,9 +165,9 @@
 			);
 			dependencies = (
 			);
-			name = ElasticTransistionExample;
+			name = ElasticTransitionExample;
 			productName = ElasticTransistionExample;
-			productReference = BAC47DF31C6C09D200F8E005 /* ElasticTransistionExample.app */;
+			productReference = BAC47DF31C6C09D200F8E005 /* ElasticTransitionExample.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -183,7 +184,7 @@
 					};
 				};
 			};
-			buildConfigurationList = BAC47DEE1C6C09D200F8E005 /* Build configuration list for PBXProject "ElasticTransistionExample" */;
+			buildConfigurationList = BAC47DEE1C6C09D200F8E005 /* Build configuration list for PBXProject "ElasticTransitionExample" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -196,7 +197,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				BAC47DF21C6C09D200F8E005 /* ElasticTransistionExample */,
+				BAC47DF21C6C09D200F8E005 /* ElasticTransitionExample */,
 			);
 		};
 /* End PBXProject section */
@@ -344,8 +345,8 @@
 				INFOPLIST_FILE = ElasticTransistionExample/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = tigielle.ElasticTransistionExample;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = tigielle.ElasticTransitionExample;
+				PRODUCT_NAME = ElasticTransitionExample;
 			};
 			name = Debug;
 		};
@@ -356,15 +357,15 @@
 				INFOPLIST_FILE = ElasticTransistionExample/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = tigielle.ElasticTransistionExample;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = tigielle.ElasticTransitionExample;
+				PRODUCT_NAME = ElasticTransitionExample;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		BAC47DEE1C6C09D200F8E005 /* Build configuration list for PBXProject "ElasticTransistionExample" */ = {
+		BAC47DEE1C6C09D200F8E005 /* Build configuration list for PBXProject "ElasticTransitionExample" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BAC47E1E1C6C09D200F8E005 /* Debug */,
@@ -373,7 +374,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		BAC47E201C6C09D200F8E005 /* Build configuration list for PBXNativeTarget "ElasticTransistionExample" */ = {
+		BAC47E201C6C09D200F8E005 /* Build configuration list for PBXNativeTarget "ElasticTransitionExample" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BAC47E211C6C09D200F8E005 /* Debug */,
