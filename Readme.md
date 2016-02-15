@@ -1,4 +1,4 @@
-# ElasticTransition-ObjC (Under dev)
+# ElasticTransition ObjC Version (Under Dev)
 This is the Objective-C Version of Elastic Transition written in Swift by lkzhao https://github.com/lkzhao/ElasticTransition
 
 A UIKit custom modal transition that simulates an elastic drag. Written in Objective-C.
@@ -16,13 +16,13 @@ First of all, in your view controller, create an instance of ElasticTransition
 
 //...
 
-ElasticTransition *transition = [[ElasticTransition alloc] init];
+    ElasticTransition *transition = [[ElasticTransition alloc] init];
 
-// customization
-transition.sticky           = YES;
-transition.showShadow       = YES;
-transition.panThreshold     = 0.4;
-transition.transformType    = TRANSLATEMID;
+    // customization
+    transition.sticky           = YES;
+    transition.showShadow       = YES;
+    transition.panThreshold     = 0.4;
+    transition.transformType    = TRANSLATEMID;
 
 //...
 
@@ -41,7 +41,7 @@ transition.transformType    = TRANSLATEMID;
 Simply assign the transition to your navigation controller's delegate
 
 ```objective-c
-navigationController.delegate =transition
+    navigationController.delegate =transition
 ```
 
 ------------------------
@@ -54,8 +54,8 @@ Also, dont forget to set the modalPresentationStyle to UIModalPresentationCustom
 ```objective-c
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
 
-segue.destinationViewController.transitioningDelegate = transition;
-segue.destinationViewController.modalPresentationStyle = UIModalPresentationCustom;
+    segue.destinationViewController.transitioningDelegate = transition;
+    segue.destinationViewController.modalPresentationStyle = UIModalPresentationCustom;
 
 }
 ```
@@ -76,16 +76,16 @@ Then in your .m file synthesize the property and provide the contentLength value
 
 -(id)initWithCoder:(NSCoder *)aDecoder{
 
-self = [super initWithCoder:aDecoder];
+    self = [super initWithCoder:aDecoder];
 
-if (self) {
+    if (self) {
 
-self.contentLength = 320.0;
+        self.contentLength = 320.0;
 
-//...
-}
+        //...
+    }
 
-return self;
+    return self;
 }
 
 @end
@@ -107,16 +107,16 @@ Then implement your gesture handler and fo the following:
 ```objective-c
 -(void)handlePan:(UIPanGestureRecognizer*)pan{
 
-if (pan.state == UIGestureRecognizerStateBegan){
-// Here, you can do one of two things
-// 1. show a viewcontroller directly
-UIViewController *nextViewController = // construct your VC ...
-[transition startInteractiveTransitionFromViewController:self ToViewController:nextViewController GestureRecognizer:pan];
-// 2. perform a segue
-[transition startInteractiveTransitionFromViewController:self SegueIdentifier:@"menu" GestureRecognizer:pan];
-}else{
-[transition updateInteractiveTransitionWithGestureRecognizer:pan];
-}
+    if (pan.state == UIGestureRecognizerStateBegan){
+        // Here, you can do one of two things
+        // 1. show a viewcontroller directly
+        UIViewController *nextViewController = // construct your VC ...
+        [transition startInteractiveTransitionFromViewController:self ToViewController:nextViewController GestureRecognizer:pan];
+        // 2. perform a segue
+        [transition startInteractiveTransitionFromViewController:self SegueIdentifier:@"menu" GestureRecognizer:pan];
+    }else{
+        [transition updateInteractiveTransitionWithGestureRecognizer:pan];
+    }
 }
 ```
 
@@ -125,23 +125,24 @@ UIViewController *nextViewController = // construct your VC ...
 1. Implement ElasticMenuTransitionDelegate in your modal view controller and set
 
 ```objective-c
-self.dismissByBackgroundTouch   = YES;
-self.dismissByBackgroundDrag    = YES;
-self.dismissByForegroundDrag    = YES;
+    self.dismissByBackgroundTouch   = YES;
+    self.dismissByBackgroundDrag    = YES;
+    self.dismissByForegroundDrag    = YES;
 ```
 
 2. Or use your own panGestureRecognizer and call dissmissInteractiveTransition in your handler
 ```objective-c
-if (pan.state == UIGestureRecognizerStateBegan){
-[transition dismissInteractiveTransitionViewController:vc GestureRecognizer:pan Completion:nil];
-}else{
-[transition updateInteractiveTransitionWithGestureRecognizer:pan];
-}
+-(void)handlePan:(UIPanGestureRecognizer*)pan{
+    if (pan.state == UIGestureRecognizerStateBegan){
+        [transition dismissInteractiveTransitionViewController:vc GestureRecognizer:pan Completion:nil];
+    }else{
+        [transition updateInteractiveTransitionWithGestureRecognizer:pan];
+    }
 }
 ```
 
 
 ## License
 
-ElasticTransition is available under the MIT license. See the LICENSE file for more info.
+ElasticTransition-ObjC is available under the MIT license. See the LICENSE file for more info.
 

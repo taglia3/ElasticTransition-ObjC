@@ -33,6 +33,7 @@
     transition.sticky           = YES;
     transition.showShadow       = YES;
     transition.panThreshold     = 0.4;
+    transition.radiusFactor     = 0.3;
     transition.transformType    = TRANSLATEMID;
     transition.overlayColor     = [UIColor colorWithWhite:0 alpha:0.5];
     transition.shadowColor      = [UIColor colorWithWhite:0 alpha:0.5];
