@@ -9,12 +9,16 @@
 #import "OptionsViewController.h"
 
 #import "SwitchCellModel.h"
+#import "SegmentCellModel.h"
 
 #import "SwitchCell.h"
 #import "SliderCell.h"
 #import "SegmentCell.h"
 
-@interface OptionsViewController ()<CellStateChange>{
+#define kHeightSwitchCell 54
+#define kHeightSegmentCell 72
+
+@interface OptionsViewController ()<CellStateChange, CellSegmentChange>{
     
     ElasticTransition *tm;
     NSMutableArray *menuItems;
@@ -51,28 +55,54 @@
     
     
     NSMutableArray *va = [[NSMutableArray alloc] init];
-    [va addObject:[NSNumber numberWithInt:NONE]];
-    [va addObject:[NSNumber numberWithInt:ROTATE]];
-    [va addObject:[NSNumber numberWithInt:TRANSLATEMID]];
+    [va addObject:@"NONE"];
+    [va addObject:@"ROTATE"];
+    [va addObject:@"TRANSLATE MID"];
 
     
     menuItems = [[NSMutableArray alloc] init];
     
     SwitchCellModel *stickySwitchModel = [[SwitchCellModel alloc]init];
     stickySwitchModel.name  = @"Sticky";
-    stickySwitchModel.on    = tm.sticky;
-    stickySwitchModel.rowHeigth = 54.0;
     stickySwitchModel.type = STICKY;
+    stickySwitchModel.on    = tm.sticky;
+    stickySwitchModel.rowHeigth = kHeightSwitchCell;
     stickySwitchModel.delegate = self;
     [menuItems addObject:stickySwitchModel];
     
     SwitchCellModel *shadowSwitchModel = [[SwitchCellModel alloc]init];
     shadowSwitchModel.name  = @"Shadow";
-    shadowSwitchModel.on    = tm.showShadow;
-    shadowSwitchModel.rowHeigth = 54.0;
     shadowSwitchModel.type = SHADOW;
+    shadowSwitchModel.on    = tm.showShadow;
+    shadowSwitchModel.rowHeigth = kHeightSwitchCell;
     shadowSwitchModel.delegate = self;
     [menuItems addObject:shadowSwitchModel];
+    
+    SegmentCellModel *transformSegmentModel = [[SegmentCellModel alloc]init];
+    transformSegmentModel.name  = @"Transform Type";
+    transformSegmentModel.type = TRANSFORM;
+    transformSegmentModel. values = [va copy];
+    
+    switch (tm.transformType) {
+        case NONE:
+            transformSegmentModel.index = 0;
+            break;
+        case ROTATE:
+            transformSegmentModel.index = 1;
+            break;
+        case TRANSLATEMID:
+        case TRANSLATEPULL:
+        case TRANSLATEPUSH:
+            transformSegmentModel.index = 2;
+            break;
+            
+        default:
+            break;
+    }
+    
+    transformSegmentModel.rowHeigth = kHeightSegmentCell;
+    transformSegmentModel.delegate = self;
+    [menuItems addObject:transformSegmentModel];
     
     
     for (int i = 0 ; i < menuItems.count; i++) {
@@ -100,7 +130,6 @@
         case 1:
         {
             SwitchCellModel *itemModel = (SwitchCellModel *) [menuItems objectAtIndex:indexPath.row];
-           
             
             SwitchCell *switchCell = [tableView dequeueReusableCellWithIdentifier:@"switch" forIndexPath:indexPath];
             switchCell.cellModel = itemModel;
@@ -110,15 +139,17 @@
         }
         case 2:
         {
+            SegmentCellModel *itemModel = (SegmentCellModel *) [menuItems objectAtIndex:indexPath.row];
             
+            SegmentCell *segmentCell = [tableView dequeueReusableCellWithIdentifier:@"segment" forIndexPath:indexPath];
+            segmentCell.cellModel = itemModel;
+            cell = segmentCell;
         }
         default:
             break;
     }
 
-    
     return cell;
-    
 }
  
 
@@ -129,19 +160,20 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    
     NSObject *itemModel = [menuItems objectAtIndex:indexPath.row];
     
     if ([[itemModel class] conformsToProtocol:@protocol(CellDimensionAndTypeDelegate)]) {
-        NSObject <CellDimensionAndTypeDelegate> *item = (NSObject <CellDimensionAndTypeDelegate> *) itemModel;
+        NSObject <CellDimensionAndTypeDelegate> *itemProt = (NSObject <CellDimensionAndTypeDelegate> *) itemModel;
         
-        return item.rowHeigth;
+        return itemProt.rowHeigth;
         
     }else{
         return 0.0;
     }
 }
 
+
+#pragma mark - Listen to table changes
 
 -(void)didChangeStateToOn:(BOOL)on AndPropertyRelated:(PropertyRelated)property{
 
@@ -154,6 +186,26 @@
             break;
         default:
             break;
+    }
+}
+
+-(void)didSelcetedTransformIndex:(NSInteger)index AndPropertyRelated:(PropertyRelated)property{
+    
+    if (property == TRANSFORM) {
+        
+        switch (index) {
+            case 0:
+                tm.transformType = NONE;
+                break;
+            case 1:
+                tm.transformType = ROTATE;
+                break;
+            case 2:
+                tm.transformType = TRANSLATEMID;
+                break;
+            default:
+                break;
+        }
     }
 }
 

@@ -11,6 +11,7 @@
 typedef NS_ENUM(int, PropertyRelated){
     STICKY,
     SHADOW,
+    TRANSFORM,
     RADIUS
 };
 

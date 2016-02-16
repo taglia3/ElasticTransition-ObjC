@@ -10,27 +10,35 @@
 
 @implementation SegmentCell
 
-@synthesize type, rowHeigth;
+@synthesize cellModel, segment;
 
-- (id)initWithCoder:(NSCoder *)aDecoder
-{
-    self = [super initWithCoder:aDecoder];
+- (void)setCellModel:(SegmentCellModel *)aCellModel{
     
-    if (self) {
-        
-        self.rowHeigth  = 72.0;
-    }
+    self->cellModel = aCellModel;
     
-    return self;
+    [self setSegments: aCellModel.values];
+    
+    self.nameLabel.text = aCellModel.name;
 }
 
--(void)onChangeValue:(id)value{
-    
-}
 
 -(IBAction)segmentChanged:(UISegmentedControl*)sender{
     
-    [self onChangeValue:self.values[sender.selectedSegmentIndex]];
+    [self.cellModel setSelcetedTransformIndex:sender.selectedSegmentIndex];
+}
+
+- (void)setSegments:(NSArray *)segments
+{
+    [self.segment removeAllSegments];
+    
+    int i = 0;
+    
+    for (NSString *str in segments) {
+        [self.segment insertSegmentWithTitle:str atIndex:i animated:NO];
+        i++;
+    }
+    
+    [self.segment setSelectedSegmentIndex:self.cellModel.index];
 }
 
 @end

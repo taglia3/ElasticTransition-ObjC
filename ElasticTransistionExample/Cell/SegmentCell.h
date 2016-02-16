@@ -7,14 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "CellDimensionAndTypeDelegate.h"
+#import "SegmentCellModel.h"
 
-@interface SegmentCell : UITableViewCell <CellDimensionAndTypeDelegate>
+@interface SegmentCell : UITableViewCell
 
 @property (nonatomic) NSMutableArray *values;
 
-@property (nonatomic, weak) IBOutlet UILabel *nameLabel;
-@property (nonatomic, weak) IBOutlet UISegmentedControl *segment;
+@property (nonatomic, weak) IBOutlet    UILabel            *nameLabel;
+@property (nonatomic) IBOutlet          UISegmentedControl *segment;
+@property (nonatomic, weak)             SegmentCellModel   *cellModel;
 
 -(IBAction)segmentChanged:(UISegmentedControl*)sender;
 

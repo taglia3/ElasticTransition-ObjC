@@ -13,19 +13,6 @@
 @synthesize type, rowHeigth;
 @synthesize name;
 
--(id)initWithName:(NSString*)aName AndOn:(BOOL)on{
-    
-    self = [super init];
-    
-    if(self){
-        
-        self.rowHeigth  = 54.0;
-        self.name       = aName;
-        self.on         = on;
-    }
-    
-    return self;
-}
 
 - (void)setSwitchOn:(BOOL)on{
     

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		BA70DEB91C6F7F10008B5DB4 /* HelperFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = BA70DEB81C6F7F10008B5DB4 /* HelperFunctions.m */; };
+		BABE5AB81C73DA69004AF533 /* SegmentCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BABE5AB71C73DA69004AF533 /* SegmentCellModel.m */; };
 		BAC47DF81C6C09D200F8E005 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BAC47DF71C6C09D200F8E005 /* main.m */; };
 		BAC47DFB1C6C09D200F8E005 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BAC47DFA1C6C09D200F8E005 /* AppDelegate.m */; };
 		BAC47E011C6C09D200F8E005 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BAC47DFF1C6C09D200F8E005 /* Main.storyboard */; };
@@ -32,6 +33,8 @@
 /* Begin PBXFileReference section */
 		BA70DEB71C6F7F10008B5DB4 /* HelperFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HelperFunctions.h; path = ElasticTransition/Utils/HelperFunctions.h; sourceTree = SOURCE_ROOT; };
 		BA70DEB81C6F7F10008B5DB4 /* HelperFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HelperFunctions.m; path = ElasticTransition/Utils/HelperFunctions.m; sourceTree = SOURCE_ROOT; };
+		BABE5AB61C73DA69004AF533 /* SegmentCellModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SegmentCellModel.h; path = Cell/CellModel/SegmentCellModel.h; sourceTree = "<group>"; };
+		BABE5AB71C73DA69004AF533 /* SegmentCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SegmentCellModel.m; path = Cell/CellModel/SegmentCellModel.m; sourceTree = "<group>"; };
 		BAC47DF31C6C09D200F8E005 /* ElasticTransitionExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ElasticTransitionExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BAC47DF71C6C09D200F8E005 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		BAC47DF91C6C09D200F8E005 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -170,10 +173,10 @@
 				BAFB89701C7334F700FDA257 /* Cell Model */,
 				BAFB89661C732F5400FDA257 /* SwitchCell.h */,
 				BAFB89671C732F5400FDA257 /* SwitchCell.m */,
-				BAFB89691C732F6900FDA257 /* SliderCell.h */,
-				BAFB896A1C732F6900FDA257 /* SliderCell.m */,
 				BAFB896C1C732F7C00FDA257 /* SegmentCell.h */,
 				BAFB896D1C732F7C00FDA257 /* SegmentCell.m */,
+				BAFB89691C732F6900FDA257 /* SliderCell.h */,
+				BAFB896A1C732F6900FDA257 /* SliderCell.m */,
 				BAFB896F1C732FC900FDA257 /* CellDimensionAndTypeDelegate.h */,
 			);
 			name = Cell;
@@ -184,6 +187,8 @@
 			children = (
 				BAFB89711C73352500FDA257 /* SwitchCellModel.h */,
 				BAFB89721C73352500FDA257 /* SwitchCellModel.m */,
+				BABE5AB61C73DA69004AF533 /* SegmentCellModel.h */,
+				BABE5AB71C73DA69004AF533 /* SegmentCellModel.m */,
 			);
 			name = "Cell Model";
 			sourceTree = "<group>";
@@ -265,6 +270,7 @@
 				BAFB896B1C732F6900FDA257 /* SliderCell.m in Sources */,
 				BAC47E351C6C97CD00F8E005 /* MenuViewController.m in Sources */,
 				BAC47E381C6C97F900F8E005 /* NavigationExampleViewController.m in Sources */,
+				BABE5AB81C73DA69004AF533 /* SegmentCellModel.m in Sources */,
 				BAFB89731C73352500FDA257 /* SwitchCellModel.m in Sources */,
 				BAC47E441C6C999900F8E005 /* ElasticTransition.m in Sources */,
 				BA70DEB91C6F7F10008B5DB4 /* HelperFunctions.m in Sources */,
