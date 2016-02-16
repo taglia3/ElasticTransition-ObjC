@@ -83,7 +83,7 @@
     
     CGPoint centerPoint = self.dragPoint;
     
-    //NSLog(@"D:(%.1f,%.1f)",self.dragPoint.x, self.dragPoint.y);
+    NSLog(@"D:(%.1f,%.1f)",self.dragPoint.x, self.dragPoint.y);
     
     CGPoint leftPoint, rightPoint, bottomRightPoint, bottomLeftPoint;
     

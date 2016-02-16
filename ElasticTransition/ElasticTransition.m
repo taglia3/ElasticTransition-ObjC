@@ -55,7 +55,7 @@
         
         self.transformType  = TRANSLATEMID;
         
-        //NSLog(@"[ElasticTransition] %@", [self transformTypeToString]);
+        NSLog(@"[ElasticTransition] %@", [self transformTypeToString]);
 
         self.startingPoint = CGPointZero;
         
@@ -113,7 +113,7 @@
     
     self.stickDistance = self.sticky ? self.contentLength * self.panThreshold : 0.0;
     
-    //NSLog(@"stickDistance: %f", self.stickDistance);
+    NSLog(@"stickDistance: %f", self.stickDistance);
 }
 
 
@@ -201,6 +201,8 @@
     if ([touch.view isKindOfClass:(UISlider.self)] ){
         return FALSE;
     }
+    
+    
     if (gestureRecognizer == self.navigationExitPanGestureRecognizer){
         return TRUE;
     }
@@ -319,7 +321,7 @@
         }
         
         
-        //NSLog(@"cb.point:(%.1f,%.1f) | lb.point:(%.1f,%.1f)", self.cb.point.x, self.cb.point.y, self.lb.point.x, self.lb.point.y);
+        NSLog(@"cb.point:(%.1f,%.1f) | lb.point:(%.1f,%.1f)", self.cb.point.x, self.cb.point.y, self.lb.point.x, self.lb.point.y);
     }
 }
 
@@ -467,7 +469,7 @@
                     }
                 }
                 
-                //NSLog(@"Translation: (%.1f, %.1f)", x, y);
+                NSLog(@"Translation: (%.1f, %.1f)", x, y);
                 
                 self.backView.layer.transform = CATransform3DMakeTranslation(x, y, 0);
                 
@@ -480,7 +482,7 @@
         }
     }
     
-    //NSLog(@"progress: %f", progress);
+    NSLog(@"progress: %f", progress);
     
     self.overlayView.alpha = progress;
     

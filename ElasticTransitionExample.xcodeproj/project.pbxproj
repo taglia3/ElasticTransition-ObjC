@@ -23,6 +23,10 @@
 		BAC47E441C6C999900F8E005 /* ElasticTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = BAC47E431C6C999900F8E005 /* ElasticTransition.m */; };
 		BAC47E4D1C6CB11600F8E005 /* DynamicItem.m in Sources */ = {isa = PBXBuildFile; fileRef = BAC47E4C1C6CB11600F8E005 /* DynamicItem.m */; };
 		BAC47E501C6CB3DE00F8E005 /* CustomSnapBehavior.m in Sources */ = {isa = PBXBuildFile; fileRef = BAC47E4F1C6CB3DE00F8E005 /* CustomSnapBehavior.m */; };
+		BAFB89681C732F5400FDA257 /* SwitchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BAFB89671C732F5400FDA257 /* SwitchCell.m */; };
+		BAFB896B1C732F6900FDA257 /* SliderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BAFB896A1C732F6900FDA257 /* SliderCell.m */; };
+		BAFB896E1C732F7C00FDA257 /* SegmentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BAFB896D1C732F7C00FDA257 /* SegmentCell.m */; };
+		BAFB89731C73352500FDA257 /* SwitchCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BAFB89721C73352500FDA257 /* SwitchCellModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +62,15 @@
 		BAC47E4C1C6CB11600F8E005 /* DynamicItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DynamicItem.m; path = ElasticTransition/Utils/DynamicItem.m; sourceTree = SOURCE_ROOT; };
 		BAC47E4E1C6CB3DE00F8E005 /* CustomSnapBehavior.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomSnapBehavior.h; path = ElasticTransition/Utils/CustomSnapBehavior.h; sourceTree = SOURCE_ROOT; };
 		BAC47E4F1C6CB3DE00F8E005 /* CustomSnapBehavior.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomSnapBehavior.m; path = ElasticTransition/Utils/CustomSnapBehavior.m; sourceTree = SOURCE_ROOT; };
+		BAFB89661C732F5400FDA257 /* SwitchCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SwitchCell.h; path = Cell/SwitchCell.h; sourceTree = "<group>"; };
+		BAFB89671C732F5400FDA257 /* SwitchCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SwitchCell.m; path = Cell/SwitchCell.m; sourceTree = "<group>"; };
+		BAFB89691C732F6900FDA257 /* SliderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SliderCell.h; path = Cell/SliderCell.h; sourceTree = "<group>"; };
+		BAFB896A1C732F6900FDA257 /* SliderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SliderCell.m; path = Cell/SliderCell.m; sourceTree = "<group>"; };
+		BAFB896C1C732F7C00FDA257 /* SegmentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SegmentCell.h; path = Cell/SegmentCell.h; sourceTree = "<group>"; };
+		BAFB896D1C732F7C00FDA257 /* SegmentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SegmentCell.m; path = Cell/SegmentCell.m; sourceTree = "<group>"; };
+		BAFB896F1C732FC900FDA257 /* CellDimensionAndTypeDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CellDimensionAndTypeDelegate.h; path = Cell/CellDimensionAndTypeDelegate.h; sourceTree = "<group>"; };
+		BAFB89711C73352500FDA257 /* SwitchCellModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SwitchCellModel.h; path = Cell/CellModel/SwitchCellModel.h; sourceTree = "<group>"; };
+		BAFB89721C73352500FDA257 /* SwitchCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SwitchCellModel.m; path = Cell/CellModel/SwitchCellModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +114,7 @@
 				BAC47E2E1C6C979600F8E005 /* AboutViewController.m */,
 				BAC47E301C6C97B600F8E005 /* OptionsViewController.h */,
 				BAC47E311C6C97B600F8E005 /* OptionsViewController.m */,
+				BAFB89651C732F2900FDA257 /* Cell */,
 				BAC47E361C6C97F900F8E005 /* NavigationExampleViewController.h */,
 				BAC47E371C6C97F900F8E005 /* NavigationExampleViewController.m */,
 				BAC47DFF1C6C09D200F8E005 /* Main.storyboard */,
@@ -148,6 +162,30 @@
 				BA70DEB81C6F7F10008B5DB4 /* HelperFunctions.m */,
 			);
 			name = Utils;
+			sourceTree = "<group>";
+		};
+		BAFB89651C732F2900FDA257 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				BAFB89701C7334F700FDA257 /* Cell Model */,
+				BAFB89661C732F5400FDA257 /* SwitchCell.h */,
+				BAFB89671C732F5400FDA257 /* SwitchCell.m */,
+				BAFB89691C732F6900FDA257 /* SliderCell.h */,
+				BAFB896A1C732F6900FDA257 /* SliderCell.m */,
+				BAFB896C1C732F7C00FDA257 /* SegmentCell.h */,
+				BAFB896D1C732F7C00FDA257 /* SegmentCell.m */,
+				BAFB896F1C732FC900FDA257 /* CellDimensionAndTypeDelegate.h */,
+			);
+			name = Cell;
+			sourceTree = "<group>";
+		};
+		BAFB89701C7334F700FDA257 /* Cell Model */ = {
+			isa = PBXGroup;
+			children = (
+				BAFB89711C73352500FDA257 /* SwitchCellModel.h */,
+				BAFB89721C73352500FDA257 /* SwitchCellModel.m */,
+			);
+			name = "Cell Model";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -223,12 +261,16 @@
 				BAC47E3E1C6C98F000F8E005 /* EdgePanTransition.m in Sources */,
 				BAC47E2C1C6C978700F8E005 /* InitialViewController.m in Sources */,
 				BAC47E3B1C6C98BD00F8E005 /* ElasticShapeLayer.m in Sources */,
+				BAFB89681C732F5400FDA257 /* SwitchCell.m in Sources */,
+				BAFB896B1C732F6900FDA257 /* SliderCell.m in Sources */,
 				BAC47E351C6C97CD00F8E005 /* MenuViewController.m in Sources */,
 				BAC47E381C6C97F900F8E005 /* NavigationExampleViewController.m in Sources */,
+				BAFB89731C73352500FDA257 /* SwitchCellModel.m in Sources */,
 				BAC47E441C6C999900F8E005 /* ElasticTransition.m in Sources */,
 				BA70DEB91C6F7F10008B5DB4 /* HelperFunctions.m in Sources */,
 				BAC47DFB1C6C09D200F8E005 /* AppDelegate.m in Sources */,
 				BAC47E4D1C6CB11600F8E005 /* DynamicItem.m in Sources */,
+				BAFB896E1C732F7C00FDA257 /* SegmentCell.m in Sources */,
 				BAC47E501C6CB3DE00F8E005 /* CustomSnapBehavior.m in Sources */,
 				BAC47E321C6C97B600F8E005 /* OptionsViewController.m in Sources */,
 				BAC47E2F1C6C979600F8E005 /* AboutViewController.m in Sources */,

@@ -15,11 +15,6 @@ typedef NS_ENUM(int,Edge){
     RIGHT
 };
 
-typedef NS_ENUM(int,LeftMenuType){
-    SWITCH,
-    SLIDER,
-    SEGMENT
-};
 
 @interface HelperFunctions : NSObject
 

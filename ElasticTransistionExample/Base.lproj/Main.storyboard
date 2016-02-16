@@ -36,8 +36,8 @@
                                                     <color key="textColor" red="0.57088900840000001" green="0.66208174850000001" blue="0.76511205810000005" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aFo-Vw-vSo">
-                                                    <rect key="frame" x="223" y="4" width="51" height="31"/>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aFo-Vw-vSo">
+                                                    <rect key="frame" x="243" y="4" width="51" height="31"/>
                                                     <color key="onTintColor" red="0.94117647059999998" green="0.35294117650000001" blue="0.32549019610000002" alpha="1" colorSpace="calibratedRGB"/>
                                                     <connections>
                                                         <action selector="switchChanged:" destination="827-ga-1bX" eventType="valueChanged" id="b6R-0j-iLR"/>
@@ -65,7 +65,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="fIf-hN-1v3">
-                                                    <rect key="frame" x="28" y="10" width="264" height="29"/>
+                                                    <rect key="frame" x="28" y="11" width="264" height="29"/>
                                                     <segments>
                                                         <segment title="First"/>
                                                         <segment title="Second"/>
@@ -84,7 +84,7 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="fIf-hN-1v3" firstAttribute="leading" secondItem="M10-ri-d6c" secondAttribute="leadingMargin" constant="20" id="XaB-gA-YNW"/>
-                                                <constraint firstItem="fIf-hN-1v3" firstAttribute="top" secondItem="M10-ri-d6c" secondAttribute="topMargin" constant="2" id="Yht-8P-Chs"/>
+                                                <constraint firstItem="fIf-hN-1v3" firstAttribute="top" secondItem="M10-ri-d6c" secondAttribute="topMargin" constant="3" id="Yht-8P-Chs"/>
                                                 <constraint firstItem="ksf-TV-bpI" firstAttribute="leading" secondItem="M10-ri-d6c" secondAttribute="leadingMargin" constant="8" id="YxX-cc-zwU"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="ksf-TV-bpI" secondAttribute="trailing" constant="8" id="gEd-Cm-LiT"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="ksf-TV-bpI" secondAttribute="bottom" id="sao-2D-faN"/>

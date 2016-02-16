@@ -8,67 +8,20 @@
 
 #import "OptionsViewController.h"
 
+#import "SwitchCellModel.h"
 
-@implementation SwitchCell
+#import "SwitchCell.h"
+#import "SliderCell.h"
+#import "SegmentCell.h"
 
--(void)onChangeOn:(BOOL)on{
+@interface OptionsViewController ()<CellStateChange>{
     
-}
-
--(IBAction)switchChanged:(UISwitch*)sender{
-    
-    [self onChangeOn:sender.on];
-}
-
-@end
-
-
-@implementation SliderCell:UITableViewCell
-
--(void)onChangeValue:(CGFloat)value{
-    
-}
-
--(IBAction)sliderChanged:(UISlider*)sender{
-    
-    [self onChangeValue:sender.value];
-}
-
-@end
-
-
-@implementation SegmentCell:UITableViewCell
-
--(id)initWithCoder:(NSCoder *)aDecoder{
-    
-    self = [super initWithCoder:aDecoder];
-    
-    if(self){
-        
-        self.values = [[NSMutableArray alloc] init];
-    }
-    
-    return self;
-}
-
--(void)onChangeValue:(id)value{
-    
-}
-
--(IBAction)segmentChanged:(UISegmentedControl*)sender{
-    
-    [self onChangeValue:self.values[sender.selectedSegmentIndex]];
-}
-
-@end
-
-
-@interface OptionsViewController (){
-    
+    ElasticTransition *tm;
     NSMutableArray *menuItems;
 }
 
 @end
+
 
 @implementation OptionsViewController
 
@@ -94,7 +47,7 @@
     [super viewDidLoad];
     
     
-    ElasticTransition *tm = (ElasticTransition*)self.transitioningDelegate;
+    tm = (ElasticTransition*)self.transitioningDelegate;
     
     
     NSMutableArray *va = [[NSMutableArray alloc] init];
@@ -105,28 +58,22 @@
     
     menuItems = [[NSMutableArray alloc] init];
     
-    /*
-    menu.append(.Switch(name: "Sticky", on:tm.sticky, onChange: {on in
-        tm.sticky = on
-    }))
-    menu.append(.Switch(name: "Shadow", on:tm.showShadow, onChange: {on in
-        tm.showShadow = on
-    }))
-    menu.append(LeftMenuType.Segment(name: "Transform Type",values:va,selected:tm.transformType.rawValue, onChange: {value in
-        tm.transformType = value as! ElasticTransitionBackgroundTransform
-    }))
-    menu.append(.Slider(name: "Damping", value:Float(tm.damping), onChange: {value in
-        tm.damping = CGFloat(value)
-    }))
-    menu.append(.Slider(name: "Radius Factor", value:Float(tm.radiusFactor)/0.5, onChange: {value in
-        tm.radiusFactor = CGFloat(value) * CGFloat(0.5)
-    }))
-    menu.append(.Slider(name: "Pan Theashold", value:Float(tm.panThreshold), onChange: {value in
-        tm.panThreshold = CGFloat(value)
-    }))
+    SwitchCellModel *stickySwitchModel = [[SwitchCellModel alloc]init];
+    stickySwitchModel.name  = @"Sticky";
+    stickySwitchModel.on    = tm.sticky;
+    stickySwitchModel.rowHeigth = 54.0;
+    stickySwitchModel.type = STICKY;
+    stickySwitchModel.delegate = self;
+    [menuItems addObject:stickySwitchModel];
     
-    */
-    self.contentLength = 300.0;
+    SwitchCellModel *shadowSwitchModel = [[SwitchCellModel alloc]init];
+    shadowSwitchModel.name  = @"Shadow";
+    shadowSwitchModel.on    = tm.showShadow;
+    shadowSwitchModel.rowHeigth = 54.0;
+    shadowSwitchModel.type = SHADOW;
+    shadowSwitchModel.delegate = self;
+    [menuItems addObject:shadowSwitchModel];
+    
     
     for (int i = 0 ; i < menuItems.count; i++) {
         
@@ -135,7 +82,7 @@
     
     NSLog(@"[OptionsViewController] Content length: %f", self.contentLength);
     
-  //  [self.tableView reloadData];
+    [self.tableView reloadData];
 
 }
 
@@ -143,50 +90,37 @@
     
     return 1;
 }
-/*
--(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
 
+-(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
     UITableViewCell *cell;
     
-    switch (indexPath.row){
-    case 0:
+    switch (indexPath.row) {
+        case 0:
+        case 1:
         {
-            SwitchCell *switchCell = [tableView dequeueReusableCellWithIdentifier:"switch" forIndexPath:indexPath];
-            switchCell.nameLabel.text = @"Switch cell";
+            SwitchCellModel *itemModel = (SwitchCellModel *) [menuItems objectAtIndex:indexPath.row];
+           
             
-        SwitchCell *switchCell = tableView.dequeueReusableCellWithIdentifier("switch", forIndexPath: indexPath) as! SwitchCell
-        switchCell.onChange = onChange
-        switchCell.nameLabel.text = name
-        switchCell.control.on = on
-        cell = switchCell
+            SwitchCell *switchCell = [tableView dequeueReusableCellWithIdentifier:@"switch" forIndexPath:indexPath];
+            switchCell.cellModel = itemModel;
+            cell = switchCell;
+        
             break;
         }
-    case 1:
-        let segmentCell  = tableView.dequeueReusableCellWithIdentifier("segment", forIndexPath: indexPath) as! SegmentCell
-        segmentCell.onChange = onChange
-        segmentCell.nameLabel.text = name
-        segmentCell.segment.removeAllSegments()
-        segmentCell.values = values
-        for v in values.reverse(){
-            segmentCell.segment.insertSegmentWithTitle("\(v)", atIndex: 0, animated: false)
+        case 2:
+        {
+            
         }
-        segmentCell.segment.selectedSegmentIndex = selected
-        cell = segmentCell
-            break;
-    case 2:
-        let sliderCell  = tableView.dequeueReusableCellWithIdentifier("slider", forIndexPath: indexPath) as! SliderCell
-        sliderCell.onChange = onChange
-        sliderCell.nameLabel.text = name
-        sliderCell.slider.maximumValue = 1.0
-        sliderCell.slider.minimumValue = 0
-        sliderCell.slider.value = value
-        cell = sliderCell
+        default:
             break;
     }
-    return cell
+
+    
+    return cell;
     
 }
- */
+ 
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
@@ -195,13 +129,31 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    switch (indexPath.row){
-        case 0:
-            return 54;
-        case 1:
-            return 62;
+    
+    NSObject *itemModel = [menuItems objectAtIndex:indexPath.row];
+    
+    if ([[itemModel class] conformsToProtocol:@protocol(CellDimensionAndTypeDelegate)]) {
+        NSObject <CellDimensionAndTypeDelegate> *item = (NSObject <CellDimensionAndTypeDelegate> *) itemModel;
+        
+        return item.rowHeigth;
+        
+    }else{
+        return 0.0;
+    }
+}
+
+
+-(void)didChangeStateToOn:(BOOL)on AndPropertyRelated:(PropertyRelated)property{
+
+    switch (property) {
+        case STICKY:
+            tm.sticky = on;
+            break;
+        case SHADOW:
+            tm.showShadow = on;
+            break;
         default:
-            return 72;
+            break;
     }
 }
 
