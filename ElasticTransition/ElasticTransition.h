@@ -100,6 +100,8 @@ typedef NS_ENUM(int,ElasticTransitionBackgroundTransform){
  */
 @property (nonatomic) CGFloat shadowRadius;
 
+
+
 @property (nonatomic) ElasticTransitionBackgroundTransform transformType;
 
 @property (nonatomic) BOOL useTranlation;
@@ -110,6 +112,8 @@ typedef NS_ENUM(int,ElasticTransitionBackgroundTransform){
 -(NSString*)transformTypeToString;
 
 @end
+
+
 
 
 @protocol ElasticMenuTransitionDelegate

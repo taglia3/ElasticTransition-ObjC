@@ -50,20 +50,18 @@
         self.containerColor = [UIColor colorWithRed:152.0/255.0 green:174.0/255.0 blue:196.0/255.0 alpha:1.0];
         self.overlayColor   = [UIColor colorWithRed:152.0/255.0 green:174.0/255.0 blue:196.0/255.0 alpha:0.5];
         self.showShadow     = FALSE;
-        self.shadowColor    = [UIColor colorWithRed:100.0/255.0 green:122.0/255.0 blue:144.0/255.0 alpha:0.5];
+        self.shadowColor    = [UIColor colorWithRed:100.0/255.0 green:122.0/255.0 blue:144.0/255.0 alpha:1.0];
         self.shadowRadius   = 50.0;
         
         self.transformType  = TRANSLATEMID;
         
-        NSLog(@"[ElasticTransition] %@", [self transformTypeToString]);
+        //NSLog(@"[ElasticTransition] %@", [self transformTypeToString]);
 
         self.startingPoint = CGPointZero;
         
     
         self.contentLength  = 0.0;
         self.lastPoint      = CGPointZero;
-        
-       // self.maskLayer      = [[CALayer alloc]  init];
         
         self.useTranlation  = TRUE;
         self.damping        = 0.2f;
@@ -115,7 +113,7 @@
     
     self.stickDistance = self.sticky ? self.contentLength * self.panThreshold : 0.0;
     
-    NSLog(@"stickDistance: %f", self.stickDistance);
+    //NSLog(@"stickDistance: %f", self.stickDistance);
 }
 
 
@@ -143,12 +141,10 @@
 
 - (CGPoint)finalPoint{
     
-    static BOOL p;
+    BOOL p = self.presenting;
     
-    p = TRUE;
-    
-   // NSLog(@"presenting è nil");
-   // NSLog(@"%@| self %@", p ? @"1" : @"0", self.presenting ? @"Yes" : @"No");
+//    NSLog(@"presenting è nil");
+//    NSLog(@"%@| self %@", p ? @"1" : @"0", self.presenting ? @"Yes" : @"No");
     
     switch (self.edge){
         case LEFT:
@@ -164,12 +160,10 @@
 
 - (CGPoint)finalPoint:(BOOL)presentingIn{
     
-    BOOL p;
+    BOOL p = presentingIn;
     
-    p = presentingIn;
-    
-    NSLog(@"presenting: %@", presentingIn ? @"1" : @"0");
-    NSLog(@"%@| self %@", p ? @"1" : @"0", self.presenting ? @"Yes" : @"No");
+//    NSLog(@"presenting: %@", presentingIn ? @"1" : @"0");
+//    NSLog(@"%@| self %@", p ? @"1" : @"0", self.presenting ? @"Yes" : @"No");
     
     switch (self.edge){
         case LEFT:
@@ -325,7 +319,7 @@
         }
         
         
-        NSLog(@"cb.point:(%.1f,%.1f) | lb.point:(%.1f,%.1f)", self.cb.point.x, self.cb.point.y, self.lb.point.x, self.lb.point.y);
+        //NSLog(@"cb.point:(%.1f,%.1f) | lb.point:(%.1f,%.1f)", self.cb.point.x, self.cb.point.y, self.lb.point.x, self.lb.point.y);
     }
 }
 
@@ -354,7 +348,6 @@
     
     CGFloat progress = 1.0 - (CGPointDistance(self.lc.center, finalPoint) / CGPointDistance(initialPoint, finalPoint));
     
-    NSLog(@"Progress: %f", progress);
     
     switch (self.edge){
             
@@ -474,7 +467,7 @@
                     }
                 }
                 
-                NSLog(@"Translation: (%.1f, %.1f)", x, y);
+                //NSLog(@"Translation: (%.1f, %.1f)", x, y);
                 
                 self.backView.layer.transform = CATransform3DMakeTranslation(x, y, 0);
                 
@@ -486,6 +479,8 @@
                 break;
         }
     }
+    
+    //NSLog(@"progress: %f", progress);
     
     self.overlayView.alpha = progress;
     
@@ -550,7 +545,7 @@
     self.overlayView.frame              = self.container.bounds;
     self.overlayView.backgroundColor    = self.overlayColor;
     [self.overlayView addGestureRecognizer:self.backgroundExitPanGestureRecognizer];
-    //[self.container addSubview:self.overlayView];
+    [self.container addSubview:self.overlayView];
     
     // 4. setup front view
     CGRect rect = self.container.bounds;

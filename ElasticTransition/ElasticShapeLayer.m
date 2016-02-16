@@ -19,7 +19,6 @@
 @synthesize dragPoint;
 @synthesize radiusFactor;
 
-
 -(id)init{
     
     self = [super init];
@@ -84,7 +83,7 @@
     
     CGPoint centerPoint = self.dragPoint;
     
-    NSLog(@"D:(%.1f,%.1f)",self.dragPoint.x, self.dragPoint.y);
+    //NSLog(@"D:(%.1f,%.1f)",self.dragPoint.x, self.dragPoint.y);
     
     CGPoint leftPoint, rightPoint, bottomRightPoint, bottomLeftPoint;
     
@@ -115,13 +114,6 @@
             bottomLeftPoint = CGPointMake(CGRectGetMinX(self.bounds), CGRectGetMinY(self.bounds));
             break;
     }
-    
-    /*
-    NSLog(@"leftPoint :(%.1f,%.1f)", leftPoint.x, leftPoint.y);
-    NSLog(@"rightPoint :(%.1f,%.1f)", rightPoint.x, rightPoint.y);
-    NSLog(@"bottomRightPoint :(%.1f,%.1f)", bottomRightPoint.x, bottomRightPoint.y);
-    NSLog(@"bottomLeftPoint :(%.1f,%.1f)", bottomLeftPoint.x, bottomLeftPoint.y);
-    */
     
     UIBezierPath *shapePath = [UIBezierPath new];
     
