@@ -266,7 +266,7 @@
     
     if (vc){
         
-        BOOL touchToDismiss;
+        BOOL touchToDismiss = false;
         
         if ([[vc class] conformsToProtocol:@protocol(ElasticMenuTransitionDelegate)]) {
             

@@ -5,6 +5,15 @@ A UIKit custom modal transition that simulates an elastic drag. Written in Objec
 
 ![demo](https://github.com/lkzhao/ElasticTransition/blob/master/imgs/demo.gif?raw=true)
 
+## Installation
+
+ElasticTransitionObjC is available through [CocoaPods](http://cocoapods.org). To install
+it, simply add the following line to your Podfile:
+
+```ruby
+pod "ElasticTransitionObjC"
+```
+
 ## Usage
 
 First of all, in your view controller, create an instance of ElasticTransition
@@ -141,8 +150,11 @@ Then implement your gesture handler and fo the following:
 }
 ```
 
+## Authors
+
+lkzhao, taglia3, the.taglia3@gmail.com
 
 ## License
 
-ElasticTransition-ObjC is available under the MIT license. See the LICENSE file for more info.
+ElasticTransition is available under the MIT license. See the LICENSE file for more info.
 
